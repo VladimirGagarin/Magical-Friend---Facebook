@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scale='no'">
+  <title>Magical Friend</title>
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <!-- HTML -->
+    <header>
+        <div class="menu-div">
+            <a id="menu"><i class="fas fa-bars"></i></a>
+        </div>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            <h1>Magical Friend </h1>
+            <img src="magic5.png" alt="logo two">
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="#home" data-tooltip="Homepage"><i class="fas fa-home"></i></a></li>
+                <li><a href="#create" data-tooltip="Create"><i class="fas fa-plus-circle"></i></a></li>
+                <li><a href="#view" data-tooltip="View"><i class="fas fa-eye"></i></a></li>
+                <li><a href="#Profile" data-tooltip="Me"><i><img src="magic5.png" alt="Profile"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="loadingScreen">
+        <div class="loader"></div>
+        <p>Loading your music...</p>
+    </div>
+    
+  <main>
+    <div class="background-animation"></div>
+    <div id="magicload" class="magicload">
+      <div class="cauldron">
+          <div class="bubble bubble1"></div>
+          <div class="bubble bubble2"></div>
+          <div class="bubble bubble3"></div>
+          <div class="bubble bubble4"></div>
+          <div class="bubble bubble5"></div>
+          <div class="cauldron-liquid"></div>
+      </div>
+      <p class="loading-text">Brewing Magic for your Friends...</p>
+  </div>
+  <div id="musicSymbolsContainer"></div>
+  <div id="notification"></div>
+  <div class="notificationed"></div>
+  
+
+    <section id="Profile" class="section">
+         <h2>No Profile Yet</h2>
+         <ul id="owner-details" class="owner-details"></ul>
+         
+    </section>
+    <div id="scroll-notification" class="notified">Create friends to see the magic beyond!</div>
+      <section id="home" class="section active">
+        <h2>Welcome to the Magical Friend.</h2>
+        
+        <div class="owner-form-container">
+            <h3>Owner/User Information</h3>
+            <form id="owner-form">
+                <div class="form-group">
+                    <label for="facebook-name">Facebook Name</label>
+                    <input type="text" id="facebook-name" name="facebook-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Profile Picture</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <div class="image-overview" id="image-preview"></div>
+                </div>
+                <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea id="bio" name="bio" rows="4" required></textarea>
+                </div>
+                <div class="button-group">
+                    <button type="button" id="cancel">Cancel</button>
+                    <button type="submit" id="save">Save</button>
+                </div>
+            </form>
+        </div>
+        <div class="border"></div>
+        <div class="quote-container">
+            <h3>Daily Inspiration</h3>
+            <p id="quote-text">Loading inspirations...</p>
+            <button id="new-quote-btn">New Quote</button>
+        </div>
+        <div class="border"></div>
+        <div class="ticmessage">
+          <h2>Tic Tac Friend</h2>
+        </div>
+        <div class="tic-tac-toe">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+        <div class="scoreboard">
+          <p ><img id="player-img" src="#" alt="player one"></p>
+          <span>VS</span>
+          <p><img src="magic5.png" alt="computer player"></p>
+
+          <div class="score">
+            <p><span class="result"></span></p>
+            <button>Reset Game</button>
+          </div>
+        </div>  
+        <div class="border"></div>
+        <div class="potion-brewing-game">
+          <h3>Baby Game</h3>
+          <p style="color: black;">If two of your friends had baby together? </p>
+          <div class="ingredients" id="friend-listing">
+              <!-- Ingredients (friends) will be dynamically generated here -->
+          </div>
+          <div class="potion" id="potion">Your potion will appear here!</div>
+          <div class="message" id="message"></div>
+          <button class="brew-button" onclick="brewPotion()">Brew Potion!</button>
+          <button class="reset-button" onclick="resetGame()">Reset Game</button>
+      </div>
+     <div class="border"></div>
+      <div class="fancy-quiz-game">
+        <h3>Fancy Quiz</h3>
+        <p id="quiz-question">Loading question...</p>
+        <div class="ingredients" id="quiz-friend-listing">
+            <!-- Ingredients (friends) will be dynamically generated here -->
+        </div>
+        <div class="quiz-result" id="quiz-result">Your answer will appear here!</div>
+        <div class="message" id="quiz-message"></div>
+        <button class="quiz-button" onclick="nextQuestion()">Questions</button>
+        <button class="quiz-brew-button" onclick="brewQuiz()">Brew It!</button>
+        <button class="quiz-reset-button" onclick="resetQuiz()">Reset Quiz</button>
+    </div>
+    <div class="border"></div>
+    <div class="container">
+      <div class="wheel" id="wheel">
+          <img id="centerImage" class="center-image" alt="User Image">
+      </div>
+      <button id="spinButton">Spin the Wheel</button>
+      <div class="result">
+        <audio id="spinSound" src="y2mate.com - Spinning Wheel Sound Effect.mp3" preload="auto"></audio>
+        <p id="questions"></p>
+          <h2>Result:</h2>
+          <img id="resultImage" class="result-image" alt="Result Image" src="magic5.png">
+      </div>
+  </div>
+    <div class="border"></div>
+    <div class="music-player">
+      <h3 class="logo-for-user"><img src="#" alt="user" id="userImage" class="user-image"></h3>
+      <div class="playlist">
+        <input type="file" id="fileUpload" accept="audio/mp3" multiple style="display: none;">
+        <label for="fileUpload" id="fileUploadLabel">Select song</label>
+        <ul id="songList"></ul>
+    </div>
+
+    
+
+      <div class="player">
+          <div class="card">
+              <img id="friendImage" src="logo.png" alt="Friend Image">
+              <div class="shadow"></div>
+          </div>
+          <div class="song-info">
+              <h2 id="songTitle">Song Title</h2>
+          </div>
+          <div class="spectrum" id="audioSpectrum"></div>
+          <audio id="audioPlayer" controls></audio>
+          
+        </div>
+      </div>
+  </div>
+  <div class="border"></div>
+    </section>
+ 
+      <section id="create" class="section">
+        <h2>Create a New Friend</h2>
+        <p>Create a new friend and add them to your list.</p>
+        <form id="friend-form">
+            <div class="form-group">
+                <label for="friend-name">Your Friend Name:</label>
+                <input type="text" id="friend-name" name="friend-name" required>
+            </div>
+            <div class="form-group">
+                <label for="friend-image">Your Friend Image:</label>
+                <input type="file" id="friend-image" name="friend-image" accept="image/*" required>
+                <div id="image-previews"></div>
+            </div>
+            <div class="form-group">
+                <label for="friend-emotion">Emotion:</label>
+                <select id="friend-emotion" name="friend-emotion" required>
+                    <option value="none" disabled selected>How do you feel about your friend</option>
+                    <option value="joyful">😊 Joyful</option>
+                    <option value="grateful">🙏 Grateful</option>
+                    <option value="excited">😃 Excited</option>
+                    <option value="inspired">🌟 Inspired</option>
+                    <option value="supported">🤗 Supportive</option>
+                    <option value="amused">😄 Amused</option>
+                    <option value="comforted">💖 Comforted</option>
+                    <option value="appreciative">👏 Appreciative</option>
+                    <option value="lovely">😍 Lovely</option>
+                    <option value="cherished">💝 Cherished</option>
+                </select>                
+                
+            </div>
+            <div class="form-group">
+                <label for="friend-description">Description:</label>
+                <textarea id="friend-description" name="friend-description" required></textarea>
+            </div>
+            <button type="submit" disabled id="add-friend-button">Add Friend</button>
+        </form>
+    </section>
+    
+    <section id="view" class="section">
+        <h2>View Your Friends</h2>
+        <p>Here you can view all your friends along with their descriptions and emotions.</p>
+        <h3>My top <span id="count"></span> Friends</h3>
+        <a href="view.html" target="_blank" id="magic-view">Go to magic view</a>
+        <ul id="friends-list"></ul>
+    </section>    
+  </main>
+
+  <script src="script.js" defer></script>
+  <script src='level1.js'></script>
+  
+  
+</body>
+</html>
