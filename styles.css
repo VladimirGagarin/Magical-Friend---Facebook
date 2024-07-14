@@ -741,7 +741,7 @@ input::placeholder {
   .tic-tac-toe {
       width: 200px;
       height: 200px;
-      margin-left: 50px; /* Centered by default on small screens */
+      margin-left: 30px; /* Centered by default on small screens */
       grid-template-columns: repeat(3, 1fr); /* Adjusted grid layout for compact design */
       grid-template-rows: repeat(3, 1fr);
       gap: 2px; /* Reduced gap for a tighter layout */
