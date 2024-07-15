@@ -16,11 +16,24 @@
         <div class="menu-div">
             <a id="menu"><i class="fas fa-bars"></i></a>
         </div>
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-            <h1>Magical Friend </h1>
-            <img src="magic5.png" alt="logo two">
+
+        <div class="logo" id="logo-magical-friend">
+          <img src="logo.png" alt="Logo">
+          <h1>Magical Friend</h1>
+          <img src="magic5.png" alt="Logo Two">
+      </div>
+      <div class="about-magical-friend" id="about-magical-friend">
+        <span class="about-close">X</span>
+        <h2>About Magical Friend</h2>
+        <div class="images-container">
+          <img src="magic5.png" alt="Magical Friend Logo">
+          <a href="https://www.facebook.com/" target="_blank" class="facebook-icon">
+            <img src="logo5.png" alt="Facebook Icon">
+          </a>
         </div>
+        <p id="about-text"></p>
+    </div>
+
         <nav class="floating-nav">
             <ul>
                 <li><a href="#home" data-tooltip="Homepage"><i class="fas fa-home"></i></a></li>
@@ -225,7 +238,9 @@
         <p>Here you can view all your friends along with their descriptions and emotions.</p>
         <h3>My top <span id="count"></span> Friends</h3>
         <a href="view.html" target="_blank" id="magic-view">Go to magic view</a>
-        <ul id="friends-list"></ul>
+        <ul id="friends-list" class="sortable-list">
+          <!-- Friend list items will be dynamically added here -->
+      </ul>      
     </section>    
   </main>
 
