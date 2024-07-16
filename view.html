@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scale='no'">
+    <link rel="stylesheet" href="view.css">
+    <link rel="shortcut icon" href="logo5.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"> <!-- Font Awesome CDN -->
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/ccapture.js@1.1.0/build/CCapture.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    
+
+    
+    <script src="view.js" defer></script>
+    <script src="level1.js"></script>
+    
+    <title>Magical Friend View</title>
+</head>
+<body>
+    <header id="header">
+        <h1> <img src="logo5.png" alt="logo">Magical Friend <img src="magic5.png" alt="magical-friend"></h1>
+        <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span class="menu-icon"></span>
+        </button>
+        <nav id="nav" aria-label="Main navigation">
+            <ul>
+                <li>
+                    <a href="#home" class="active">
+                        <i class="fas fa-home"></i> 
+                        <span class="data-link">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#songs">
+                        <i class="fas fa-music"></i> 
+                        <span class="data-link">Songs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#slideshows">
+                        <i class="fas fa-images"></i> 
+                        <span class="data-link">Slideshows</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#diary">
+                        <i class="fas fa-book"></i> <!-- You can change this icon to something more fitting -->
+                        <span class="data-link">Diary</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div id="overlay" class="overlay">
+            <div class="loading-content">
+                <img id="logo" src="magic5.png" alt="Logo" class="swap-image">
+                <img id="userImage" src="" alt="User Image" class="swap-image">
+
+                <h2>Hold on we lost your magic</h2>
+            </div>
+        </div>
+        <div class="loading-indicator">
+            <img src="logo.png" alt="loading">
+        </div>
+    
+    </header>
+    <main>
+        <!-- Main content goes here -->
+        <section id="home">
+            <div id="userdiv">
+                <canvas id="userCanvas"></canvas>
+                <p id="username"></p>
+            </div>
+            <div class="user-card">
+                <div class="user-card-front user-card-content">
+                    <img id="userImages" src="logo.png" alt="User Image" style="width: 100px; height: 100px; border-radius: 50%;">
+                    <p id="username"></p>
+                </div>
+                <div class="user-card-back user-card-content">
+                    <p id="userBio">User Bio Here</p>
+                </div>
+            </div>
+            <div id="magicEffect">
+                <canvas id="magiic-1"></canvas>
+            </div>
+            <div class="friends">
+                <h2>Friends</h2>
+            <div id="friendsContainer"></div>
+            <!-- 3D View Overlay -->
+            <div id="viewOverlay">
+                <div id="viewOptions"></div>
+                <div id="largeImageContainer">
+                    <img id="largeImage" src="logo.png" alt="Large Image">
+                    <button id="downloadButton" href="#" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" id="downloadIcon" width="24" height="24">
+                            <path d="M8 10.586V1H7v9.586L4.707 7.293 3.293 8.707 8 13.414l4.707-4.707-1.414-1.414L9 10.586z"/>
+                            <path fill-rule="evenodd" d="M0 14a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-1z"/>
+                        </svg>
+                        &#x2193; 
+                    </button>
+                </div>
+                <div class="closeOverlay">
+                    <button>&#x2715;</button>
+                </div>
+            </div>
+    
+            </div>
+            <div class="magic-word">
+                <div class="list-of-pals"></div>
+                <h2 id="friend-heading">Welcome Select one friend</h2><span id="pal-name"></span>
+                <input type="text" id="word-input" placeholder="That word is..." maxlength="25">
+                <label for="add-image" class="file-label">Add Photo instead</label>
+                <input type="file" id="add-image" class="file-input">
+                <div class="image-preview">
+                    <img id="preview-image" src="#" alt="Preview Image">
+                </div>
+
+                <h3>Choose font.</h3>
+                <div class="font-picker">
+                    <button class="font-option" data-font="Arial">Arial</button>
+                    <button class="font-option" data-font="Times New Roman">Times New Roman</button>
+                    <button class="font-option" data-font="Verdana">Verdana</button>
+                    <button class="font-option" data-font="Georgia">Georgia</button>
+                    <button class="font-option" data-font="Courier New">Courier New</button>
+                    <button class="font-option" data-font="Impact">Impact</button>
+                    <button class="font-option" data-font="Comic Sans MS">Comic Sans MS</button>
+                    <button class="font-option" data-font="Tahoma">Tahoma</button>
+                    <button class="font-option" data-font="Lucida Console">Lucida Console</button>
+                    <button class="font-option" data-font="Algerian">Algerian</button>
+                    <button class="font-option" data-font="Brush Script MT">Brush Script MT</button>
+                    <button class="font-option" data-font="Monotype Corsiva">Monotype Corsiva</button>
+                    <button class="font-option" data-font="Segoe Script">Segoe Script</button>
+                    <button class="font-option" data-font="Gabriola">Gabriola</button>
+                    <button class="font-option" data-font="French Script MT">French Script MT</button>
+                    <button class="font-option" data-font="Trebuchet MS">Trebuchet MS</button>
+                    <button class="font-option" data-font="Roboto">Roboto</button>
+                    <button class="font-option" data-font="Open Sans">Open Sans</button>
+                    <button class="font-option" data-font="Lato">Lato</button>
+                    <button class="font-option" data-font="Oswald">Oswald</button>
+                    <button class="font-option" data-font="Raleway">Raleway</button>
+                    <button class="font-option" data-font="Montserrat">Montserrat</button>
+                    <button class="font-option" data-font="Poppins">Poppins</button>
+                    <button class="font-option" data-font="Playfair Display">Playfair Display</button>
+                    <button class="font-option" data-font="Merriweather">Merriweather</button>
+                    <button class="font-option" data-font="Source Serif Pro">Source Serif Pro</button>
+                    <button class="font-option" data-font="Lora">Lora</button>
+                    <button class="font-option" data-font="Crimson Text">Crimson Text</button>
+                    <button class="font-option" data-font="PT Serif">PT Serif</button>
+                    <button class="font-option" data-font="Play">Play</button>
+                    <button class="font-option" data-font="IBM Plex Serif">IBM Plex Serif</button>
+                </div>
+                
+                <span id="error-message"></span>
+                <button id="done-button" disabled>Done</button>
+                
+                <div id="output"></div>                
+
+            </div>
+            <div class="video-display">
+                <div class="playing-magic">
+                    <button id="magic-play">&#9654;</button>
+                </div>
+                <canvas id="myCanvas"></canvas>
+
+                <div id="downloaddiv" class="overlaydiv">
+                    <div class="images-row">
+                        <img src="magic5.png" class="rounded-image" id="logoImage" alt="Logo">
+                        <img src="logo.png" class="rounded-image" id="userphoto" alt="User Image">
+                    </div>
+                    <div class="gratitude">
+                        <h2>We are glad, <span id="userNames"></span>.</h2>
+                        <p>You enjoyed our video made by you</p>
+                    </div>
+                    <div class="disclaimer">
+                        <h3> &#9888; Disclaimer !!</h3>
+                        <p>By downloading this video, please note that the audio has been removed to comply with copyright regulations.</p>
+                        <label id="agreeLabel">
+                            <input type="checkbox" id="agreeCheckbox"> I agree
+                        </label>
+                    </div>
+                    <button id="downloadButtoned" disabled>&#x2193; Download</button>
+                    <button id="closeButton">&times;</button>
+                </div>
+                
+                <div id="counterProgress" class="overlay-counter">
+                    <div class="progressText">
+                        <h2>Hold on! Your video is in progress...</h2>
+                    </div>
+                    <div class="progressText2"></div>
+                    <div class="progressBar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="progressPercent"></div>
+                </div>
+                
+                
+                
+            </div>
+            
+           <div class="owner-info">
+                <div class="top">
+                    <img src="logo.png" alt="Logo 1">
+                    <img src="#" alt="User Image" id="user-image">
+                    <img src="magic5.png" alt="Logo 2">
+                </div>
+                <div class="bottom">
+                    <div class="myselfname">
+                        <h2 id="myself-name"></h2>
+                    </div>
+                    <br>
+                    <div class="details-about">
+                        <span id="my-details"></span>
+                    </div>
+                </div>
+                <div class="myself-form">
+                    <button id="fillFormButton">Add more</button>
+                    <div class="writing-bio hidden" id="storyContent">
+                        <h2 id="get-user-name">Your name</h2>
+                      
+                        <p>
+                          <span class="fetched-user-name">[ me ]</span> also known as
+                          <span id="aka-name" data-input="text"> [ a.k.a ]</span> of gender
+                          <span id="gender" data-element="Select"> [ gender ]</span>.
+                        </p>
+                      
+                        <p>
+                          <span class="pronoun"></span> is a
+                          <span data-input="text" id="professional"> [ profession ] </span>
+                          since <span data-input="date" id="date"> [date ]</span>.
+                        </p>
+                      
+                        <p>
+                          <span class="fetched-user-name"></span> is currently
+                          <span data-input="number"> [Age ]</span> years old, and
+                          <span class="pronoun"></span> lives in
+                          <span data-element="Select" id="country"> [ country ] </span>.
+                        </p>
+                      
+                        <p>
+                          <span class="pronoun"></span> is the
+                          <span data-element="Select" id="possession">[ owner ]</span> of
+                          <span data-input="text" id="property">[ company ]</span>.
+                        </p>
+                      
+                        <p>
+                          <span class="fetched-user-name"></span>'s favorite color is
+                          <span data-input="text" id="color"> [ color ] </span>,
+                          and <span class="pronoun"></span>'s favorite number is
+                          <span data-input="text" id="favorite-number"> [ number ] </span>.
+                        </p>
+
+                        <p>
+                            <span class="fetched-user-name"></span> enjoys
+                            <span data-input="text" id="hobby"> [ hobby/activity ] </span>
+                            in <span data-input="text" id="free-time"> [ free time ]</span>.
+                          </p>
+                        
+                          <p>
+                            In the spare time, <span class="fetched-user-name"></span> likes to explore
+                            <span data-input="text" id="interest"> [ interest ] </span>
+                            and dreams of visiting <span data-input="text" id="dream-destination"> [ dream destination ]</span>.
+                          </p>
+
+                          <p>
+                            In <span class="fetched-user-name"></span>'s spare time, <span class="pronoun"></span> likes to explore
+                            <span data-input="text" id="interest"> [ interest ] </span>
+                            and dreams of visiting <span data-input="text" id="dream-destination"> [ dream destination ]</span>.
+                          </p>
+                        
+                          <p>
+                            <span class="fetched-user-name"></span> believes in <span data-input="text" id="belief"> [ belief/principle ]</span>
+                            and finds inspiration in <span data-input="text" id="inspiration"> [ source of inspiration ]</span>.
+                          </p>
+                        
+                          <p>
+                            <span class="fetched-user-name"></span> aspires to contribute to <span data-input="text" id="contribution"> [ contribution/goal ]</span>
+                            and strives to achieve <span data-input="text" id="achievement"> [ significant achievement ]</span>.
+                          </p>
+                        
+                          <p>
+                            To relax, <span class="fetched-user-name"></span> likes to listen to <span data-input="text" id="music"> [ music genre ]</span>
+                            and read <span data-input="text" id="book"> [ favorite book/author ]</span>.
+                          </p>
+
+                      </div>
+                      <div class="submit-button">
+                        <button id="done-writting" disabled>Submit</button>
+                      </div>
+                    <div class="story-pedia  typing"></div>
+                    
+                </div>
+                <div id="overlay-form" class="hidden">
+                    <div class="overlay-input">
+                     <label for="overlay-input">Type below</label>
+                      <input type="text" id="overlay-input">
+                      <select id="overlay-select" class="hidden"></select>
+                      <button id="saveInputButton">Save</button>
+                      <button id="cancelInputButton">Cancel</button>
+                    </div>
+                  </div>
+
+                  
+        </section>
+        <section id="songs">
+            <div class="upload-song song-cards">
+                <div class="logo"></div>
+                <h3>Use your song</h3>
+                <label for="getUserSong"> &#10133; Add here</label>
+                <input type="file" name="songInput" id="getUserSong" accept=".mp3">
+            </div>
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Adiemus Enya.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Adiemus  Adiemus Enya.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Akon ft Michael Jackson.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Akon ft Michael Jackson  Hold my Hand Lyrics.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Artists Of Then Now  Forever coutry road.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Artists Of Then Now  Forever  Forever Country (1).mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Alan Walker  Play</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Alan Walker  Play Lyrics ft K391 Tungevaag Mangoo.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Christina Perri  A Thousand Years.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Christina Perri  A Thousand Years Official Music Video.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Coldplay  A Sky Full Of Stars Avicii Version.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Coldplay  A Sky Full Of Stars Avicii Version.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Céline Dion  Ashes from Deadpool 2</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Céline Dion  Ashes from Deadpool 2 Motion Picture Soundtrack.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Céline Dion  How Does A Moment Last Forever</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - How Does A Moment Last Forever  Celine Dion Lyrics.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Céline Dion  Thats The Way It Is</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Céline Dion  Thats The Way It Is Official Video.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Céline Dion  To Love You More</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Céline Dion  To Love You More Official Audio.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Dhivara  Song  Baahubali Telugu.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Dhivara Video Song  Baahubali Telugu  Prabhas Rana Anushka Tamannaah  Bahubali Songs.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Diviners Savannah ft Philly K.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Diviners  Savannah feat Philly K  Tropical House  NCS  Copyright Free Music.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Don Omar  Danza Kuduro.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Don Omar  Danza Kuduro Instrumental Original HQ.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Elektronomia  Sky High.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Elektronomia  Sky High  Progressive House  NCS  Copyright Free Music.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Enrique Iglesias  Hero.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Enrique Iglesias  Hero.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Enya  May It Be Instrumental.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Enya  May It Be Instrumental.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Enya  May It Be.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Enya  May It Be Official Lyric Video.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Enya  Only Time Instrumental</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Enya  Only Time Instrumental.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Enya  Only Time</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Enya  Only Time Official 4K Music Video.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Wild Child Instrumental.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Enya  Wild Child Instrumental.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Wild Child.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Enya  Wild Child Official Music Video.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Friendships.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Friendships.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Tera Yaar Hoon Main.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Full Video Tera Yaar Hoon Main  Sonu Ke Titu Ki Sweety  Arijit Singh Rochak Kohli  Song 2018.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Hans Zimmer  Remember.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Hans Zimmer  Remember From The Lion KingAudio Only.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Hans Zimmer  Reunion Love Found Us.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Hans Zimmer  Reunion Love Found Us.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Hans Zimmer  Spirit Stallion of the Cimarron  Swimming.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - 02 Hans Zimmer  Spirit Stallion of the Cimarron  Swimming.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Hans Zimmer  Gladiator  Now We Are Free.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Gladiator  Now We Are Free  Hans Zimmer  Lisa Gerrard.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Hans Zimmer  Time.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Hans Zimmer  Time Official Audio.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Heart of Courage.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Heart of Courage.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Iggy Azalea  Quavo  Savior Instrumental.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Iggy Azalea  Quavo  Savior Instrumental.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Iggy Azalea  Quavo  Savior.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Iggy Azalea  Savior ft Quavo Lyric Video.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Janji  Heroes Tonight.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Janji  Heroes Tonight feat Johnning  Progressive House  NCS  Copyright Free Music.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Jim Yosef  Anna Yvette  Linked  House.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Jim Yosef  Anna Yvette  Linked  House  NCS  Copyright Free Music.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Jim Yosef  Firefly  Progressive House.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Jim Yosef  Firefly  Progressive House  NCS  Copyright Free Music.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Jim Yosef  Let You Go.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Jim Yosef  Let You Go  Synthpop  NCS  Copyright Free Music.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Jim Yosef  Link  House.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Jim Yosef  Link  House  NCS  Copyright Free Music (1).mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Julius Dreisig  Zeus X Crona  Invisible.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Julius Dreisig  Zeus X Crona  Invisible  Trap  NCS  Copyright Free Music.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Alan Walker Play Instrumental.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - K391 Alan Walker  Tungevaag  Play feat Mangoo Instrumental.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>  Katy Perry  Unconditionally.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Katy Perry  Unconditionally Lyrics.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Kelly Clarkson  Stronger.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Kelly Clarkson  Stronger What Doesnt Kill You Official Video.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Lat Lag Gayee.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Lat Lag Gayee Lyrical  Race 2  Saif Ali Khan Jacqueline  Benny Dayal Shalmali  Pritam  Party.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Leja Re  Dhvani Bhanushali.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Leja Re  Dhvani Bhanushali  Tanishk Bagchi  Rashmi Virag Radhika Rao Vinay Sapru  Siddharth [music]_[cut_227sec].mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Leja Re  Dhvani Bhanushali.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Leja Re Lyrics   Dhvani Bhanushali  Tanishk Bagchi.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>  Maroon 5  Memories.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Maroon 5  Memories Official Video.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Leona Lewis  Better in Time.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Leona Lewis  Better in Time Official Video (2).mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Lost Sky  Fearless.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Lost Sky  Fearless ptII feat Chris Linton  Trap  NCS  Copyright Free Music.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Michael Jackson  Hold My Hand Instrumental.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Michael Jackson  Hold My Hand Instrumental.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Michael Learns To Rock  Someday.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Michael Learns To Rock  Someday instrumental w lyrics.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Michael Learns To Rock  Someday.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Michael Learns To Rock  Someday Official Video with Lyrics Closed Caption.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Miles Away  Bring Me Back.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Miles Away  Bring Me Back Lyrics feat Claire Ridgely (1).mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Miles Away Bring Me Back Instrumental.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Miles Away feat Claire Ridgely  Bring Me Back Instrumental JuRA 1313 Remix.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Most Epic Music Ever.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Most Epic Music Ever The Wolf And The Moon  BrunuhVille (1).mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>One Direction  Story of My Life.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - One Direction  Story of My Life Lyrics.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Pachelbel  Canon In D Major.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Pachelbel  Canon In D Major Best version.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>P!nk Try.</h3>
+                <div class="song-audio">
+                    <audio src="pink try.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Queen  I Want to Break Free.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Queen  I Want to Break Free Official Lyric Video.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>See You Again ZitherGuzheng Cover.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - See You Again ZitherGuzheng Cover 古筝.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Shania Twain  From This Moment.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Shania Twain  From This Moment On.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Strauss  The Blue Danube.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Strauss  The Blue Danube Waltz.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Simply The Best  Tina Turner.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - The Best  Tina Turner Lyrics.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Greatest Showman Tightrope.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - The Greatest Showman Cast  Tightrope Official Audio.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Hall Of Fame.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - The Script  Hall Of Fame Lyrics.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> The Weeknd  Blinding Lights.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - The Weeknd  Blinding Lights NCS Fanmade.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>This dance Spencer Saah  Blinding Lights.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - This dance Spencer Saah  Blinding Lights Tiktok song HORNETS REMIX Lyric Video.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>TU HAI.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - TU HAI Video Song  MOHENJO DARO  AR RAHMANSANAH MOIDUTTY  Hrithik Roshan  Pooja Hegde.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Two Steps From Hell  El Dorado.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Two Steps From Hell  El Dorado SkyWorld.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Two Steps From Hell Flight of the Silverbird.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Two Steps From Hell  Flight of the Silverbird (1).mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Two Steps From Hell  Star Sky.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Two Steps From Hell  Star Sky.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Two Steps From Hell  Strength of a Thousand Men.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Two Steps From Hell  Strength of a Thousand Men Archangel.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Two Steps From Hell Victory.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Two Steps From Hell  Victory.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Vitaa ft Slimane avant toi.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Vitaa ft Slimane avant toi Instrumental by Mr Panther (1).mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Wiz Khalifa  See You Again.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Wiz Khalifa  See You Again ft Charlie Puth Official Video Furious 7 Soundtrack.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Wiz Khalifa  See You Again Instrumental.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Wiz Khalifa  See You Again ft Charlie Puth Official Instrumental.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3> Yiruma  Kiss the Rain.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Yiruma  Kiss the Rain lyrics.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Yiruma 이루마  River Flows.</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Yiruma 이루마  River Flows in You.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button>Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>   
+        <section id="slideshows">
+            <div class="selected-song">
+                <h2>Your songs.</h2>
+            </div>
+            <h4>Add song to experience the magic.</h4>
+            <div class="friends-view">
+                <h2>Your friends.</h2>
+                <br>
+            </div>
+            <div class="slideshow-1">
+                <h2>Select one song and see the magic.</h2>
+                <button type="button" id="slide-friends">Click here first</button>
+                <div class="all-friends-slideshow"></div>
+            </div>
+           
+            <div class="trailer-show">
+                <canvas id="trailer"></canvas>
+                <div class="conntrollers">
+                    <button id="play-trailer">&#9654;</button>
+                    <button id="download-trailer-btn">&#9888;</button>
+                    <audio src="y2mate.com - Epic Action Cinematic by Infraction No Copyright Music  Heroes.mp3" id="audio-trailer"></audio>
+                </div>
+            </div>
+        </section>
+
+        <section id="diary">
+            <div class="diary-container">
+                <h2 class="diary-title"><span id="owner-names"></span> Magical Diary</h2>
+                <!-- Calendar and Memory Input Section -->
+                <div class="calendar-memory-input">
+                    <!-- Calendar for Pointing Memories -->
+                    <div class="calendar-memories">
+                        <h3>Memories Calendar</h3>
+                        <div id="memoriesCalendar"></div>
+                    </div>
+                    <!-- Writing Memories -->
+                    <div class="writing-memories">
+                        <h3>Write a Memory</h3>
+                        <h4 class="memory-title"></h4>
+                        <textarea id="memoryInput" placeholder="Write your memory here..."></textarea>
+                        <button id="saveMemory" disabled>Save Memory</button>
+                    </div>
+                </div>
+                <!-- Memories Display Section -->
+                <div class="memories-display">
+                    <h3>My Memories</h3>
+                    <div class="sort-memories">
+                        <a id="grid-memories"><i class="fas fa-th-large"></i></a>
+                        <a id="column-memories"><i class="fas fa-columns"></i></a>
+                    </div>
+                    <div id="memoriesList"></div>
+
+                    <div class="memory-slideshow">
+                        <div class="show-slideshow">
+                            <button id="show-memory-slideshow">magical memories ▼</button>
+                        </div>
+                        <div class="magical-memories-view">
+                            <h2><span id="poet-name"></span> Memories</h2>
+                            <div class="canvas-container">
+                                <canvas id="myMemories"></canvas>
+                                <button id="play-memories">&#9654;</button>
+                            </div>
+                            <audio id="default-song" src="y2mate.com - John Powell  Hans Zimmer  Homeland  Spirit.mp3"></audio>
+                            <button id="showOverlayButton" disabled>Show Song Selection</button>
+
+                        <div class="othersong-overlay">
+                            <div class="other-songs">
+                                <label for="chosen-song">Use your song</label>
+                                <input type="file" id="chosen-song" accept="audio/*">
+                                <ul>
+                                    <li data-song="y2mate.com - Cartoon Jéja  On  On feat Daniel Levi  Electronic Pop  NCS  Copyright Free Music.mp3">  Cartoon Jéja  On  On</li>
+                                    <li data-song="y2mate.com - Culture Code  Make Me Move feat Karra  Dance Pop  NCS  Copyright Free Music.mp3"> Culture Code  Make Me Move</li>
+                                    <li data-song="y2mate.com - Diviners  Savannah feat Philly K  Tropical House  NCS  Copyright Free Music.mp3">Diviners  Savannah</li>
+                                    <li data-song="y2mate.com - Diviners Riell  Slow Official Lyric Video.mp3">Diviners Riell  Slow</li>
+                                    <li data-song="y2mate.com - ElectroLight  Symbolism  Trap  NCS  Copyright Free Music.mp3"> ElectroLight  Symbolism </li>
+                                    <li data-song="y2mate.com - Jim Yosef  Anna Yvette  Linked  House  NCS  Copyright Free Music.mp3">Jim Yosef  Anna Yvette  Linked  House</li>
+                                    <li data-song="y2mate.com - Lost Sky  Fearless ptII feat Chris Linton  Trap  NCS  Copyright Free Music.mp3">Lost Sky  Fearless</li>
+                                    <li data-song="y2mate.com - The Weeknd  Blinding Lights NCS Fanmade.mp3">The Weeknd  Blinding Lights</li>
+                                    <li data-song="y2mate.com - Warriyo  Mortals feat Laura Brehm  Future Trap  NCS  Copyright Free Music.mp3"> Warriyo  Mortals</li>
+                                    <li data-song="y2mate.com - Jim Yosef  Firefly  Progressive House  NCS  Copyright Free Music.mp3">Jim Yosef  Firefly </li>
+                                    <li  data-song="y2mate.com - Janji  Heroes Tonight feat Johnning  Progressive House  NCS  Copyright Free Music.mp3">Janji  Heroes Tonight</li>
+                                    <li data-song="y2mate.com - Crystal Skies  Release Me Lyrics feat Gallie Fisher.mp3"> Crystal Skies</li>
+                                </ul>
+                                <button type="button" id="closeOtherOverlay">&times; Close</button>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="processing-memories">
+                            <img src="logo.png" alt="logo">
+                            <h2>Hold on, we are checking your memories</h2>
+                            <span class="processing-message"></span>
+                        </div>
+                    </div>
+                    
+                    <div id="notificationed-container">
+                        <div id="notificationed-message"></div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Reminder/Notification Section -->
+                <div class="reminder-notification">
+                    <h3>Reminders & Notifications</h3>
+                    <!-- Calendar for Historical Events -->
+                    <div class="reminder-calendar">
+                        <h4>Upcoming events Calendar</h4>
+                        <div id="eventsCalendar"></div>
+                    </div>
+                    <!-- Notification/Reminder Input -->
+                    <div class="reminder-input">
+                        <h4>Set a Reminder.</h4>
+                        <input type="text" id="reminderText" placeholder="Enter your event...">
+                        <label for="reminderDate">Select date.</label>
+                        <input type="datetime-local" id="reminderDate">
+                        <button id="setReminder">Set Reminder</button>
+                    </div>
+                    <!-- Notification/Reminder Alerts -->
+                    <div class="reminder-alerts">
+                        <h4>Upcoming Reminders.</h4>
+                        <div id="alertsList"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="customPromptModal" class="custom-prompt-modal">
+                <div class="custom-prompt-content">
+                    <h3>What's on your mind</h3>
+                    <input type="text" id="customPromptInput" placeholder="Enter your title..." maxlength="30">
+                    <div class="custom-prompt-buttons">
+                        <button id="customPromptConfirm">Confirm</button>
+                        <button id="customPromptCancel">&times;</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirm-overlay" id="confirm-overlay">
+                <div id="confirmEditDel" class="confirm-dialog" >
+                
+                    <p id="confirmText"></p>
+                    <button id="confirmYes">Ok</button>
+                    <button id="confirmNo">No</button>
+                </div>
+            </div>
+           
+
+            
+        </section>
+
+        <div class="container-div">
+            <div id="magic-friend-about" class="overlay-div">
+                <div class="content-div">
+                    <span class="close-x" id="closeBtn">&times;</span>
+                    <div class="header">
+                        <img id="friendImage" src="" alt="Friend Image">
+                        <div class="right">
+                            <h2 id="friendName"></h2>
+                            <img src="magic5.png" alt="logo" id="friendLogo">
+                        </div>
+                    </div>
+                    <div class="details">
+                        <p id="friendEmotion"></p>
+                        <p id="friendDescription"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        
+        <div id="characterDisplay" class="character-display"></div>
+        
+    </main>
+
+    <footer>
+        <canvas id="magiic-2"></canvas>
+        <a href="index.html">&#10133; Create Friends</a>
+    </footer>
+</body>
+</html>
