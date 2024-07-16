@@ -1,0 +1,4600 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f7f7f7, #e0e0e0);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+#header {
+    background: linear-gradient(to right, #0056b3 0%, #08cdca 100%);
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+    transition: background 0.3s ease-in-out, background-position 0.3s ease-in-out;
+    border-bottom: 3px solid #fff;
+    background-size: 200% 100%;
+    background-position: left bottom;
+}
+
+#header:hover {
+    background-position: right bottom;
+}
+
+#header::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease-in-out;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#header:hover::after {
+    width: 100%;
+}
+
+
+#header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+#header h1 img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+#menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+}
+
+.menu-icon {
+    width: 24px;
+    height: 3px;
+    background-color: #fff;
+    position: relative;
+    display: block;
+}
+
+.menu-icon::before, .menu-icon::after {
+    content: '';
+    width: 24px;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+}
+
+.menu-icon::before {
+    top: -8px;
+}
+
+.menu-icon::after {
+    bottom: -8px;
+}
+
+#nav {
+    display: flex;
+}
+
+#nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+#nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+#nav a.active{
+    color: gold;
+}
+
+#nav a:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #ffefba;
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+}
+
+#songs, #slideshows {
+    display: none;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    min-height: 600px;
+}
+
+#nav li a:hover .data-link {
+    display: inline;
+}
+
+.data-link {
+    position: absolute;
+    right: 50px;
+    top: 5px;
+    font-size: 1.2em;
+    display: none; /* Initially hidden */
+    background-color: rgba(15, 12, 12, 0.753);
+}
+
+#nav li a i {
+    font-size: 25px;
+    margin: 10px 10px;
+ }
+
+@media (max-width: 800px) {
+    #menu-toggle {
+        display: block;
+    }
+
+    #nav {
+        position: absolute;
+        top: 90px;
+        left: -100%;
+        background: linear-gradient(to right, #0056b3 0%, #08cdca 100%);
+        width: 100%;
+        height: calc(100vh - 60px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: left 0.3s ease;
+        z-index: 1;
+        
+    }
+
+    #menu-toggle:checked + #nav {
+        left: 0;
+    }
+
+    #nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    #nav li a i {
+        font-size: 30px;
+        margin: 10px 10px;
+    }
+    
+    .data-link {
+        position: absolute;
+        right: 150px;
+        top: 150px;
+        font-size: 1.2em;
+        display: none; /* Initially hidden */
+        background-color: rgba(15, 12, 12, 0.753);
+    }
+
+}
+
+
+/*====================================================================================================================*/
+
+/* General styles for the section */
+section#home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(to right, #0056b3 0%, #08cdca 100%);
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    min-height: 500px;
+    display: block;
+}
+
+#userdiv {
+    position: relative;
+    width: 300px;
+    height: 100px;
+    margin: 50px auto;
+    text-align: center;
+    background: linear-gradient(to right, #0056b3 0%, #08cdca 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#userCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#username {
+    position: relative;
+    color: white;
+    font-size: 1.5em;
+    font-family: 'Arial', sans-serif;
+    z-index: 1;
+    padding-top: 25px;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff00ff;
+    }
+}
+
+@media (max-width: 800px) {
+    section#home{
+        min-height: 400vh;
+    
+    }
+}
+/*===================================================================================================================*/
+
+
+#magicEffect {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Adjust height as needed */
+    overflow: hidden;
+    background-color: #333; /* Background color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    transform: translateY(100px);
+}
+
+#magicEffect p {
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+canvas#magiic-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: transparent; /* Set the background color to transparent */
+}
+
+/* Responsive design for small screens */
+@media (max-width: 800px) {
+    #magicEffect {
+        height: 60vh; /* Reduce height for small screens */
+        font-size: 18px; /* Reduce font size for small screens */
+        width: 100%;
+        transform: translateY(100px);
+    }
+
+    #magicEffect p {
+        top: 5px; /* Adjust top position for smaller screens */
+        font-size: 16px; /* Reduce font size for the paragraph */
+    }
+}
+
+/*==================================================================================================================*/
+/* Container and General Styles */
+.friends {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    background: linear-gradient(to right, #0056b3 0%, #08cdca 100%);
+    border-top: 2px solid #fff;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    padding: 20px 0;
+    transform: translateY(200px);
+}
+
+.friends h2 {
+    font-size: 2em;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Container for Friend Cards */
+#friendsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    perspective: 1000px;
+    margin-top: 20px;
+}
+
+/* Container and General Styles */
+.friends {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    background: linear-gradient(to right, #0056b3 0%, #08cdca 100%);
+    border-top: 2px solid #fff;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    padding: 20px 0;
+    transform: translateY(200px);
+    margin-bottom: 200px;
+}
+
+.friends h2 {
+    font-size: 2em;
+    color: #fff;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container for Friend Cards */
+#friendsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    perspective: 1000px;
+    margin-top: 20px;
+}
+
+/* Friend Card Styles */
+.friend {
+    width: 200px;
+    height: 300px;
+    margin: 20px;
+    perspective: 1000px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+    cursor: pointer;
+    animation: cardFadeIn 0.6s ease-in-out forwards;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.friend img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Front and Back Styles */
+.friend-front, .friend-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.9s ease-in-out, opacity 0.9s ease-in-out;
+}
+
+.friend-front {
+    background: #fff;
+}
+
+.friend-back {
+    background: #0056b3;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    padding: 2px;
+    text-align: center;
+}
+
+.friend-back p {
+    margin: 10px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Hover Effects */
+.friend:hover .friend-front {
+    transform: rotateY(180deg);
+}
+
+.friend:hover .friend-back {
+    transform: rotateY(0);
+    z-index: 2;
+    transform: scale(1.07);
+}
+
+/* Initial State */
+#friendsContainer .friend {
+    transform: rotateY(-10deg);
+}
+
+/* Keyframe for Fade-in Animation */
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Responsive design */
+@media (max-width: 800px) {
+    section#home {
+        flex-direction: column;
+    }
+
+    #magicEffect {
+        width: 80%;
+        margin: 10px auto;
+    }
+
+    .friends {
+        margin-top: 10px;
+        background-color: #333;
+        height: 150vh;
+        overflow-y: auto;
+        scrollbar-width: none; /* Thin scrollbar */
+        scrollbar-color: #f804bb #f30303; /* Thumb and track colors */
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+    .friends::-webkit-scrollbar {
+        width: none; /* Width of the scrollbar */
+    }
+    
+    .friends::-webkit-scrollbar-track {
+        background: #1e3a8a; /* Background of the track */
+        border-radius: 10px; /* Rounded corners */
+    }
+    
+    .friends::-webkit-scrollbar-thumb {
+        background: #2563eb; /* Color of the thumb */
+        border-radius: 10px; /* Rounded corners */
+        border: 3px solid #1e3a8a; /* Padding around thumb */
+    }
+    
+    .friends::-webkit-scrollbar-thumb:hover {
+        background: #1e40af; /* Hover color */
+    }
+
+    #friendsContainer {
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    #friendsContainer .friend {
+        transform:none;
+    }
+
+    .friend {
+        width: 80%;
+        height: auto;
+        margin: 10px 0;
+        transform: translateX(100%);
+        
+    }
+
+    .friend-front, .friend-back {
+        position: static;
+        width: 100%;
+        height: auto;
+        backface-visibility: visible;
+        transform: none;
+    }
+
+    .friend-back {
+        display: block;
+        width: 99%;
+        transform: none;
+        background-color: #fff;
+        color: #0056b3;
+        font-weight: bold;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: nowrap;
+    }
+
+    .friend:hover .friend-front {
+        transform: none;
+    }
+
+    .friend:hover .friend-back {
+        background-color: #0056b3;
+        color: #fff;
+    }
+}
+
+/*====================================================================================================================*/
+
+@keyframes cardFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.friend.animate {
+    transform: rotateY(180deg); /* Animation for flip effect */
+    opacity: 0; /* Ensure fade-in effect */
+    transition: opacity 0.5s ease; /* Define the transition effect for opacity */
+}
+
+.friend.animate.visible {
+    opacity: 1; /* Fade in */
+    transform: translateX(0); /* Slide in from the right */
+}
+
+/*====================================================================================================================*/
+
+
+.user-card {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+    position: relative;
+    cursor: pointer;
+    transform: translateY(50px);
+}
+
+.user-card:hover {
+    background-color: #08cdca;
+}
+
+.user-card-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+}
+
+.user-card-front {
+    background-color: transparent;
+}
+
+.user-card-back {
+    background-color: #0056b3;
+    transform: rotateY(180deg);
+}
+
+#username {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#userBio {
+    text-align: center;
+}
+
+/*==================================================================================================================*/
+
+footer {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full height of the viewport */
+    overflow: hidden;
+    background-color: #000; /* Optional: background color */
+    margin-bottom: 30px;
+    color: #0056b3;
+    margin-top: 50px;
+}
+
+canvas#magiic-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 99%;
+    height: 99%;
+    display: block;
+}
+
+footer a {
+    position: absolute;
+    bottom: 20px;
+    left: 40%;
+    transform: translate(-10%, -300px);
+    color: #fff; /* Text color */
+    text-decoration: none; /* No underline */
+    font-size: 16px; /* Font size */
+    background-color: #0056b3; /* Optional: background for better visibility */
+    padding: 10px 20px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    width: 25%;
+    min-height: 5vh;
+    font-weight: bold;
+    padding-left: 40px;
+    margin-top: 60px;
+    font-size: 30px;
+}
+
+@media (max-width:800px) {
+    footer {
+        width: 100%;
+        transform: translateY(100px);
+    }
+
+    footer a {
+        width: 60%;
+        left: 20%;
+        font-size: 18px;
+    }
+}
+/*=========================================================================================================================*/
+#songs {
+    width: 100%;
+    max-width: 1200px;
+    margin: 50px auto;
+    text-align: center;
+    background: transparent; 
+    color: #fff;
+    min-height: 350vh;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    perspective: 2000px;
+    transform-style: preserve-3d;
+    
+}
+.song-card{
+    background: linear-gradient(145deg, #ecedef, #cbd5e0);
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    color: #0056b3;
+    width: calc(33.333% - 20px);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 400px;
+    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+}
+.song-cards{
+    background: linear-gradient(145deg, #333, #520163);
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    color: #0056b3;
+    width: calc(33.333% - 20px);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 400px;
+    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+}
+
+.song-card:hover,
+.song-cards:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    
+}
+
+.upload-song {
+    background: rgb(80, 8, 69);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: calc(33.333% - 20px);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.upload-song:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.upload-song label {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.upload-song label:hover {
+    background: #1e40af;
+}
+
+.upload-song input[type="file"] {
+    display: none;
+}
+
+.song-card .logo ,
+.song-cards .logo{
+    background: url('logon.jpg') no-repeat center center;
+    background-size: cover;
+    width: 100%;
+    height: 250px;
+    margin-bottom: 20px;
+    border-radius: 15px 15px 0 0;
+}
+
+.song-card h3,
+.song-cards h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #0056b3;
+    
+}
+
+.song-card .song-audio {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.song-card .duration {
+    font-size: 1.5em;
+    margin: 5px 0;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #333; /* Dark text color */
+    background-color: #f0f0f0; /* Light gray background */
+    padding: 8px 12px; /* Padding around the text */
+    border-radius: 20px; /* Rounded corners */
+    display: inline-block; /* Ensure it wraps with text */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; /* Soft shadow for depth */
+    transition: background-color 0.3s ease, transform 0.2s ease-out; /* Smooth transitions */
+}
+
+.song-card .duration:hover {
+    background-color: #ddd; /* Darker gray background on hover */
+    transform: scale(1.05); /* Scale up slightly on hover */
+}
+
+
+.song-card .details {
+    margin-top: 20px;
+    width: 100%;
+    
+}
+
+.song-card:hover .duration{
+    display: none;
+}
+
+.song-card .deeper-details {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.song-card:hover .deeper-details {
+    display: flex;
+}
+
+.all-button-container {
+    display: flex;
+    justify-content: center; /* Center align items horizontally within container */
+    gap: 10px; /* Gap between buttons */
+}
+
+.all-button-container button {
+    padding: 10px 20px; /* Padding for buttons */
+    font-size: 16px; /* Font size */
+    background-color: #007bff; /* Background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    cursor: pointer; /* Cursor style */
+    border-radius: 8px;
+}
+
+.all-button-container button:nth-child(even){
+    background-color: #004600;
+}
+
+.song-card canvas {
+    background: rgba(16, 14, 14, 0.9);
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+    height: 10vh;
+}
+
+.song-card.playing {
+    background: linear-gradient(145deg, #05f7b2, #1cfe03);
+    background: url('magic5.png') no-repeat center center;
+}
+
+.song-card.playing h3{
+    color: gold;
+}
+.song-card.playing .duration{
+    color: gold;
+    background-color: #000;
+}
+
+@media (max-width: 1024px) {
+    .song-card, .upload-song {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 800px) {
+    #songs, #slideshows {
+        width: 90%;
+        scrollbar-width: none;
+    }
+    .song-card, .upload-song {
+        width: 97%;
+        transform: translateX(-50px);
+    }
+
+    .song-card .deeper-details {
+        display: flex;
+    }
+    .song-card,
+    .song-cards{
+        transform: none;
+    }
+
+    .song-card:hover .duration{
+        display: block;
+    }
+
+    .selected-song .song-carded .del-pick-container {
+        transform: translateY(-20px);
+    }
+    main{
+        width: 100%;
+    }
+}
+
+
+/*========================================================================================================================*/
+
+main{
+    background: linear-gradient(to right, #0056b3 0%, #08cdca 100%); 
+    min-height: 200vh;
+}
+
+/*============================================================================================================================*/
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.swap-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 20px;
+    transition: transform 1s;
+}
+
+.show-overlay {
+    visibility: visible;
+    
+}
+
+@keyframes swapPosition {
+	0%,
+	100% {
+		transform: translateY(0) rotate(0);
+		transform-origin: 50% 50%;
+	}
+
+	15% {
+		transform: translateY(-30px) rotate(6deg);
+	}
+
+	30% {
+		transform: translateY(15px) rotate(-6deg);
+	}
+
+	45% {
+		transform: translateY(-15px) rotate(3.6deg);
+	}
+
+	60% {
+		transform: translateY(9px) rotate(-2.4deg);
+	}
+
+	75% {
+		transform: translateY(-6px) rotate(1.2deg);
+	}
+}
+
+/*===================================================================================================================*/
+#slideshows {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    margin-bottom: 30px;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+#slideshows h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#slideshows p {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.selected-song, .friends-view {
+    display: flex;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    gap: 10px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+}
+
+.selected-song::-webkit-scrollbar, .friends-view::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.selected-song .song-carded {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 200px;
+    background-image: url('logon.jpg'); /* Replace with your image path */
+    background-size: cover; /* Ensure background image covers the entire element */
+    background-position: center; /* Center the background image */
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    scrollbar-width: none;
+    
+}
+
+
+.selected-song .song-carded h3,
+.selected-song .song-carded .play-button,
+.selected-song .song-carded .delete-button,
+.selected-song .song-carded .pickButton,
+.selected-song .song-carded .del-pick-container {
+    position: relative; /* Ensure these elements are positioned relative to .song-carded */
+    z-index: 2; /* Ensure these elements are above the overlay */
+    text-align: center; /* Center text horizontally */
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    overflow: hidden;    /* Hides the overflow text */
+    text-overflow: ellipsis; /* Adds ellipsis (...) */
+}
+
+
+
+.selected-song .song-carded::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    border-radius: 10px;
+    z-index: 1; /* Ensure overlay is behind content */
+}
+
+.selected-song .song-carded img {
+    display: none; /* Hide img element to ensure only the background image is visible */
+}
+
+.selected-song .song-carded:hover {
+    transform: scale(1.05);
+}
+
+.selected-song .song-carded .del-pick-container {
+    display: flex;
+    justify-content: space-between; /* Pushes the buttons to the far left and right */
+    align-items: center; /* Aligns the buttons vertically in the center */
+    margin-top: 40px;
+    
+}
+
+/*=================================================================================================================*/
+
+.friends-view .friend-card {
+    flex: 0 0 auto;
+    width: 200px; /* Adjust width for smaller size */
+    height: 200px; /* Adjust height for smaller size */
+    background-color: #0056b3;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+}
+
+.friends-view .friend-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.friends-view .friend-card:hover {
+    transform: scale(1.05);
+}
+
+/* Style for the checkbox */
+.friend-checkbox {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px; /* Adjust width as needed */
+    height: 25px; /* Adjust height as needed */
+    opacity: 1; /* Hide the actual checkbox */
+    cursor: pointer;
+    z-index: 1; /* Ensure checkbox is above background */
+}
+/*====================================================================================================================*/
+
+.slideshow-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.slideshow-1{
+    min-height: 500px; /* Adjust height as needed */
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #fff;
+}
+
+#slideshows h4{
+    animation:changeColor 10s linear infinite;
+    background-color: #000;
+    text-transform: capitalize;
+}
+
+@keyframes changeColor {
+    to{
+        color:gold;
+    }
+    from{
+        color: red;
+    }
+}
+
+/* Style for delete button */
+.song-carded .delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #ff0000; /* Red color for delete button */
+    z-index: 2;
+    
+}
+
+.selected-song .song-carded .play-button {
+    background: transparent; /* Semi-transparent white background */
+    border: none;
+    font-size: 1.95rem;
+    cursor: pointer;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 999;
+}
+
+.song-carded .delete-button:hover {
+    color: #ff5555;
+}
+
+/* Style for the select button when selected */
+.song-card button.selected {
+    background-color: #d3d3d3; /* Light gray background for selected state */
+    color: #000; /* Black text color for selected state */
+    cursor: not-allowed;
+}
+
+.slideshow-1 h2{
+    font-size: 1.3em;
+    color: #555555;
+    margin-bottom: 10px;
+}
+
+.slideshow-1 button{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #ffffff;
+    background-color: #0056b3;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.slideshow-1 button:hover{
+    background-color: #000;
+}
+
+.slideshow-1 .all-friends-slideshow {
+    margin-top: 20px;
+}
+
+/* Add this to your existing CSS */
+.slideshow-1 button:disabled {
+    background-color: rgb(255, 0, 242);
+    cursor: not-allowed;
+}
+
+button:disabled {
+    background-color: rgb(255, 0, 242);
+    cursor: not-allowed;
+}
+/* Media query for small screens */
+@media (max-width: 800px) {
+    #slideshows{
+        width: 100%;
+    }
+    .selected-song .song-carded,
+    .friends-view .friend-card {
+        width: 120px; /* Adjust width for smaller screens */
+        height: 120px; /* Adjust height for smaller screens */
+    }
+
+    .selected-song .song-carded h3,
+    .selected-song .song-carded .play-button,
+    .selected-song .song-carded .delete-button,
+    .selected-song .song-carded .pickButton {
+       font-size: 12px;
+    }
+
+    .slideshow-1 h2{
+        font-size: 14px;
+    }
+
+    .slideshow-1{
+        width: 100%;
+    }
+}
+
+
+
+/*=============================================================================================================================================*/
+
+/* Updated CSS for loading indicator */
+.loading-indicator {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 14, 14, 0.5); /* Semi-transparent white background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.loading-indicator img {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    animation: spin 4s ease-in-out 0s 3 alternate both;
+}
+
+/* Keyframes for spin animation */
+@keyframes spin {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 1;
+		transform: translateX(48px);
+	}
+
+	24% {
+		opacity: 1;
+	}
+
+	40% {
+		animation-timing-function: ease-in;
+		transform: translateX(26px);
+	}
+
+	65% {
+		animation-timing-function: ease-in;
+		transform: translateX(13px);
+	}
+
+	82% {
+		animation-timing-function: ease-in;
+		transform: translateX(6.5px);
+	}
+
+	93% {
+		animation-timing-function: ease-in;
+		transform: translateX(4px);
+	}
+
+	25%,
+	55%,
+	75%,
+	87%,
+	98% {
+		animation-timing-function: ease-out;
+		transform: translateX(0px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+
+/*=======================================================================================================================*/
+
+/* Basic styling for the slideshow container */
+.all-friends-slideshow {
+    position: relative;
+    width: 100%;
+    min-height: 500px; /* Adjust height as needed */
+    overflow: hidden;
+    background-image: url('logon.jpg'); /* Replace with your background image path */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Black overlay for the background image */
+.all-friends-slideshow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Adjust opacity as needed */
+    z-index: 1; /* Overlay should be behind the images */
+}
+
+/* Styling for the images in the slideshow */
+.all-friends-slideshow img {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    opacity: 0;
+    margin-bottom: 30px;
+    z-index: 2; /* Images should be on top of the background */
+}
+
+
+@keyframes fadeSlide {
+	0% {
+		opacity: 0;
+		transform: translateX(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes fadeSlideEven {
+	0% {
+		opacity: 0;
+		transform: translateX(-250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes rotateSlide {
+	0% {
+		opacity: 0;
+		transform: rotate(-540deg) scale(0);
+	}
+
+	100% {
+		opacity: 1;
+		transform: rotate(0) scale(1);
+	}
+}
+
+@keyframes fadeSlideOdd {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes anime {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: translateY(250px);
+	}
+
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	55% {
+		animation-timing-function: ease-in;
+		transform: translateY(65px);
+	}
+
+	72% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	81% {
+		animation-timing-function: ease-in;
+		transform: translateY(28px);
+	}
+
+	90% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: translateY(8px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slowmotion {
+	0% {
+		opacity: 0;
+		transform: scale(0.6);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes animatia {
+	0% {
+		opacity: 0;
+		transform: translateY(250px) rotate(200deg);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0) rotate(0deg);
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: translateX(-250px) rotate(-200deg);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0) rotate(0deg);
+	}
+}
+
+@keyframes fadeIns {
+	0% {
+		opacity: 0;
+		transform: translateX(250px) rotate(200deg);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0) rotate(0deg);
+	}
+}
+
+@keyframes magic {
+	0% {
+		opacity: 0;
+		transform: translateY(-250px) rotate(-200deg);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0) rotate(0deg);
+	}
+}
+
+@keyframes magicTwo {
+	0% {
+		transform: scaleX(0);
+		transform-origin: 0% 0%;
+	}
+
+	100% {
+		transform: scaleX(1);
+		transform-origin: 0% 0%;
+	}
+}
+
+@keyframes magicThree {
+	0% {
+		transform: scaleX(0);
+		transform-origin: 100% 100%;
+	}
+
+	100% {
+		transform: scaleX(1);
+		transform-origin: 100% 100%;
+	}
+}
+
+@keyframes magicFour {
+	0% {
+		transform: scale(2);
+		transform-origin: 100% 50%;
+	}
+
+	100% {
+		transform: scale(1);
+		transform-origin: 100% 50%;
+	}
+}
+
+@keyframes myAnim {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 1;
+		transform: translateY(45px);
+	}
+
+	24% {
+		opacity: 1;
+	}
+
+	40% {
+		animation-timing-function: ease-in;
+		transform: translateY(24px);
+	}
+
+	65% {
+		animation-timing-function: ease-in;
+		transform: translateY(12px);
+	}
+
+	82% {
+		animation-timing-function: ease-in;
+		transform: translateY(6px);
+	}
+
+	93% {
+		animation-timing-function: ease-in;
+		transform: translateY(4px);
+	}
+
+	25%,
+	55%,
+	75%,
+	87% {
+		animation-timing-function: ease-out;
+		transform: translateY(0px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+
+@keyframes magicFive {
+	0%,
+	100% {
+		transform: rotate(0deg);
+		transform-origin: 50% 50%;
+	}
+
+	10% {
+		transform: rotate(8deg);
+	}
+
+	20%,
+	40%,
+	60% {
+		transform: rotate(-10deg);
+	}
+
+	30%,
+	50%,
+	70% {
+		transform: rotate(10deg);
+	}
+
+	80% {
+		transform: rotate(-8deg);
+	}
+
+	90% {
+		transform: rotate(8deg);
+	}
+}
+
+/* Fade Slide Odd */
+@keyframes fadeSlideOdd {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Rotate Slide */
+@keyframes rotateSlide {
+    0% {
+        opacity: 0;
+        transform: rotate(-540deg) scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+
+/* Add more keyframes as needed for additional animations */
+
+/*===================================================================================================================*/
+
+/* Basic styling for the slideshow container */
+.one-friend-slideshow{
+    position: relative;
+    width: 100%;
+    min-height: 500px; /* Adjust height as needed */
+    overflow: hidden;
+    background-image: url('magic5.png'); /* Replace with your background image path */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Black overlay for the background image */
+.one-friend-slideshow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Adjust opacity as needed */
+    z-index: 1; /* Overlay should be behind the images */
+}
+
+/* Styling for the images in the slideshow */
+.one-friend-slideshow img {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    opacity: 0;
+    margin-bottom: 30px;
+    z-index: 2; /* Images should be on top of the background */
+}
+/*===========================================================================================*/
+
+.get-videos{
+    position: relative;
+    width: 100%;
+    min-height: 500px; /* Adjust height as needed */
+    overflow: hidden;
+    background-image: url('musical.png'); /* Replace with your background image path */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Black overlay for the background image */
+.get-videos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Adjust opacity as needed */
+    z-index: 1; /* Overlay should be behind the images */
+}
+
+/* Styling for the images in the slideshow */
+.get-videos img {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    opacity: 0;
+    margin-bottom: 30px;
+    z-index: 2; /* Images should be on top of the background */
+}
+
+/*===============================================================================================================*/
+/* General styling for overlay */
+#viewOverlay {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    z-index: 9999; /* Ensure it's on top of other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+/* Container for options and large image */
+#viewContent {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: hidden;
+    background: white; /* White background for clarity */
+    
+}
+
+
+/* Options container */
+#viewOptions {
+    display: flex;
+    flex-direction: column; /* Align options vertically */
+    padding: 20px;
+    max-width: 30%; /* Limit width for larger screens */
+    overflow-y: auto; /* Enable vertical scrolling */
+    height: calc(80vh - 50px); /* Limit height for options container */
+   
+    margin-left: 10px;
+    border-radius: 8px;
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer and Edge */
+
+   
+}
+
+#viewOptions::-webkit-scrollbar {
+    display: none;
+}
+/* Large image container */
+#largeImageContainer {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+    
+}
+
+#largeImage {
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Ensure image fits container */
+    max-width: 600px;
+    max-height: 400px;
+}
+
+/* Close button styling */
+.closeOverlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.closeOverlay button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Clip path option styling */
+.clip-path-option {
+    position: relative;
+    width: 100px; /* Adjust size as necessary */
+    height: 100px; /* Adjust size as necessary */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  
+    
+}
+
+.clip-path-option:hover {
+    transform: scale(1.05); /* Scale up slightly on hover */
+}
+
+.clip-path-option img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image covers the clipped area */
+    border-radius: 10px;
+}
+
+#downloadButton {
+    position: fixed; /* Ensure it stays fixed even when scrolling */
+    bottom: 20px; /* Adjust distance from the bottom */
+    right: 20px; /* Adjust distance from the right */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #007bff; /* Blue background color */
+    border: none; /* Remove border */
+    border-radius: 50%; /* Circular shape */
+    color: #007bff; /* Text color */
+    font-size: 16px; /* Adjust font size */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-out; /* Smooth transitions */
+    z-index: 1000; /* Ensure it appears above other content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+}
+
+#downloadButton:hover {
+    background-color: #0056b3; /* Darker blue background on hover */
+    transform: scale(1.1); /* Scale up slightly on hover */
+}
+
+#downloadButton svg {
+    fill: white; /* SVG color */
+    width: 24px;
+    height: 24px;
+}
+/* Styles for small screens */
+@media only screen and (max-width: 800px) {
+    #viewOverlay {
+        padding: 10px; /* Add some padding around the edges */
+        flex-direction: column; /* Stack elements vertically */
+        min-width: 100%;
+    }
+
+    #viewContent {
+        flex-direction: column; /* Stack options and image vertically */
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    #viewOptions {
+       max-width: 100%; /* Take full width */
+        height: auto; /* Adjust height to fit content */
+        padding: 10px; /* Reduce padding for smaller screens */
+        flex-direction: row; /* Align options horizontally */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        margin-top: 20px; /* Adjust margin for better spacing */
+        background-color: rgba(53, 50, 53, 0.8); /* Ensure background color is visible */
+        border-radius: 8px; /* Rounded corners */
+        margin-top: 50px;
+    }
+
+    .clip-path-option {
+        min-width: 80px; /* Reduce size for small screens */
+        height: 80px; /* Reduce size for small screens */
+        margin: 5px; /* Adjust margin for better spacing */
+    }
+
+    #largeImageContainer {
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    #largeImage {
+        max-width: 100%; /* Ensure the image doesn't overflow */
+        max-height: 300px; /* Adjust height for smaller screens */
+    }
+
+    #downloadButton {
+        bottom: 10px; /* Adjust position */
+        right: 10px; /* Adjust position */
+        width: 40px; /* Reduce size */
+        height: 40px; /* Reduce size */
+    }
+
+    #downloadButton svg {
+        width: 20px; /* Adjust icon size */
+        height: 20px; /* Adjust icon size */
+    }
+}
+
+
+/*=========================================================================================================================*/
+
+/* Overall container styling */
+.magic-word {
+    max-width: 100%; /* Adjust to fit smaller screens */
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Pals (friends) list styling */
+.list-of-pals {
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-bottom: 10px;
+    
+}
+
+.list-of-pals::-webkit-scrollbar {
+    width: 10px; /* Width of scrollbar for Chrome, Safari, Opera */
+}
+
+.list-of-pals::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Track color */
+}
+
+.list-of-pals::-webkit-scrollbar-thumb {
+    background-color: #007bff; /* Thumb color */
+    border-radius: 5px; /* Rounded corners for the thumb */
+}
+
+.list-of-pals .pal {
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 8px 12px; /* Adjust padding for smaller buttons */
+    font-size: 14px; /* Adjust font size */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #0056b3;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    
+}
+
+.list-of-pals .pal.selected {
+    background-color: #4eabd0; /* Example selected color */
+}
+
+.list-of-pals .pal.disabled {
+    opacity: 0.6;
+    background-color: #e9d7d7;
+    color: #000;
+    pointer-events: none;
+}
+
+.list-of-pals .pal:hover {
+    background-color: #d5d5d5;
+}
+
+/* Pal item styling */
+.pal {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    flex: 0 0 auto;
+    text-transform: capitalize;
+    transition: transform 0.2s ease-in-out;
+}
+
+.pal:hover {
+    transform: scale(1.1);
+}
+
+.pal img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Style the span with friend's name */
+#pal-name {
+    font-weight: bold;
+    color: #007bff; /* Example color */
+    text-transform: uppercase;
+}
+
+/* Input styling */
+input[type="text"] {
+    width: 100%; /* Full width on small screens */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Button styling */
+#download-buttoned,
+#done-button {
+    width: 100%; /* Full width on small screens */
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-size: 30px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#done-button:disabled,
+#download-buttoned.disabled{
+    background-color: red;
+    cursor: not-allowed;
+}
+#done-button:disabled:hover{
+    background-color: #f0f0f0;
+    color: #000;
+    opacity: 0.4;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Error message styling */
+#error-message {
+    color: red;
+    margin-top: 10px;
+    display: block; /* Initially hidden */
+}
+
+.letter {
+    display: inline-block;
+    font-size: 100px;
+    font-weight: bold;
+    color: transparent;
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    margin: 2px;
+    position: relative;
+    font-weight: bolder;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Add shadow */
+
+}
+
+
+.letter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    color: black; /* Outline color */
+    -webkit-text-stroke: 3px #f0f0f0; /* Outline width and color */
+}
+
+
+@media  (max-width: 800px) {
+    .letter {
+        display: inline-block;
+        font-size: 50px;
+        font-weight: bold;
+        color: transparent;
+        background-size: cover;
+        background-clip: text;
+        -webkit-background-clip: text;
+        margin: 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    #download-button,
+    #done-button{
+        font-size: 18px;
+    }
+}
+
+.list-of-pals .pal::-webkit-scrollbar {
+    width: 10px; /* Width of scrollbar for Chrome, Safari, Opera */
+}
+
+.list-of-pals .pal::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Track color */
+}
+
+.list-of-pals .pal::-webkit-scrollbar-thumb {
+    background-color: #007bff; /* Thumb color */
+    border-radius: 5px; /* Rounded corners for the thumb */
+}
+
+/*==================================================================================================================*/
+
+.font-picker {
+    display: flex;
+    overflow-x: auto;
+    max-width: 100%; /* Adjust max-width as needed */
+    margin: 10px auto; /* Center and provide margin */
+    padding-bottom: 10px; /* Add some bottom padding for space */
+}
+
+.font-option {
+    padding: 8px 16px;
+    margin: 0 5px;
+    font-size: 16px;
+    border: 2px solid #0056b3;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    white-space: nowrap; /* Ensure options stay on one line */
+    transition: background-color 0.3s ease;
+}
+
+.font-option:hover {
+    background-color: #e0e0e0;
+}
+
+.font-option.selected {
+    background-color: limegreen;
+    color: white;
+}
+
+.font-picker::-webkit-scrollbar {
+    width: 10px; /* Width of scrollbar for Chrome, Safari, Opera */
+}
+
+.font-picker::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Track color */
+}
+
+.font-picker::-webkit-scrollbar-thumb {
+    background-color: #007bff; /* Thumb color */
+    border-radius: 5px; /* Rounded corners for the thumb */
+}
+
+
+
+/*====================================================================================================================*/
+
+.video-display {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    height: 100vh; /* Adjusted height for small screens */
+    overflow: hidden;
+    position: relative;
+}
+
+#myCanvas {
+    display: block;
+    width: 100%; /* Full width of the parent container */
+    height: 100%; /* Full height of the parent container */
+    border-radius:10px;
+}
+
+
+.playing-magic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Ensure it overlays the canvas */
+    
+}
+
+#magic-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:transparent;
+    border: none;
+    font-size: 50px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    color: #f0f0f0;
+    border-radius: 50%;
+    
+}
+
+#magic-play:hover {
+    opacity: 0.6;
+    color: gold;
+    font-size: 100px;
+    font-weight: bolder;
+}
+
+#magic-play:not(:hover) {
+    opacity: 0.1;
+}
+
+@media (max-width: 800px) {
+    .video-display{
+       max-width: 100%;
+       height: 80vh;
+    }
+    #magic-play:not(:hover) {
+        opacity: 0.1;
+    }
+
+    #magic-play:hover {
+        opacity: 2;
+    }
+}
+ 
+#download-video-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: none;
+}
+
+/*============================================================================================================================*/
+
+#output{
+    background-color: #000;
+    border-radius: 8px;
+}
+#output .done-button{
+    background-color: #000;
+}
+
+/*========================================================================================================================================*/
+.overlaydiv {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Darker background for better contrast */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+    display: none;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out; /* Fade-in effect */
+}
+
+.overlaydiv.show {
+    display: flex;
+    opacity: 1;
+}
+
+.images-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 1s forwards; /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.rounded-image {
+    border-radius: 50%;
+    margin: 0 5px;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Soft glow effect */
+}
+
+.disclaimer,
+.gratitude{
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+    border: 2px solid white; /* Border for the disclaimer */
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    animation: slideIn 1s forwards; /* Slide-in animation */
+    width: 60%;
+}
+.disclaimer h3{
+    color: gold;
+}
+
+.gratitude #userNames{
+   color:#007bff;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#downloadButtoned {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4); /* Button shadow */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#downloadButtoned:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+#downloadButtoned:disabled {
+    background-color: #4d0b0beb;
+    cursor: not-allowed;
+    color: #fff;
+    opacity: 0.4;
+}
+
+#closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: gold;
+    color: maroon;
+    border: none;
+    cursor: pointer;
+    font-size: 70px;
+    line-height: 1;
+    border-radius: 50%; /* Rounded close button */
+    box-shadow: 0 4px 6px rgba(220, 53, 69, 0.4); /* Button shadow */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#closeButton:hover {
+    background-color: #1da797;
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+#agreeCheckbox{
+    width: 30px;
+    height: 30px;
+}
+
+@media (max-width: 800px) {
+    .overlaydiv {
+        padding: 10px;
+        top: 90px;
+    }
+
+    .rounded-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .disclaimer,
+    .gratitude {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #downloadButtoned,
+    #closeButton {
+        font-size: 16px;
+    }
+}
+/*==========================================================================================================================*/
+
+
+/*=========================================================================================================================*/
+
+/* Hide the file input */
+.file-input {
+    display: none;
+}
+
+/* Style the label to look like a button */
+.file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue background color */
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.file-label.disabled{
+    background-color: red;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Hover effect for the label */
+.file-label:hover {
+    background-color: #0056b3; /* Darker shade of blue */
+}
+
+/* Hide the preview image by default */
+.image-preview {
+    display: none;
+}
+
+.image-preview img {
+    max-width: 100%; /* Ensure image doesn't exceed container */
+    margin-top: 10px; /* Optional spacing */
+}
+
+/*====================================================================================================================*/
+.confirm-overlayed {
+    position: fixed;
+    top: 90px; /* Adjust as needed */
+    left: 0;
+    width: 100%;
+    min-height: 100vh; /* Cover full viewport height */
+    background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears on top of other content */
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.confirm-overlayed > div {
+    background-color: transparent; /* White background for each image option */
+    padding: 15px; /* Adjust padding for smaller screens */
+    margin: 10px;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Soft shadow effect */
+    text-align: center;
+    max-width: 90%; /* Maximum width for content */
+    animation: slideIns 0.5s forwards; /* Slide-in animation */
+}
+
+.confirm-overlayed img {
+    max-width: 100%; /* Ensure images fit within their containers */
+    border-radius: 10px; /* Rounded corners for images */
+    margin-bottom: 10px; /* Space between image and button */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Light shadow effect */
+}
+
+.confirm-overlayed button {
+    background-color: #007bff; /* Blue background */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 12px 24px; /* Adjust padding for smaller screens */
+    font-size: 16px; /* Adjust font size for smaller screens */
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer;
+    width: auto;
+    transition: background-color 0.3s ease, transform 0.3s; /* Smooth transition */
+    margin-top: 20px; /* Adjust margin for smaller screens */
+}
+
+.confirm-overlayed button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.confirm-overlayed button:focus {
+    outline: none; /* Remove default focus outline */
+}
+
+.confirm-overlayed button:disabled {
+    opacity: 0.5; /* Reduced opacity for disabled state */
+    cursor: not-allowed; /* Disable cursor */
+}
+
+.confirm-overlayed button.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px; /* Adjust size for smaller screens */
+    height: 36px; /* Adjust size for smaller screens */
+    background-color: transparent; /* Maroon background */
+    border: none;
+    cursor: pointer;
+    font-size: 32px; /* Adjust font size for smaller screens */
+    color: #007bff; /* White text color */
+    border-radius: 50%; /* Rounded button */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Light shadow effect */
+    transition: background-color 0.3s ease, transform 0.3s; /* Smooth transition */
+}
+
+.confirm-overlayed button.close-button:hover {
+    background-color: transparent; /* Darker maroon on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    color: maroon;
+}
+
+@media (max-width: 800px) {
+    .confirm-overlayed {
+        padding: 10px;
+        flex-direction: column;
+        top: 90px;
+    }
+
+    .confirm-overlayed > div {
+        padding: auto;
+        margin: 10px;
+        border-radius: 15px; /* Rounded corners */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Soft shadow effect */
+        text-align: center;
+        max-width: 90%; /* Maximum width for content */
+        animation: slideIns 0.5s forwards; /* Slide-in animation */
+        transform: translateY(-20px); /* Adjust position */
+    }
+    .confirm-overlayed > div:last-child{
+        transform: translateY(-50px);
+    } 
+    .confirm-overlayed img {
+        max-width: 100%; /* Ensure images fit within their containers */
+        border-radius: 10px; /* Rounded corners for images */
+        margin-bottom: 10px; /* Space between image and button */
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Light shadow effect */
+    }
+
+    .confirm-overlayed button {
+        background-color: #007bff; /* Blue background */
+        color: #fff; /* White text color */
+        border: none;
+        padding: 12px 24px; /* Adjust padding */
+        font-size: 16px; /* Font size for buttons */
+        border-radius: 10px; /* Rounded corners */
+        cursor: pointer;
+        width: auto;
+        transition: background-color 0.3s ease, transform 0.3s; /* Smooth transition */
+        margin-top: 20px; /* Adjust margin */
+        transform: translateY(-30px); /* Adjust position */
+    }
+
+    .confirm-overlayed button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: translateY(-35px); /* Slight lift on hover */
+    }
+
+    .confirm-overlayed button:focus {
+        outline: none; /* Remove default focus outline */
+    }
+
+    .confirm-overlayed button:disabled {
+        opacity: 0.5; /* Reduced opacity for disabled state */
+        cursor: not-allowed; /* Disable cursor */
+    }
+
+    .confirm-overlayed button.close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 36px; /* Adjust size */
+        height: 36px; /* Adjust size */
+        background-color: transparent; /* Maroon background */
+        border: none;
+        cursor: pointer;
+        font-size: 32px; /* Font size for close button */
+        color: #007bff; /* White text color */
+        border-radius: 50%; /* Rounded button */
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Light shadow effect */
+        transition: background-color 0.3s ease, transform 0.3s; /* Smooth transition */
+    }
+
+    .confirm-overlayed button.close-button:hover {
+        background-color: transparent; /* Darker maroon on hover */
+        transform: translateY(-3px); /* Slight lift on hover */
+        color: maroon;
+    }
+}
+
+/*================================================================================================================================*/
+
+.overlay-counter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.progressText {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.progressBar {
+    width: 60%;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #007bff; /* Progress bar color */
+    width: 0%;
+    animation: progressAnimation 30s linear forwards infinite; /* Adjust duration as needed */
+}
+
+@keyframes progressAnimation {
+    0% { width: 0%; }
+    50%{width: 50%;}
+    100% { width: 100%; }
+}
+
+@media (max-width: 800px) {
+    .progressText {
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+/*===========================================================================================================================================*/
+
+#diary {
+    background: linear-gradient(135deg, #584782, #6a0cd6);
+    background-size: cover; /* Ensures the background image covers the entire element */
+    background-position: center; /* Centers the background image */
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.diary-title {
+    text-align: center;
+    font-family: 'Cursive', sans-serif;
+    margin-bottom: 20px;
+}
+
+.calendar-memory-input,
+.reminder-notification {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-direction: row;
+    border: 2px solid #fff;
+    flex-wrap: wrap;
+    margin-top: 20px; /* Add margin between items */
+    border-radius: 10px;
+}
+
+.reminder-notification{
+    flex-direction: column;
+    min-height: 50vh;
+    overflow-y: auto;
+}
+
+.calendar-memory-input > div,
+.reminder-notification > div {
+    background: rgba(3, 221, 237, 0);
+    padding: 20px;
+    border-radius: 1px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    width: 100%; /* Make each div take full width */
+   
+
+}
+
+.diary-container h3,
+.diary-container h4 {
+    font-family: 'Cursive', sans-serif;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.diary-container h3{
+    background-color: #fff;
+    color: #0056b3;
+    font-size: 24px;
+    border-radius: 5px;
+    height: 5vh;
+}
+
+textarea, input[type="text"], input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+.diary-container button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s;
+    width: 100%;
+}
+
+.diary-container button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+#memoriesList, #alertsList {
+    max-height: 400px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.memory-item, .alert-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.memory-item:hover, .alert-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+
+#memoriesCalendar .fc button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s ease, transform 0.3s;
+}
+
+#memoriesCalendar .fc button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Styles for small screens */
+@media (max-width: 800px) {
+    .calendar-memory-input > div,
+    .reminder-notification > div {
+        width: 100%; /* Full width on smaller screens */
+        margin-right: 0; /* No right margin */
+    }
+}
+/*===============================================================================================================================*/
+
+#customPromptModal {
+    display: none; /* Hide modal by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    z-index: 1000;
+    overflow: auto; /* Enable scrolling if content exceeds viewport */
+    
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styles for the modal content */
+.custom-prompt-content {
+    background-color: #fff;
+    width: 400px;
+    padding: 20px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    
+}
+
+/* Close button styles */
+#customPromptCancel {
+    position: absolute;
+    top: 10px;
+    right: -2px;
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #888;
+}
+
+/* Title styles */
+.custom-prompt-content h3 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-align: center;
+}
+
+/* Input styles */
+#customPromptInput {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Button styles */
+.custom-prompt-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#customPromptConfirm {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+/* Hover effect for confirm button */
+#customPromptConfirm:hover {
+    background-color: #0056b3;
+}
+
+#customPromptCancel:hover {
+   color: red;
+}
+
+.memory-title {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+/*======================================================================================================================================*/
+/* Container for Memories Display */
+.memories-display {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Title Styling */
+.memories-display h3 {
+    font-size: 24px;
+    color: #2669ac;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    
+}
+
+/* Memory Item Styling */
+.memory-item {
+    position: relative;
+    background-color: #000; /* Start with a dark background */
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    color: #fff; /* Text color white */
+    overflow-x: hidden;
+}
+
+.memory-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Start with full width overlay */
+    height: 100%;
+    background-color: rgb(249, 247, 247); /* Semi-transparent white overlay */
+    transition: width 0.3s ease-in-out;
+    border-radius: 8px;
+    z-index: -1; /* Behind memory items */
+}
+
+.memory-item:hover {
+    transform: translateY(4px); /* Move down on hover */
+    background-color: #000; /* Lighten background on hover */
+    z-index: 2; /* Ensure hovered memory item is above others */
+    color: #000; /* Change text color on hover */
+}
+
+.memory-item:hover::before {
+    width: 0%; /* Decrease width to reveal dark background */
+}
+
+/* Alternate Animation for Odd Memory Items */
+.memory-item:nth-child(odd) {
+    position: relative;
+    background-color: #000; /* Start with a dark background */
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    color: #fff; /* Text color white */
+    overflow-x: hidden;
+}
+
+.memory-item:nth-child(odd)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: -100%; /* Start with full width overlay */
+    height: 100%;
+    background-color: rgb(249, 247, 247); /* Semi-transparent white overlay */
+    transition: width 0.3s ease-in-out;
+    border-radius: 8px;
+    z-index: -1; /* Behind memory items */
+}
+
+.memory-item:nth-child(odd):hover {
+    transform: translateY(-4px); /* Move up on hover for odd items */
+    background-color: #000; /* Dark background on hover for odd items */
+    color: #fff; /* White text color on hover for odd items */
+}
+
+.memory-item:nth-child(odd):hover::before {
+    width: -100%; /* Fill width on hover for odd items */
+}
+
+.memory-item p {
+    font-weight: bold;
+    font-size: large;
+}
+.memory-item:hover p {
+    z-index: 2; /* Ensure text appears above background */
+    color: #2669ac; /* Text color change on hover */
+    /* Create a glowing effect */
+}
+
+.memory-item h4 {
+    font-size: 20px;
+    color: #2669ac;
+    margin-bottom: 10px;
+}
+
+.memory-item p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* WebKit Scrollbar Styling */
+#memoriesList::-webkit-scrollbar {
+    width: 12px; /* Width of the vertical scrollbar */
+    height: 12px; /* Height of the horizontal scrollbar */
+}
+
+#memoriesList::-webkit-scrollbar-track {
+    background: transparent; /* Background color of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+#memoriesList::-webkit-scrollbar-thumb {
+    background:#0056b3 ; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+#memoriesList::-webkit-scrollbar-thumb:hover {
+    background: #6a0cd6; /* Color of the scrollbar thumb when hovered */
+}
+
+
+
+/* Edit and Delete Icons */
+.memory-item .edit-icon,
+.memory-item .delete-icon {
+    position: relative;
+    bottom: 10px;
+    right: 10px;
+    font-size: 30px;
+    margin-left: 20px;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+
+}
+.memory-item .edit-icon:hover,
+.memory-item .delete-icon:hover{
+    background-color: #007bff;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+
+.memory-item:hover .edit-icon,
+.memory-item:hover .delete-icon {
+    opacity: 1;
+    
+}
+
+/* Edit Container Styling */
+.edit-container {
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    right: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 3; /* Ensure edit container is above memory item */
+}
+
+.memory-item:hover .edit-container {
+    opacity: 1; /* Show icons container on hover */
+}
+
+
+/* Sort Memories Container */
+.sort-memories {
+    position: relative;
+    top: -20px;
+    right: -340px;
+}
+
+.sort-memories a {
+    display: inline-block;
+    padding: 10px;
+    margin-left: 10px;
+    background-color: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    
+    transition: background-color 0.3s ease;
+}
+
+.sort-memories a:hover {
+    background-color: #999;
+}
+
+/* Font Awesome Icon Styling */
+.sort-memories a i {
+    font-size: 24px;
+    color: #2669ac; /* Adjust icon color */
+}
+/* Active button styling */
+.sort-memories a i.active {
+    color: #6a0cd6; /* Example active color */
+    font-weight: bold; /* Example active font weight */
+}
+
+
+/* Grid Layout */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two items per row */
+    gap: 20px; /* Gap between grid items */
+}
+
+/* Column Layout */
+.column-layout {
+    display: block; /* Default block display */
+}
+
+
+/* Responsive adjustments for small screens */
+@media (max-width: 800px) {
+    .memory-item .edit-container {
+        top: 0; /* Adjust top position for smaller screens */
+        right: -200px; /* Adjust right position for smaller screens */
+        opacity: 1;
+        bottom: 90%;
+    }
+
+    /* Edit and Delete Icons */
+    .memory-item .edit-icon,
+    .memory-item .delete-icon {
+        position: relative;
+        bottom: 10px;
+        right: 10px;
+        font-size: 20px;
+        margin-left: 20px;
+        transition: opacity 0.3s ease-in-out;
+        cursor: pointer;
+
+    }
+    /* Hide sort links on small screens */
+    .sort-memories {
+        display: none;
+    }
+    
+}
+/*==========================================================================================================================*/
+
+/* General styling */
+.memory-slideshow {
+    text-align: center;
+    margin-top: 20px;
+    background: linear-gradient(to bottom right, #6a0cd6, #007bff);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    width: 99%;
+}
+
+.show-slideshow button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.show-slideshow button:hover {
+    background-color: #0056b3;
+}
+
+.magical-memories-view, .processing-memories {
+    margin-top: 20px;
+    display: none;
+}
+.magical-memories-view {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.magical-memories-view.show {
+    display: block;
+    animation: fadeInDown 0.5s ease;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.magical-memories-view h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.magical-memories-view .canvas-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    height: 80vh;
+    overflow: hidden;
+    background-color:gold;
+    margin-left: 140px;
+    border-radius: 10px;
+
+}
+
+
+
+
+
+.magical-memories-view canvas {
+    border: 2px solid white;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 100%;
+   
+    margin-bottom: 30px;
+}
+
+.canvas-container button {
+    font-size: 2rem;
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20%;
+    width: 100px;
+    height: 100px;
+    transition: background-color 0.5s ease;
+    position: absolute;
+    opacity: 0.8;
+
+}
+
+.magical-memories-view button:hover {
+    border:2px solid #0056b3;
+    opacity: 1;
+    background-color: rgba(0, 86, 179, 0.8);
+}
+
+
+
+/* Responsive Design for Small Screens */
+@media (max-width: 800px) {
+    .memory-slideshow {
+        padding: 10px;
+        
+    }
+
+    .show-slideshow button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .magical-memories-view h2 {
+        font-size: 1.5rem;
+    }
+
+    .magical-memories-view canvas {
+        width: 90%;
+        max-width: none;
+        margin-top: 10px;
+    }
+
+    .canvas-container button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        opacity: 1;
+    }
+
+    label[for="chosen-song"] {
+        top: 45px;
+        right: 10px;
+        font-size: 0.875rem;
+        padding: 3px 6px;
+    }
+
+     .canvas-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: 60vh;
+        overflow: hidden;
+        background-color:gold;
+        transform: translateX(-100px);
+        border-radius: 10px;
+        
+    
+    }
+}
+
+.processing-memories {
+    display: none;
+    /* Add additional styling for the loading indicator */
+}
+
+.magical-memories-view {
+    display: none;
+    /* Add additional styling for the memory view container */
+}
+
+.processing-memories.show {
+    display: block;
+}
+
+.magical-memories-view.show {
+    display: block;
+}
+
+#myMemories {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    
+   
+}
+
+
+/*==========================================================================================================================*/
+.confirm-overlay{
+    display: none; /* Hide modal by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    z-index: 1000;
+    overflow: auto; /* Enable scrolling if content exceeds viewport */
+    
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-overlay .confirm-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(60% - 20px);
+    background: #0056b3;
+    padding: 30px;
+    border: 2px solid #f0f0f0;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: block;
+    text-align: center;
+    border-radius: 10px;
+    animation: fadesIn 0.5s ease-out;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Paragraph inside the dialog */
+.confirm-overlay .confirm-dialog p {
+    margin: 0 0 25px 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+/* Button styling */
+.confirm-overlay .confirm-dialog button {
+    margin: 0 10px;
+    background-color: transparent;
+    font-size: 18px;
+    border-radius: 20px;
+    border: 2px solid #f0f0f0;
+    cursor: pointer;
+    color: #f0f0f0;
+    padding: 10px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.4s;
+}
+
+.confirm-overlay .confirm-dialog button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #004600;
+    z-index: -1;
+    transition: transform 0.4s;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.confirm-dialog button:last-child:before {
+    background: red;
+}
+
+.confirm-dialog button:hover:before {
+    transform: scaleX(1);
+}
+
+.confirm-dialog button:hover {
+    color: #fff;
+}
+
+@media (max-width:800px) {
+    .confirm-overlay .confirm-dialog{
+        width: calc(100% - 20px);
+        top: 50%;
+       left: 0%;
+    }
+    .confirm-overlay .confirm-dialog button{
+        margin-top: 20px;
+    }
+}
+/*=================================================================================================================================*/
+/* Container for the form */
+.edit-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f9f9f9;
+    padding: 25px;
+    border: 1px solid #ddd;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    z-index: 1000;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    border-radius: 10px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    animation: fadesIn 0.5s ease-out;
+}
+
+/* Input and textarea styling */
+.edit-form input[type="text"],
+.edit-form textarea,
+.edit-form input[type="date"] {
+    width: calc(100% - 20px);
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+}
+
+.edit-form textarea {
+    height: 160px;
+    resize: vertical;
+}
+
+/* Input focus styling */
+.edit-form input[type="text"]:focus,
+.edit-form textarea:focus,
+.edit-form input[type="date"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button styling */
+.edit-form button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 16px;
+}
+
+.edit-form button#editMemoryCancel {
+    background-color: #dc3545;
+}
+
+.edit-form button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.edit-form button#editMemoryCancel:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Close button styling */
+.edit-form .edit-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+.edit-form .edit-close:hover {
+    color: #555;
+}
+
+/* Animations */
+@keyframes fadesIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slideDowns {
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.edit-form input[type="text"],
+.edit-form textarea,
+.edit-form input[type="date"],
+.edit-form button {
+    animation: slideDowns 0.4s ease-out;
+    animation-fill-mode: backwards;
+}
+
+.edit-form input[type="text"] { animation-delay: 0.1s; }
+.edit-form textarea { animation-delay: 0.2s; }
+.edit-form input[type="date"] { animation-delay: 0.3s; }
+.edit-form button { animation-delay: 0.4s; }
+
+/*==============================================================================================================================================*/
+
+/* CSS for try-slideshow-overlay */
+.try-slideshow-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure overlay appears above other content */
+    flex-direction: column;
+}
+
+.trial-content {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Shadow for the content */
+    text-align: center;
+    position: absolute;
+    gap: 20px; /* Adjust gap between elements */
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center align content vertically */
+    justify-content: center; /* Center align content horizontally */
+}
+
+
+/* CSS for trial-div (slideshow container) */
+.trial-div {
+    width: 250px; /* Adjust as needed */
+    height: 250px; /* Adjust as needed */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    margin: 20px auto;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for the slideshow */
+    
+
+}
+
+.trial-visualizer {
+    flex: 1; /* Take remaining space */
+    height: 100px; /* Adjust height as needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Example background color */
+    border-radius: 10px;
+    overflow: hidden; /* Ensure it does not overflow */
+    display: flex;
+    justify-content: center; /* Center align content horizontally */
+    align-items: center; /* Center align content vertically */
+}
+
+.visualizer-bar {
+    width: 6px; /* Adjust width of each bar */
+    background-color: #0056b3; /* Initial color for bars */
+    margin: 0 1px; /* Adjust margin between bars */
+    position: absolute; /* Position bars relative to .trial-visualizer */
+    bottom: 0; /* Align bars to the bottom */
+    animation: color-change 2s infinite alternate; /* Animation for color change */
+}
+
+@keyframes color-change {
+    0% { background-color: green; }
+    25% { background-color: yellow; }
+    50% { background-color: red; }
+    75% { background-color: orange; }
+    100% { background-color: #007bff; }
+}
+
+
+
+.animation-1 {
+    animation: myAnim 7s forwards ; /* Match the interval duration */
+}
+
+.animation-2 {
+    animation: myAnim2 7s forwards ; /* Match the interval duration */
+}
+
+.animation-3 {
+    animation: myAnim3 10s forwards ; /* Match the interval duration */
+}
+
+.animation-4 {
+    animation: myAnim4 7s forwards ; /* Match the interval duration */
+}
+
+.animation-5 {
+    animation: myAnim5 7s forwards ; /* Match the interval duration */
+}
+
+.animation-6 {
+    animation: myAnim6 7s forwards ; /* Match the interval duration */
+}
+
+.animation-7 {
+    animation: myAnim7 7s forwards ; /* Match the interval duration */
+}
+
+.animation-8 {
+    animation: myAnim8 7s forwards ; /* Match the interval duration */
+}
+
+.animation-9 {
+    animation: myAnim9 7s forwards ; /* Match the interval duration */
+}
+
+.animation-10 {
+    animation: myAnim10 7s forwards ; /* Match the interval duration */
+}
+
+@keyframes myAnim {
+    0% {
+        opacity: 0;
+        transform: translateY(-250px) rotate(-200deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes myAnim2 {
+	0% {
+		opacity: 0;
+		transform: scale(1.4);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes myAnim3 {
+	0% {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes myAnim4 {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+}
+
+@keyframes myAnim5 {
+	0% {
+		opacity: 1;
+		transform: translateY(0) rotate(0deg);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateY(-250px) rotate(-200deg);
+	}
+}
+
+@keyframes myAnim6 {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes myAnim7 {
+	0% {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes myAnim8 {
+	0% {
+		opacity: 0;
+		transform: translateY(250px) rotate(200deg);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0) rotate(0deg);
+	}
+}
+
+@keyframes myAnim9 {
+	0% {
+		opacity: 0;
+		transform: translateX(250px) rotate(200deg);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0) rotate(0deg);
+	}
+}
+
+@keyframes myAnim10 {
+	0% {
+		opacity: 0;
+		transform: translateX(-250px) rotate(-200deg);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0) rotate(0deg);
+	}
+}
+
+
+/* CSS for trial-close button */
+.trial-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+}
+
+.trial-close:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Responsive design for small screens */
+@media (max-width: 800px) {
+    .trial-content {
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+        width: 60%;
+        height:80vh;
+        transform: translateY(40px);
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+
+    .trial-div {
+        width: 150px;
+        height: 300px;
+        margin: 10px 0;
+        margin-left: 20px;
+    }
+
+    .trial-close {
+        top: 5px;
+        right: 5px;
+        padding: 5px;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+
+    }
+}
+
+.grayscale {
+    filter: grayscale(100%);
+}
+
+/*=======================================================================================================================================*/
+
+
+.othersong-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it is on top */
+    justify-content: center;
+    align-items: center;
+}
+
+.othersong-overlay.show {
+    display: flex;
+}
+
+.other-songs {
+    background: #0056b3;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    color: #000;
+    height: 40vh;
+    overflow-y: auto;
+}
+
+.other-songs label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #f8f8f8;
+    background-color: #0056b3;
+}
+
+.other-songs label:hover{
+    background-color: #f0f0f0;
+    color: #0056b3;
+}
+
+.other-songs input {
+    margin-bottom: 20px;
+    display: none;
+}
+
+.other-songs ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.show{
+    display: block;
+}
+
+.other-songs li {
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.other-songs li:hover {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+.other-songs .uploaded {
+    font-style: italic;
+    color: gold; /* Blue color for uploaded songs */
+}
+
+.other-songs .selected {
+    background-color: #007bff; /* Blue background for selected songs */
+    color: #fff; /* White text for selected songs */
+}
+
+#closeOtherOverlay {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+#closeOtherOverlay:hover {
+    background: #0056b3;
+}
+
+#showOverlayButton{
+    display: none;
+}
+
+.selected {
+    background-color: #007bff; /* Blue background for selected songs */
+    color: #fff; /* White text for selected songs */
+}
+
+/* Optional: Different style for uploaded and selected at the same time */
+.uploaded.selected {
+    background-color: #0056b3; /* Darker blue for uploaded and selected */
+    color: #fff;
+    font-weight: bold;
+}
+
+
+.uploaded {
+    font-style: italic;
+    color: #007bff; /* Blue color for uploaded songs */
+}
+
+
+@media (max-width: 800px) {
+    .other-songs li {
+        width: calc(25% + 20px); /* One item per row on smaller screens */
+    }
+    .other-songs ul{
+        flex-direction: column;
+    }
+    .canvas-container #myMemories{
+        width: 80%;
+    }
+}
+
+/*========================================================================================================================================*/
+
+.notified {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    animation: slideInn 0.5s forwards, slideOutt 0.5s 1.5s forwards;
+}
+
+@keyframes slideInn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutt {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+/*==================================================================================================================================*/
+
+#notificationed-container {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    max-width: 300px; /* Adjust width as needed */
+    background-color: #f0f0f0;
+    color: #0056b3;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(100%);
+    z-index: 1000;
+    display: none;
+}
+
+#notificationed-container.show {
+    opacity: 1;
+    transform: translateY(0);
+    display: flex;
+}
+/*================================================================================================================================================*/
+
+.trailer-show {
+    min-height: 500px; /* Adjust height as needed */
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #fff;
+}
+
+#trailer {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #000; /* Fallback color */
+    
+}
+
+.controllers {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 300px; /* Limit width of controls */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+    border-radius: 10px;
+}
+
+.controllers button {
+    font-size: 24px;
+    color: white;
+    background-color: gold;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 50%; /* Circular buttons */
+}
+
+.controllers button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+}
+
+#play-trailer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; /* Ensure the button is above other content if necessary */
+    background-color: rgba(0, 0, 0, 0.5); /* Example background color */
+    color: white; /* Example text color */
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 30px;
+    border-radius: 5px;
+}
+
+/* ======================================================================================================= */
+
+.container-div {
+    width: 80%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.overlay-div {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s;
+    z-index: 1000;
+}
+
+.content-div {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideInUp 0.5s ease-out;
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.header .right {
+    display: flex;
+    align-items: center;
+}
+
+.header .right img {
+    margin-left: 20px;
+    
+}
+
+#friendEmotion{
+    font-size: 30px;
+}
+
+.details {
+    text-align: left;
+}
+
+.details p {
+    margin: 5px 0;
+}
+
+.close-x {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-x:hover {
+    color: #ff6b6b;
+}
+
+.character-display {
+    font-family: 'MagicalFont', cursive; /* Add your magical font here */
+    font-size: 24px;
+    color: #007bff;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(100px); }
+    to { transform: translateY(0); }
+}
+/*===================================================================================================================*/
+
+.top {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.top img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.logo:hover, .user-image:hover {
+    transform: scale(1.1);
+}
+
+.myself-form {
+    margin-bottom: 20px;
+}
+
+.owner-info {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+    margin-top:30px;
+}
+
+.hidden { display: none; }
+.underline { text-decoration: underline; cursor: pointer; }
+.overlay-input {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid black;
+  z-index: 1000;
+}
+
+.writing-bio {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .writing-bio h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .writing-bio p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  
+  [data-input], [data-element] {
+    position: relative;
+    padding: 8px 12px;
+    border: 1.5px solid #000;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 280px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    z-index: 1;
+  }
+
+  /* Text color on hover */
+[data-input]:hover, [data-element]:hover {
+    color: #f0f0f0; /* Change text color on hover */
+  }
+
+ 
+    /* ::before pseudo-element for hover effect */
+    [data-input]::before, [data-element]::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        z-index: -1;
+        border-radius: 4px;
+        transition: width 0.3s ease; /* Only transition width */
+        background-color: #0056b3; /* Base background color */
+    }
+  
+  /* Hover effect with linear gradient */
+ /* Hover effect with increased width */
+[data-input]:hover::before, [data-element]:hover::before {
+    width: 100%; /* Expand to full width on hover */
+  }
+  
+  [data-element="Select"] {
+    width: auto;
+    
+  }
+  
+  [data-input="date"] {
+    width: auto;
+  }
+  
+  [data-input="numbers"] {
+    width: 80px;
+  }
+  
+  [data-input="text"] {
+    width: 300px;
+  }
+  
+
+/* Styling for the story-pedia */
+.story-pedia {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+  
+  .story-pedia p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  
+  /* Styling for the Submit button */
+  .submit-button {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .submit-button button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .submit-button button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .submit-button button:hover {
+    background-color: #0056b3;
+  }
+  
+  .submit-button button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+  }
+  
+
+/*===============================================================================================================================================================*/
+
+/* Overlay form container */
+#overlay-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* ensure it's on top of other content */
+  }
+  
+  /* Overlay input container */
+  .overlay-input {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    animation: slideIned 0.3s ease; /* animate slide in */
+  }
+  
+  /* Label styles */
+  .overlay-input label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  /* Input and select styles */
+  .overlay-input input,
+  .overlay-input select {
+    width: calc(100% - 20px); /* adjust width */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .overlay-input input:focus,
+  .overlay-input select:focus {
+    border-color: #007bff; /* focus border color */
+  }
+  
+  /* Button container */
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Save and cancel button styles */
+  #overlay-form .button-container button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-container button:hover {
+    background-color: #0056b3; /* darker shade on hover */
+  }
+  
+  /* Hidden class to hide the overlay initially */
+  .hidden {
+    display: none;
+  }
+  
+  /* Animation keyframes */
+  @keyframes slideIned {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+/* Typing effect */
+.story-pedia.typing p {
+    border-right: 4px solid #007bff; /* cursor */
+    white-space: nowrap; /* keep text on a single line */
+    overflow: hidden; /* hide the overflow */
+    display: inline-block;
+    animation: typing 5s steps(40, end), blink-caret 0.90s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  /* The cursor blink effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #0056b3; }
+  }
+/*======================================================================================================================*/  
+#showVideoOverlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#showVideoOverlay video {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#showVideoOverlay button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#showVideoOverlay button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 800px) {
+    #showVideoOverlay {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #showVideoOverlay button {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+/*===============================================================================================================================*/
