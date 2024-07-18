@@ -216,6 +216,7 @@ section#home {
     font-family: 'Arial', sans-serif;
     min-height: 500px;
     display: block;
+    flex-direction: column;
 }
 
 #userdiv {
@@ -279,6 +280,7 @@ section#home {
     font-size: 24px;
     text-align: center;
     transform: translateY(100px);
+    border-radius: 8px;
 }
 
 #magicEffect p {
@@ -1251,73 +1253,136 @@ button:disabled {
 
 /*=============================================================================================================================================*/
 
-/* Updated CSS for loading indicator */
-.loading-indicator {
-    display: none; /* Hidden by default */
+.after-loading {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(15, 14, 14, 0.5); /* Semi-transparent white background */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure it appears above other elements */
+    z-index: 9999; /* Ensure it's above other content */
 }
 
-.loading-indicator img {
-    width: 100px; /* Adjust size as needed */
-    height: 100px; /* Adjust size as needed */
-    animation: spin 4s ease-in-out 0s 3 alternate both;
+.loading-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent; /* Transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    height: 50vh;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Keyframes for spin animation */
-@keyframes spin {
-	0% {
-		animation-timing-function: ease-in;
-		opacity: 1;
-		transform: translateX(48px);
-	}
+.heart-images {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
-	24% {
-		opacity: 1;
-	}
+.heart-images img {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Center the heart images */
+    animation: pulse 2s infinite; /* Pulsing animation */
+}
 
-	40% {
-		animation-timing-function: ease-in;
-		transform: translateX(26px);
-	}
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.9);
+    }
+}
 
-	65% {
-		animation-timing-function: ease-in;
-		transform: translateX(13px);
-	}
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
 
-	82% {
-		animation-timing-function: ease-in;
-		transform: translateX(6.5px);
-	}
+.lyrical-words {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-family: 'Comic Sans MS', cursive; /* Fancy font example */
+    color: #ff8a00; /* Set a visible color for debugging */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Glow effect */
+    display: inline-block;
+    white-space: nowrap; /* Prevent line breaks */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
-	93% {
-		animation-timing-function: ease-in;
-		transform: translateX(4px);
-	}
+.lyrical-words span {
+    opacity: 0; /* Start with opacity 0 for fade-in effect */
+    animation: fadeInOut 3s forwards; /* Animation duration and forwards to keep opacity at 1 */
+    display: inline-block; /* Ensure span elements are inline-block */
+    margin-right: 10px; /* Add spacing between words */
+}
 
-	25%,
-	55%,
-	75%,
-	87%,
-	98% {
-		animation-timing-function: ease-out;
-		transform: translateX(0px);
-	}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #f1f1f1;
+}
 
-	100% {
-		animation-timing-function: ease-out;
-		opacity: 1;
-		transform: translateX(0px);
-	}
+.close-btn:hover {
+    color: red; /* Change color on hover */
+}
+
+@media (max-width: 800px) {
+    .loading-content {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    .heart-images img {
+        width: 120px; /* Adjust smaller size for small screens */
+    }
+    
+    .lyrical-words {
+        font-size: 16px; /* Decrease font size for small screens */
+        top: 60%; /* Adjust position for small screens */
+    }
+    
+    .close-btn {
+        font-size: 24px; /* Decrease font size for small screens */
+        top: 5px;
+        right: 5px;
+    }
 }
 
 /*=======================================================================================================================*/
@@ -2280,11 +2345,11 @@ button:hover {
 /*========================================================================================================================================*/
 .overlaydiv {
     position: fixed;
-    top: 90px;
+    top: 120px;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Darker background for better contrast */
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -2294,7 +2359,7 @@ button:hover {
     box-sizing: border-box;
     display: none;
     opacity: 1;
-    transition: opacity 0.5s ease-in-out; /* Fade-in effect */
+    transition: opacity 0.5s ease-in-out;
 }
 
 .overlaydiv.show {
@@ -2308,7 +2373,7 @@ button:hover {
     align-items: center;
     margin-bottom: 20px;
     opacity: 0;
-    animation: fadeIn 1s forwards; /* Fade-in animation */
+    animation: fadeIn 1s forwards;
 }
 
 @keyframes fadeIn {
@@ -2322,27 +2387,28 @@ button:hover {
     margin: 0 5px;
     width: 100px;
     height: 100px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Soft glow effect */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .disclaimer,
-.gratitude{
+.gratitude {
     margin-bottom: 20px;
     text-align: center;
     color: white;
-    border: 2px solid white; /* Border for the disclaimer */
+    border: 2px solid white;
     padding: 10px;
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.3);
-    animation: slideIn 1s forwards; /* Slide-in animation */
+    animation: slideIn 1s forwards;
     width: 60%;
 }
-.disclaimer h3{
+
+.disclaimer h3 {
     color: gold;
 }
 
-.gratitude #userNames{
-   color:#007bff;
+.gratitude #userNames {
+    color: #007bff;
 }
 
 @keyframes slideIn {
@@ -2356,21 +2422,25 @@ button:hover {
     }
 }
 
-#downloadButtoned {
+#downloadButtoned,
+#closeButton {
     margin-bottom: 10px;
     padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#downloadButtoned {
     background-color: #007bff;
     color: white;
     border: none;
-    cursor: pointer;
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4); /* Button shadow */
-    transition: background-color 0.3s, transform 0.3s;
 }
 
 #downloadButtoned:hover {
     background-color: #0056b3;
-    transform: translateY(-2px); /* Slight lift on hover */
+    transform: translateY(-2px);
 }
 
 #downloadButtoned:disabled {
@@ -2389,19 +2459,18 @@ button:hover {
     color: maroon;
     border: none;
     cursor: pointer;
-    font-size: 70px;
+    font-size: 24px;
     line-height: 1;
-    border-radius: 50%; /* Rounded close button */
-    box-shadow: 0 4px 6px rgba(220, 53, 69, 0.4); /* Button shadow */
-    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(220, 53, 69, 0.4);
 }
 
 #closeButton:hover {
     background-color: #1da797;
-    transform: translateY(-2px); /* Slight lift on hover */
+    transform: translateY(-2px);
 }
 
-#agreeCheckbox{
+#agreeCheckbox {
     width: 30px;
     height: 30px;
 }
@@ -2409,7 +2478,7 @@ button:hover {
 @media (max-width: 800px) {
     .overlaydiv {
         padding: 10px;
-        top: 90px;
+        top: 120px;
     }
 
     .rounded-image {
@@ -2427,7 +2496,15 @@ button:hover {
     #closeButton {
         font-size: 16px;
     }
+
+    #downloadButtoned {
+        position: absolute;
+        top: 70px; /* Adjust top position as needed */
+        right: 10px; /* Adjust right position as needed */
+    }
 }
+
+
 /*==========================================================================================================================*/
 
 
@@ -4432,119 +4509,7 @@ textarea, input[type="text"], input[type="datetime-local"] {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
   }
-  
 
-/*===============================================================================================================================================================*/
-
-/* Overlay form container */
-#overlay-form {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* ensure it's on top of other content */
-  }
-  
-  /* Overlay input container */
-  .overlay-input {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-    animation: slideIned 0.3s ease; /* animate slide in */
-  }
-  
-  /* Label styles */
-  .overlay-input label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  /* Input and select styles */
-  .overlay-input input,
-  .overlay-input select {
-    width: calc(100% - 20px); /* adjust width */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: border-color 0.3s ease;
-  }
-  
-  .overlay-input input:focus,
-  .overlay-input select:focus {
-    border-color: #007bff; /* focus border color */
-  }
-  
-  /* Button container */
-  .button-container {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  /* Save and cancel button styles */
-  #overlay-form .button-container button {
-    padding: 10px 20px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button-container button:hover {
-    background-color: #0056b3; /* darker shade on hover */
-  }
-  
-  /* Hidden class to hide the overlay initially */
-  .hidden {
-    display: none;
-  }
-  
-  /* Animation keyframes */
-  @keyframes slideIned {
-    from {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-/* Typing effect */
-.story-pedia.typing p {
-    border-right: 4px solid #007bff; /* cursor */
-    white-space: nowrap; /* keep text on a single line */
-    overflow: hidden; /* hide the overflow */
-    display: inline-block;
-    animation: typing 5s steps(40, end), blink-caret 0.90s step-end infinite;
-  }
-  
-  /* The typing effect */
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-  
-  /* The cursor blink effect */
-  @keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: #0056b3; }
-  }
 /*======================================================================================================================*/  
 #showVideoOverlay {
     position: fixed;
@@ -4598,3 +4563,378 @@ textarea, input[type="text"], input[type="datetime-local"] {
     }
 }
 /*===============================================================================================================================*/
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    padding: 20px;
+    background-color: transparent;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+  }
+  .logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    margin-right: 10px; /* Space between the two images */
+    transition: transform 0.3s ease;
+  }
+  .logo h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    transition: color 0.3s ease;
+    margin-right: 10px; /* Space between the two images */
+  }
+  .logo:hover img {
+    transform: rotate(360deg);
+  }
+  .logo:hover h1 {
+    color: yellow;
+  }
+  @media (max-width: 768px) {
+    .logo {
+        padding: 10px;
+    }
+    .logo img {
+        width: 60px;
+        height: 60px;
+    }
+    .logo h1 {
+        font-size: 1rem;
+    }
+  }
+
+  /*=====================================================================================================================*/
+
+  .container-pedia {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 600px;
+    color: #fff;
+    margin-top: 60px;
+}
+
+
+#question-container {
+    margin-bottom: 20px;
+}
+
+#question-display {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+#answer-input input,
+#answer-input select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+#button-container-pedia {
+    display: flex;
+    justify-content: space-between;
+}
+
+#button-container-pedia button {
+    padding: 10px;
+    border: 1px solid #0ff;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #2c2c2c;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+#button-container-pedia button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+#button-container-pedia button:not(:disabled):hover {
+    background-color: #0ff;
+    color: #000;
+    box-shadow: 0 0 10px #0ff;
+}
+
+.output-pedia {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #0ff;
+    white-space: pre-wrap; /* To preserve whitespace formatting and wrap text */
+    min-height: 5vh;
+    max-height: 40vh;
+    color: #f1f1f1;
+    overflow-y: auto;
+    text-align:left;
+}
+
+.typewriter {
+    display: block; /* Change to block to allow text to wrap */
+    border-right: 0.1em solid black; /* Blinking cursor effect */
+    overflow: hidden;
+    white-space: pre-wrap; /* Ensure text wraps correctly */
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    border-right: .15em solid aquamarine;
+    text-align:left;
+}
+
+.blinking-cursor {
+    animation: blink-cursor 0.7s step-end infinite;
+}
+@keyframes blink-cursor {
+    from, to { border-color: transparent }
+    50% { border-color: aquamarine}
+}
+
+.output-pedia .important {
+    text-decoration: underline;
+    cursor: progress; /* Example for hover/tap interaction */
+}
+
+.output-pedia .important:hover {
+    color: #0ff; /* Example for hover/tap interaction */
+    
+}
+
+.checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: calc(33.33% - 20px); /* Ensure three items per row with gap */
+}
+
+.friend-image {
+    width: 80px; /* Increased image size */
+    height: 80px; /* Increased image size */
+    border-radius: 50%;
+    margin-bottom: 5px; /* Adjusted margin for better spacing */
+}
+
+
+/* Media query for small screens (max-width: 800px) */
+@media (max-width: 800px) {
+    .container-pedia {
+        width: 100%;
+        max-width: none;
+        padding: 15px;
+        margin-top: 100px;
+    }
+
+    #question-display {
+        font-size: 1em;
+    }
+
+    #button-container-pedia {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .output-pedia {
+        max-height: 30vh;
+    }
+
+    .checkbox-label {
+        width: calc(50% - 20px); /* Adjust to two items per row */
+    }
+
+    .friend-image {
+        width: 60px; /* Adjusted image size for small screens */
+        height: 60px; /* Adjusted image size for small screens */
+    }
+}
+
+/*========================================================================================================================================*/
+
+.magic-pedia {
+    width: 100%;
+    background-color:#f0f0f0 ; /* Adjust width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px;
+    border-bottom: 2px solid #ccc; /* Bottom border */
+    border-radius: 8px;
+    /* Flexbox setup */
+    display: none;
+    flex-direction: column; /* Arrange children in a column */
+    margin-top: 50px;
+    /* Adjust spacing */
+    gap: 10px; /* Space between top and bottom section */
+  }
+  
+  .top-section {
+    display: flex;
+    justify-content: space-between; /* Items on the left and right */
+    align-items: center; /* Center vertically */
+    border-bottom: 2px solid #0056b3;
+  }
+  
+  .top-section img {
+    max-width: 100px; /* Adjust image size as needed */
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    text-align: center; /* Center align text */
+  }
+  
+  .title h2 {
+    margin: 0; /* Remove default margins */
+  }
+  
+  .title span {
+    display: block; /* Display span as block */
+    text-align: center; /* Center align span */
+  }
+  
+  .bottom-section {
+    /* Styles for the bottom section */
+    background-color: #f1f1f1;
+  }
+  
+/* CSS for the Save and Post button */
+#output-pedia button {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around text */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 10px; /* Space above button */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+#output-pedia button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+#output-pedia button:disabled {
+    background-color: #6c757d; /* Gray when disabled */
+    cursor: not-allowed; /* Disabled cursor */
+}
+
+
+/* Media query for small screens (max-width: 800px) */
+@media (max-width: 800px) {
+    .magic-pedia {
+        padding: 15px; /* Adjust padding for small screens */
+        margin-top: 30px; /* Adjust margin for small screens */
+    }
+
+    .top-section {
+        flex-direction: row; /* Stack items vertically */
+        align-items: flex-start; /* Align items to start */
+        gap: 10px; /* Add space between items */
+    }
+    .top-section h2{
+        font-size: 18px;
+    }
+    .top-section span{
+        font-size: 14px;
+    }
+
+    .top-section img {
+        max-width: 80px; /* Adjust image size for small screens */
+        margin-bottom: 10px; /* Adjust margin for small screens */
+    }
+
+    .title {
+        text-align: left; /* Align text to the left */
+    }
+
+    #output-pedia button {
+        width: 100%; /* Make button full width */
+        padding: 10px; /* Adjust padding for small screens */
+        font-size: 14px; /* Adjust font size for small screens */
+    }
+    .user-pic img{
+        width: 50px;
+        height: auto;
+        
+     }
+}
+
+/*======================================================================================================================================*/
+.emphasized-word:hover {
+    text-decoration: underline;
+}
+
+.search-div {
+    position: absolute;
+    background-color: #333;
+    border: 1px solid black;
+    padding: 10px;
+    z-index: 1000;
+    display: none;
+    border-radius: 10px;
+    width: 30%;
+    height: 30vh;
+    overflow: hidden;
+    overflow-y: auto;
+    color: #f1f1f1;
+}
+
+
+#search-div p {
+    margin: 0;
+    color: #f1f1f1;
+    font-size: 14px;
+}
+
+#search-div strong {
+    color: gold; /* Adjust the color for emphasized text */
+    font-weight: bold;
+}
+
+#search-div a{
+    color: gold;
+}
+/* Close button style */
+.search-div img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+/* Hover effect for close button */
+.search-div .close-button:hover {
+    color: #f1f1f1;
+}
+.emphasized-word{
+    color:#0056b3;
+    text-decoration: underline;
+    font-weight: bolder;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+}
+
+.user-pic img{
+   width: 100px;
+   height: auto;
+   border-radius: 10px;
+}
+.user-pic{
+    border-bottom: 2px solid #007bff;
+}
+/*=====================================================================================================================*/
