@@ -4563,50 +4563,37 @@ textarea, input[type="text"], input[type="datetime-local"] {
     }
 }
 /*===============================================================================================================================*/
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    text-align: center;
-    padding: 20px;
-    background-color: transparent;
-    color: white;
-    font-family: 'Arial', sans-serif;
-    position: relative;
-  }
-  .logo img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    margin-right: 10px; /* Space between the two images */
-    transition: transform 0.3s ease;
-  }
-  .logo h1 {
-    font-size: 1.5rem;
-    margin: 0;
-    transition: color 0.3s ease;
-    margin-right: 10px; /* Space between the two images */
-  }
-  .logo:hover img {
-    transform: rotate(360deg);
-  }
-  .logo:hover h1 {
-    color: yellow;
-  }
-  @media (max-width: 768px) {
-    .logo {
-        padding: 10px;
+/* CSS for header logo */
+.header-logo {
+    text-align: center; /* Center align the content */
+    padding: 20px; /* Add padding for spacing */
+    background-color: transparent; /* Light background color */
+    border-bottom: 2px solid #ccc; /* Bottom border */
+}
+
+.header-logo h1 {
+    font-family: 'Comic Sans MS', cursive; /* Fancy font family */
+    font-size: 24px; /* Font size */
+    color: #F1F1F1; /* Text color */
+    margin: 0; /* Remove default margin */
+    display: inline-block; /* Inline block display */
+}
+
+.header-logo img {
+    vertical-align: middle; /* Align images vertically */
+    margin-left: 10px; /* Add margin between logo and magical friend images */
+}
+
+/* Responsive styles */
+@media (max-width: 800px) {
+    .header-logo h1 {
+        font-size: 20px; /* Decrease font size for smaller screens */
     }
-    .logo img {
-        width: 60px;
-        height: 60px;
+    
+    .header-logo img {
+        margin-left: 5px; /* Decrease margin between images for smaller screens */
     }
-    .logo h1 {
-        font-size: 1rem;
-    }
-  }
+}
 
   /*=====================================================================================================================*/
 
@@ -4937,4 +4924,5 @@ textarea, input[type="text"], input[type="datetime-local"] {
 .user-pic{
     border-bottom: 2px solid #007bff;
 }
-/*=====================================================================================================================*/
+/*=====================================================================================================================*
+/
