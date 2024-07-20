@@ -1,12 +1,12 @@
 const cacheName = 'my-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/view.html',
-  '/styles.css',
-  '/script.js',
-  '/icons/logo5.png',
-  '/icons/magic5.png'
+  '/Magical-Friend-Facebook/',
+  '/Magical-Friend-Facebook/index.html',
+  '/Magical-Friend-Facebook/view.html',
+  '/Magical-Friend-Facebook/styles.css',
+  '/Magical-Friend-Facebook/script.js',
+  '/Magical-Friend-Facebook/icons/logo5.png',
+  '/Magical-Friend-Facebook/icons/magic5.png'
 ];
 
 self.addEventListener('install', event => {
@@ -14,8 +14,7 @@ self.addEventListener('install', event => {
         caches.open(cacheName)
             .then(cache => {
                 console.log('Opened cache');
-                return cache.addAll(urlsToCache)
-                    .then(() => self.skipWaiting());
+                return cache.addAll(urlsToCache);
             })
             .catch(error => {
                 console.error('Failed to open cache:', error);
@@ -45,7 +44,7 @@ self.addEventListener('fetch', event => {
             })
             .catch(() => {
                 if (event.request.mode === 'navigate') {
-                    return caches.match('/index.html');
+                    return caches.match('/Magical-Friend-Facebook/index.html');
                 }
             })
     );
