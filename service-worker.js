@@ -1,12 +1,15 @@
 const cacheName = 'my-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/icons/logo5.png',
-  '/icons/magic5.png'
-];
+    '/',
+    '/index.html',
+    '/styles.css',
+    '/script.js',
+    '/view.html',
+    '/view.css',
+    '/view.js',
+    '/icons/logo5.png',
+    '/icons/magic5.png'
+  ];
 
 self.addEventListener('install', event => {
     event.waitUntil(
