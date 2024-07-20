@@ -161,6 +161,10 @@ body {
     #menu-toggle {
         display: block;
     }
+    #header{
+        height: 100px;
+        
+    }
 
     #nav {
         position: absolute;
@@ -2436,11 +2440,12 @@ button:hover {
     background-color: #007bff;
     color: white;
     border: none;
+    transform: translateY(-20px);
 }
 
 #downloadButtoned:hover {
     background-color: #0056b3;
-    transform: translateY(-2px);
+    
 }
 
 #downloadButtoned:disabled {
@@ -2478,7 +2483,7 @@ button:hover {
 @media (max-width: 800px) {
     .overlaydiv {
         padding: 10px;
-        top: 120px;
+        top: 100px;
     }
 
     .rounded-image {
@@ -2553,13 +2558,14 @@ button:hover {
     top: 90px; /* Adjust as needed */
     left: 0;
     width: 100%;
-    min-height: 100vh; /* Cover full viewport height */
+    height: 100vh; /* Cover full viewport height */
     background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000; /* Ensure it appears on top of other content */
     padding: 20px;
+    overflow: hidden;
     overflow-y: auto;
 }
 
@@ -2570,8 +2576,11 @@ button:hover {
     border-radius: 15px; /* Rounded corners */
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Soft shadow effect */
     text-align: center;
-    max-width: 90%; /* Maximum width for content */
+    width: 90%; /* Maximum width for content */
+    margin-top: 10px;
+    margin-bottom: 10px;
     animation: slideIns 0.5s forwards; /* Slide-in animation */
+    border: 2px solid #f1f1f1;
 }
 
 .confirm-overlayed img {
@@ -2596,7 +2605,7 @@ button:hover {
 
 .confirm-overlayed button:hover {
     background-color: #0056b3; /* Darker blue on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
+    /* Slight lift on hover */
 }
 
 .confirm-overlayed button:focus {
@@ -2626,7 +2635,7 @@ button:hover {
 
 .confirm-overlayed button.close-button:hover {
     background-color: transparent; /* Darker maroon on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
+     /* Slight lift on hover */
     color: maroon;
 }
 
@@ -2635,6 +2644,7 @@ button:hover {
         padding: 10px;
         flex-direction: column;
         top: 90px;
+        
     }
 
     .confirm-overlayed > div {
@@ -2643,13 +2653,11 @@ button:hover {
         border-radius: 15px; /* Rounded corners */
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Soft shadow effect */
         text-align: center;
-        max-width: 90%; /* Maximum width for content */
+        width: 90%; /* Maximum width for content */
         animation: slideIns 0.5s forwards; /* Slide-in animation */
-        transform: translateY(-20px); /* Adjust position */
+        
     }
-    .confirm-overlayed > div:last-child{
-        transform: translateY(-50px);
-    } 
+     
     .confirm-overlayed img {
         max-width: 100%; /* Ensure images fit within their containers */
         border-radius: 10px; /* Rounded corners for images */
@@ -2673,7 +2681,7 @@ button:hover {
 
     .confirm-overlayed button:hover {
         background-color: #0056b3; /* Darker blue on hover */
-        transform: translateY(-35px); /* Slight lift on hover */
+        /* Slight lift on hover */
     }
 
     .confirm-overlayed button:focus {
@@ -2687,8 +2695,8 @@ button:hover {
 
     .confirm-overlayed button.close-button {
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: 30px;
+        right: 3px;
         width: 36px; /* Adjust size */
         height: 36px; /* Adjust size */
         background-color: transparent; /* Maroon background */
@@ -2703,8 +2711,8 @@ button:hover {
 
     .confirm-overlayed button.close-button:hover {
         background-color: transparent; /* Darker maroon on hover */
-        transform: translateY(-3px); /* Slight lift on hover */
-        color: maroon;
+       
+        color: rgb(238, 8, 8);
     }
 }
 
@@ -2743,7 +2751,7 @@ button:hover {
     height: 100%;
     background-color: #007bff; /* Progress bar color */
     width: 0%;
-    animation: progressAnimation 30s linear forwards infinite; /* Adjust duration as needed */
+    animation: progressAnimation 90s linear forwards; /* Adjust duration as needed */
 }
 
 @keyframes progressAnimation {
@@ -2878,6 +2886,15 @@ textarea, input[type="text"], input[type="datetime-local"] {
 }
 
 
+/* Add this CSS to ensure FullCalendar is responsive */
+.fc {
+    touch-action: manipulation;
+    -ms-touch-action: manipulation;
+}
+
+#memoriesCalendar {
+    touch-action: manipulation;
+}
 
 #memoriesCalendar .fc button {
     background-color: #007bff;
@@ -3940,9 +3957,9 @@ textarea, input[type="text"], input[type="datetime-local"] {
         flex-direction: column;
         padding: 10px;
         gap: 10px;
-        width: 60%;
+        width: 80%;
         height:80vh;
-        transform: translateY(40px);
+        transform: translateY(60px);
         overflow-y: auto;
         scrollbar-width: none;
     }
@@ -3955,12 +3972,13 @@ textarea, input[type="text"], input[type="datetime-local"] {
     }
 
     .trial-close {
-        top: 5px;
-        right: 5px;
+        top: 25px;
+        right: -10px;
         padding: 5px;
         width: 50px;
         height: 50px;
         font-size: 24px;
+        background-color: transparent ;
 
     }
 }
@@ -4563,37 +4581,72 @@ textarea, input[type="text"], input[type="datetime-local"] {
     }
 }
 /*===============================================================================================================================*/
-/* CSS for header logo */
+/* Base styles (for all screen sizes) */
 .header-logo {
-    text-align: center; /* Center align the content */
-    padding: 20px; /* Add padding for spacing */
-    background-color: transparent; /* Light background color */
-    border-bottom: 2px solid #ccc; /* Bottom border */
+    text-align: center;
+    padding: 20px;
+    background-color: transparent;
+    animation: fadeIn 2s ease-in-out;
+    transform: translateY(-20px);
 }
 
 .header-logo h1 {
-    font-family: 'Comic Sans MS', cursive; /* Fancy font family */
-    font-size: 24px; /* Font size */
-    color: #F1F1F1; /* Text color */
-    margin: 0; /* Remove default margin */
-    display: inline-block; /* Inline block display */
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 36px;
+    color: #f1f1f1;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
-.header-logo img {
-    vertical-align: middle; /* Align images vertically */
-    margin-left: 10px; /* Add margin between logo and magical friend images */
+.header-logo .logo,
+.header-logo .magic-logo {
+    width: 50px;
+    height: auto;
+    transition: transform 0.5s ease;
 }
 
-/* Responsive styles */
-@media (max-width: 800px) {
+.header-logo .title {
+    display: inline-block;
+    animation: slideIn 2s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Hover Effects */
+.header-logo .logo:hover,
+.header-logo .magic-logo:hover {
+    transform: scale(1.2);
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width:800px) {
     .header-logo h1 {
-        font-size: 20px; /* Decrease font size for smaller screens */
+        font-size: 24px;
+        gap: 10px;
     }
-    
-    .header-logo img {
-        margin-left: 5px; /* Decrease margin between images for smaller screens */
+
+    .header-logo .logo,
+    .header-logo .magic-logo {
+        width: 40px;
+    }
+
+    .header-logo {
+        padding: 10px;
     }
 }
+
 
   /*=====================================================================================================================*/
 
