@@ -12,57 +12,7 @@ body, html {
   }
   /*==============================================================================================================================================*/
 
-  /* Overlay styles */
-.install-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  visibility: hidden; /* Hidden by default */
-  opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
 
-.install-overlay.show {
-  display: flex;
-  
-}
-
-.install-content {
-  background: #00b4d8;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.install-content h2 {
-  margin: 0 0 10px;
-}
-
-.install-content button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 5px;
-}
-
-.install-content button:hover {
-  background: #0056b3;
-}
-
-.install-content #close-button {
-  background: red;
-}
 /*=====================================================================================================================*/
 
   .magicload {
