@@ -1361,6 +1361,7 @@ button:disabled {
     border: none;
     cursor: pointer;
     color: #f1f1f1;
+    display: none;
 }
 
 .close-btn:hover {
@@ -4328,18 +4329,21 @@ textarea, input[type="text"], input[type="datetime-local"] {
     color: #ff6b6b;
 }
 
-.character-display {
+.character-display,
+.search-bar {
     font-family: 'MagicalFont', cursive; /* Add your magical font here */
     font-size: 24px;
     color: #007bff;
     position: fixed;
     bottom: 10px;
     left: 10px;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(232, 18, 143, 0.8);
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     animation: fadeIn 0.5s;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* Animations */
@@ -4354,6 +4358,87 @@ textarea, input[type="text"], input[type="datetime-local"] {
 }
 /*===================================================================================================================*/
 
+.container-div2 {
+    width: 80%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.overlay-div2 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s;
+    z-index: 1000;
+}
+
+.content-div2 {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideInUp 0.5s ease-out;
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+}
+
+.header2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header2 img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.header2 .right {
+    display: flex;
+    align-items: center;
+}
+
+.header2 .right img {
+    margin-left: 20px;
+    
+}
+
+#friendEmotion2{
+    font-size: 30px;
+}
+
+.details2 {
+    text-align: left;
+}
+
+.details2 p {
+    margin: 5px 0;
+}
+
+.close-x2 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-x2:hover {
+    color: #ff6b6b;
+}
+/*================================================================================================================================*/
 .top {
     display: flex;
     justify-content: space-around;
@@ -4960,6 +5045,24 @@ textarea, input[type="text"], input[type="datetime-local"] {
 /* Hover effect for close button */
 .search-div .close-button:hover {
     color: #f1f1f1;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: #007bff;
+}
+.search-icon:hover {
+    
+    color: #0056b3;
 }
 .emphasized-word{
     color:#0056b3;
