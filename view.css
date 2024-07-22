@@ -4465,6 +4465,59 @@ textarea, input[type="text"], input[type="datetime-local"] {
     display: block;
    }
 }
+
+@media (max-width: 800px) {
+    .container-div2 {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .overlay-div2 {
+        padding: 10px;
+    }
+
+    .content-div2 {
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        max-width: 100%;
+    }
+
+    .header2 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header2 img {
+        width: 80px;
+        height: 80px;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .header2 .right {
+        margin-top: 10px;
+    }
+
+    .header2 .right img {
+        margin-left: 0;
+    }
+
+    #friendEmotion2 {
+        font-size: 24px;
+    }
+
+    .details2 p {
+        margin: 3px 0;
+    }
+
+    .close-x2 {
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+    }
+}
+
 /*================================================================================================================================*/
 .top {
     display: flex;
