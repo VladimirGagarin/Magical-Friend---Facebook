@@ -4329,6 +4329,59 @@ textarea, input[type="text"], input[type="datetime-local"] {
     color: #ff6b6b;
 }
 
+@media (max-width: 800px) {
+    .container-div {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .overlay-div {
+        padding: 10px;
+    }
+
+    .content-div {
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        max-width: 100%;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header img {
+        width: 80px;
+        height: 80px;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .header .right {
+        margin-top: 10px;
+    }
+
+    .header .right img {
+        margin-left: 0;
+    }
+
+    #friendEmotion {
+        font-size: 24px;
+    }
+
+    .details p {
+        margin: 3px 0;
+    }
+
+    .close-x {
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+    }
+}
+
+
 .character-display {
     font-family: 'MagicalFont', cursive; /* Add your magical font here */
     font-size: 24px;
