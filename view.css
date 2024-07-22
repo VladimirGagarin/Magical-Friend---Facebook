@@ -4254,7 +4254,8 @@ textarea, input[type="text"], input[type="datetime-local"] {
     padding: 20px;
 }
 
-.overlay-div {
+.overlay-div,
+.theme-overlay-div {
     display: none;
     position: fixed;
     top: 0;
@@ -4329,6 +4330,247 @@ textarea, input[type="text"], input[type="datetime-local"] {
     color: #ff6b6b;
 }
 
+.theme-content {
+    background: transparent;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    min-height: 30vh;
+    height: 80vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* Ensure content doesn't overflow */
+    color: #f1f1f1;
+    transform: translateY(70px);
+    transition: background-image 1s ease-in-out; /* Smooth transition */
+}
+
+.theme-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed to make the background darker */
+    z-index: 1;
+}
+
+.theme-content > * {
+    position: relative;
+    z-index: 2; /* Ensure content is above the dark overlay */
+}
+
+.theme-close-x {
+    color: #0056b3;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 50px;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 3; /* Ensure the close button is above everything else */
+    
+}
+
+.theme-close-x:hover {
+    color: #ff6b6b;
+}
+
+/* Keyframes for fade-out animation */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-20px); /* Move up while fading out */
+    }
+}
+
+#lyrical-theme {
+    position: relative;
+    overflow-y: auto;
+    max-height: 400px; /* Adjust as needed */
+    padding: 10px;
+    width: 90%;
+    margin-left: 20px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
+}
+
+/* For Webkit browsers like Chrome, Safari, and Opera */
+#lyrical-theme::-webkit-scrollbar {
+    display: none;
+}
+
+#lyrical-theme p {
+    opacity: 0;
+    transition: opacity 0.5s;
+    margin: 0;
+    font-size: 50px;
+    text-align: center;
+}
+
+#lyrical-theme p.active {
+    opacity: 1;
+    font-weight: bold;
+    transition: opacity 0.5s, font-weight 0.5s;
+}
+
+#lyrical-theme p.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+
+/* Basic styling for mention-user spans */
+.mention-user {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #ffd700; /* Example color: a shade of orange */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+
+/* Overlay styles================================================================================================== */
+#link-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Make sure it appears on top */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Hidden by default */
+.overlay-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Visible overlay */
+.overlay-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Content styling */
+.link-overlay-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.link-overlay-content p {
+    margin-bottom: 10px;
+}
+
+.link-overlay-content a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link-overlay-content a:hover {
+    text-decoration: underline;
+}
+
+.link-overlay-content button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.link-overlay-content button:hover {
+    background-color: #0056b3;
+}
+
+/*=======================================================================================================================*/
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px); /* Move up while fading out */
+    }
+}
+
+#lyrical-theme p.fade-out {
+    animation: fadeOut 0.2s forwards; /* Apply fade-out animation */
+}
+
+
+
+#lyrical-theme p.fade-out {
+    animation: fadeOut 0.2s forwards; /* Apply fade-out animation */
+}
+
+
+/* Responsive styles for small screens */
+@media (max-width: 800px) {
+    #lyrical-theme {
+        font-size: 1em; /* Adjust font size for smaller screens */
+        margin-top: 15px; /* Adjust margin */
+        padding: 8px; /* Adjust padding */
+        border-radius: 8px; /* Slightly smaller border radius */
+        margin-top: 40px;
+    }
+    #lyrical-theme p{
+        font-size: 20px;
+    }
+}
+
+/* Base styles for the audio player */
+#theme-song {
+    width: 100px; /* Default small size for small screens */
+    height: 100px;
+    border-radius: 20%; /* Make it circular */
+    position: fixed; /* Fix position to the screen */
+    top: 10px; /* Position from top */
+    left: 10px; /* Position from left */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+   
+    padding-bottom: 20px;
+}
+
+/* Expand on hover */
+#theme-song:hover {
+    width: 100px; /* Larger size on hover */
+    height: 100px;
+}
+
+/* Responsive styling for small screens */
+@media (max-width: 800px) {
+    #theme-song {
+        width: 100px; /* Smaller size for small screens */
+        height: 100px;
+        
+    }
+    
+    
+}
+
+
 @media (max-width: 800px) {
     .container-div {
         width: 95%;
@@ -4381,6 +4623,21 @@ textarea, input[type="text"], input[type="datetime-local"] {
     }
 }
 
+/* Responsive styles for small screens */
+@media (max-width: 800px) {
+    .theme-content {
+        padding: 15px;
+        max-width: 100%;
+        width: 90%;
+        border-radius: 10px;
+    }
+
+    .theme-close-x {
+        top: 10px;
+        right: 10px;
+        font-size: 28px;
+    }
+}
 
 .character-display {
     font-family: 'MagicalFont', cursive; /* Add your magical font here */
