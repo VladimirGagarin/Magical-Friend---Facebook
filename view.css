@@ -4329,23 +4329,41 @@ textarea, input[type="text"], input[type="datetime-local"] {
     color: #ff6b6b;
 }
 
-.character-display,
-.search-bar {
+.character-display {
     font-family: 'MagicalFont', cursive; /* Add your magical font here */
     font-size: 24px;
     color: #007bff;
     position: fixed;
     bottom: 10px;
     left: 10px;
-    background: rgba(232, 18, 143, 0.8);
+    background: rgba(239, 231, 236, 0.8);
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     animation: fadeIn 0.5s;
     margin-top: 10px;
     margin-bottom: 10px;
+    min-width: 30px;
+    min-height: 30px;
 }
 
+.search-bar {
+    font-family: 'MagicalFont', cursive; /* Add your magical font here */
+    font-size: 13px;
+    color: #f1f1f1;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(35, 66, 2, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transform: translateX(-10px);
+    display: none;
+}
 /* Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -4437,6 +4455,15 @@ textarea, input[type="text"], input[type="datetime-local"] {
 
 .close-x2:hover {
     color: #ff6b6b;
+}
+
+@media (max-width: 800px) {
+   .character-display{
+    display: none;
+   }
+   .search-bar{
+    display: block;
+   }
 }
 /*================================================================================================================================*/
 .top {
