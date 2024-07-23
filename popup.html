@@ -8,12 +8,28 @@
 </head>
 <body>
   <div class="offline-container">
-    <h1>You're Offline</h1>
+    <h1><i class="fas fa-wifi-slash"></i> <!-- Font Awesome offline icon -->
+      <div class="offline-indicator">You are offline</div>
+    </h1>
     <p>It looks like you're not connected to the internet. Please check your connection.</p>
-    <img src="logo5.png" alt="Offline Icon" class="offline-icon">
-    <img src="magic3.png" alt="Offline Icon" class="offline-icon">
+    
+    <div class="image-container">
+      <img src="logo5.png" alt="Offline Icon" class="offline-icon">
+      <img src="magic3.png" alt="Offline Icon" class="offline-icon">
+    </div>
+    
+    <!-- Audio player -->
+    <audio id="offline-audio" controls>
+      <source src="y2mate.com - Sovern  Always Lyrics.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Animated lyrics container -->
+    <div class="lyrical-word-song"></div>
+    
     <p>For more information, visit our <a href="/">homepage</a> when you're back online.</p>
     <button id="reload-button">Reload</button>
+    
     <script src="/popup.js"></script> <!-- Include any JS for your offline page -->
   </div>
 </body>
