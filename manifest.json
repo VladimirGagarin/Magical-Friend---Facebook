@@ -3,12 +3,12 @@
   "name": "Magical Friend Facebook",
   "icons": [
     {
-      "src": "icons/magic5.png",
+      "src": "icons/logo5.png",
       "sizes": "48x48",
       "type": "image/png"
     },
     {
-      "src": "icons/logo5.png",
+      "src": "icons/magic5.png",
       "sizes": "72x72",
       "type": "image/png"
     },
@@ -18,7 +18,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/index.html",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#0056b3",
   "theme_color": "#007bff"
