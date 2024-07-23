@@ -9,10 +9,10 @@ const urlsToCache = [
   '/Magical-Friend-Facebook/view.js',
   '/Magical-Friend-Facebook/icons/logo5.png',
   '/Magical-Friend-Facebook/icons/magic5.png',
-  '/Magical-Friend-Facebook/y2mate.com - Sovern Always Lyrics.mp3.mp3', // Add your MP3 file here
-  '/Magical-Friend-Facebook/popup.html',  // Add the offline page
-  '/Magical-Friend-Facebook/popup.js',    // Add JavaScript for the offline page
-  '/Magical-Friend-Facebook/popup.css',   // Add CSS for the offline page (if any)
+  '/Magical-Friend-Facebook/y2mate.com - Sovern Always Lyrics.mp3.mp3',
+  '/Magical-Friend-Facebook/popup.html',
+  '/Magical-Friend-Facebook/popup.js',
+  '/Magical-Friend-Facebook/popup.css',
   '/Magical-Friend-Facebook/icons/magic3.png'
 ];
 
