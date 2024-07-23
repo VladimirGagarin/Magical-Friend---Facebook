@@ -1,19 +1,20 @@
 const CACHE_NAME = 'Magical-Friend-v1';
 const urlsToCache = [
-  '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/view.html',
-  '/view.css',
-  '/view.js',
-  '/icons/logo5.png',
-  '/icons/magic5.png',
-  '/y2mate.com - Sovern  Always Lyrics.mp3.mp3', // Add your MP3 file here
-  '/popup.html',  // Add the offline page
-  '/popup.js',    // Add JavaScript for the offline page
-  '/popup.css',   // Add CSS for the offline page (if any)
-  '/icons/magic3.png'
+  'index.html',
+  'styles.css',
+  'script.js',
+  'view.html',
+  'view.css',
+  'view.js',
+  'icons/logo5.png',
+  'icons/magic5.png',
+  'y2mate.com - Sovern  Always Lyrics.mp3.mp3',
+  'popup.html',
+  'popup.js',
+  'popup.css',
+  'icons/magic3.png'
 ];
+
 
 // Install event: Cache necessary files
 self.addEventListener('install', event => {
