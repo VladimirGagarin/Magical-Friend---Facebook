@@ -195,13 +195,14 @@ body, html {
 .logo:hover h1 {
   color: yellow;
 }
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .logo {
       padding: 10px;
+      margin-bottom: 20px;
   }
   .logo img {
-      width: 60px;
-      height: 60px;
+      width: 40px;
+      height: 40px;
   }
   .logo h1 {
       font-size: 1rem;
@@ -1917,6 +1918,8 @@ button[type="button"]:hover {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width:50%;
+  overflow-x:auto;
 }
 
 .rank-item {
@@ -2580,3 +2583,56 @@ button:hover {
 .faq-answer.show {
   display: block; /* Show answers when .show class is applied */
 }
+/****************************************************************************************************************/
+
+#install-button {
+  background-color: #007bff; /* Example color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+
+#install-button:hover {
+  background-color: #0056b3;
+}
+/**************************************************************************************************************/
+
+.hiddened {
+  display: none;
+}
+
+/* Additional styles for the install prompt buttons */
+#install-prompt {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#install-button,
+#cancel-button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#install-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+#cancel-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+/*========================================================================================================================*/
