@@ -44,15 +44,24 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch event: Serve cached content or fall back to offline page
+// Fetch event: Serve cached content or fallback to index.html
 self.addEventListener('fetch', event => {
   if (event.request.mode === 'navigate') {
     // Handle navigation requests (HTML pages)
     event.respondWith(
-      fetch(event.request).catch(() => {
-        // Serve the offline page if the network request fails
-        return caches.match('/Magical-Friend-Facebook/popup.html');
-      })
+      fetch(event.request)
+        .then(response => {
+          // Cache the response for future use
+          const clonedResponse = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, clonedResponse);
+          });
+          return response;
+        })
+        .catch(() => {
+          // Serve index.html if the network request fails
+          return caches.match('/Magical-Friend-Facebook/index.html');
+        })
     );
   } else {
     // Handle other requests (assets, etc.)
