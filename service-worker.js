@@ -51,7 +51,7 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       fetch(event.request).catch(() => {
         // Serve the offline page if the network request fails
-        return caches.match('/popup.html');
+        return caches.match('popup.html');
       })
     );
   } else {
