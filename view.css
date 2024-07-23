@@ -3562,14 +3562,20 @@ textarea, input[type="text"], input[type="datetime-local"] {
     color: #fff;
 }
 
-@media (max-width:800px) {
-    .confirm-overlay .confirm-dialog{
-        width: calc(100% - 20px);
-        top: 50%;
-       left: 0%;
+/* Media Query for Small Screens */
+@media (max-width: 800px) {
+    .confirm-overlay .confirm-dialog {
+        width: 90%; /* Further adjust width for very small screens */
+        padding: 15px; /* Further reduce padding */
     }
-    .confirm-overlay .confirm-dialog button{
-        margin-top: 20px;
+
+    .confirm-overlay .confirm-dialog p {
+        font-size: 14px; /* Reduce font size */
+    }
+
+    .confirm-overlay .confirm-dialog button {
+        font-size: 14px; /* Reduce font size */
+        padding: 8px 12px; /* Reduce padding */
     }
 }
 /*=================================================================================================================================*/
