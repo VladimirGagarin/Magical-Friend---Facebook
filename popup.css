@@ -1,31 +1,116 @@
-.offline-container {
-  text-align: center;
-  padding: 20px;
+/* Basic reset and full height */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   font-family: Arial, sans-serif;
 }
 
-.offline-container h1 {
-  color: #FF0000;
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* Container styling */
+.offline-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  background: linear-gradient(135deg, #f0f8ff, #b0e0e6); /* Initial background gradient */
+  color: #333;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.offline-container p {
-  font-size: 18px;
-}
-
+/* Styling for the images */
 .offline-icon {
-  width: 100px;
+  width: 150px;
   height: auto;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Styling for the audio player */
+audio {
+  margin: 20px 0;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Lyrical word styling */
+.lyrical-word-song p {
+  font-size: 1.2em;
+  color: #007bff;
+  animation: fadeInSlideUp 2s ease-out;
+  margin: 10px 0;
+}
+
+/* Animation for lyrics */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Styling for the button */
 #reload-button {
   background-color: #007bff;
-  color: white;
+  color: #fff;
   border: none;
+  border-radius: 8px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 1em;
   cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
 }
 
 #reload-button:hover {
   background-color: #0056b3;
+}
+
+/* Link styling */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Optional: Add a background color change when the song is playing */
+body.song-playing {
+  background: linear-gradient(135deg, #ffeb3b, #ff5722); /* Example gradient for when song is playing */
+}
+
+h1{
+  color: #f21717;
+}
+
+/* Additional styles for background color change when audio is playing */
+body.audio-playing {
+  background-color: #1e90ff; /* Change to any color when audio is playing */
+}
+
+.offline-indicator {
+  display: none;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
 }
