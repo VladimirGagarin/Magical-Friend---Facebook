@@ -1,0 +1,31 @@
+.offline-container {
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.offline-container h1 {
+  color: #FF0000;
+}
+
+.offline-container p {
+  font-size: 18px;
+}
+
+.offline-icon {
+  width: 100px;
+  height: auto;
+}
+
+#reload-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#reload-button:hover {
+  background-color: #0056b3;
+}
