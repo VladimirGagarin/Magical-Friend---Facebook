@@ -1,18 +1,18 @@
 const CACHE_NAME = 'Magical-Friend-v1';
 const urlsToCache = [
-  'index.html',
-  'styles.css',
-  'script.js',
-  'view.html',
-  'view.css',
-  'view.js',
-  'icons/logo5.png',
-  'icons/magic5.png',
-  'y2mate.com - Sovern Always Lyrics.mp3.mp3',
-  'popup.html',
-  'popup.js',
-  'popup.css',
-  'icons/magic3.png'
+  '/index.html',
+  '/styles.css',
+  '/script.js',
+  '/view.html',
+  '/view.css',
+  '/view.js',
+  '/icons/logo5.png',
+  '/icons/magic5.png',
+  '/y2mate.com - Sovern  Always Lyrics.mp3.mp3', // Add your MP3 file here
+  '/popup.html',  // Add the offline page
+  '/popup.js',    // Add JavaScript for the offline page
+  '/popup.css',   // Add CSS for the offline page (if any)
+  '/icons/magic3.png'
 ];
 
 // Install event: Cache necessary files
@@ -43,24 +43,15 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch event: Serve cached content or fallback to index.html
+// Fetch event: Serve cached content or fall back to offline page
 self.addEventListener('fetch', event => {
   if (event.request.mode === 'navigate') {
     // Handle navigation requests (HTML pages)
     event.respondWith(
-      fetch(event.request)
-        .then(response => {
-          // Cache the response for future use
-          const clonedResponse = response.clone();
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, clonedResponse);
-          });
-          return response;
-        })
-        .catch(() => {
-          // Serve index.html if the network request fails
-          return caches.match('index.html');
-        })
+      fetch(event.request).catch(() => {
+        // Serve the offline page if the network request fails
+        return caches.match('/popup.html');
+      })
     );
   } else {
     // Handle other requests (assets, etc.)
