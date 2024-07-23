@@ -1,19 +1,18 @@
 const CACHE_NAME = 'Magical-Friend-v1';
 const urlsToCache = [
-  '/Magical-Friend-Facebook/',
-  '/Magical-Friend-Facebook/index.html',
-  '/Magical-Friend-Facebook/styles.css',
-  '/Magical-Friend-Facebook/script.js',
-  '/Magical-Friend-Facebook/view.html',
-  '/Magical-Friend-Facebook/view.css',
-  '/Magical-Friend-Facebook/view.js',
-  '/Magical-Friend-Facebook/icons/logo5.png',
-  '/Magical-Friend-Facebook/icons/magic5.png',
-  '/Magical-Friend-Facebook/y2mate.com - Sovern Always Lyrics.mp3.mp3',
-  '/Magical-Friend-Facebook/popup.html',
-  '/Magical-Friend-Facebook/popup.js',
-  '/Magical-Friend-Facebook/popup.css',
-  '/Magical-Friend-Facebook/icons/magic3.png'
+  'index.html',
+  'styles.css',
+  'script.js',
+  'view.html',
+  'view.css',
+  'view.js',
+  'icons/logo5.png',
+  'icons/magic5.png',
+  'y2mate.com - Sovern Always Lyrics.mp3.mp3',
+  'popup.html',
+  'popup.js',
+  'popup.css',
+  'icons/magic3.png'
 ];
 
 // Install event: Cache necessary files
@@ -60,7 +59,7 @@ self.addEventListener('fetch', event => {
         })
         .catch(() => {
           // Serve index.html if the network request fails
-          return caches.match('/Magical-Friend-Facebook/index.html');
+          return caches.match('index.html');
         })
     );
   } else {
