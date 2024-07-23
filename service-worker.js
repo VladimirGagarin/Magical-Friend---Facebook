@@ -1,1 +1,67 @@
-const CACHE_NAME="Magical-Friend-v1",urlsToCache=["https://vladimirgagarin.github.io/Magical-Friend-Facebook/","https://vladimirgagarin.github.io/Magical-Friend-Facebook/index.html","https://vladimirgagarin.github.io/Magical-Friend-Facebook/styles.css","https://vladimirgagarin.github.io/Magical-Friend-Facebook/script.js","https://vladimirgagarin.github.io/Magical-Friend-Facebook/view.html","https://vladimirgagarin.github.io/Magical-Friend-Facebook/view.css","https://vladimirgagarin.github.io/Magical-Friend-Facebook/view.js","https://vladimirgagarin.github.io/Magical-Friend-Facebook/icons/logo5.png","https://vladimirgagarin.github.io/Magical-Friend-Facebook/icons/magic5.png","https://vladimirgagarin.github.io/Magical-Friend-Facebook/y2mate.com - Sovern  Always Lyrics.mp3.mp3","https://vladimirgagarin.github.io/Magical-Friend-Facebook/popup.html","https://vladimirgagarin.github.io/Magical-Friend-Facebook/popup.js","https://vladimirgagarin.github.io/Magical-Friend-Facebook/popup.css","https://vladimirgagarin.github.io/Magical-Friend-Facebook/icons/magic3.png"];self.addEventListener("install",(i=>{i.waitUntil(caches.open(CACHE_NAME).then((i=>(console.log("Opened cache"),i.addAll(urlsToCache)))))})),self.addEventListener("activate",(i=>{console.log("Service worker activating..."),i.waitUntil(caches.keys().then((i=>Promise.all(i.map((i=>{if(i!==CACHE_NAME)return console.log("Deleting old cache:",i),caches.delete(i)}))))))})),self.addEventListener("fetch",(i=>{i.respondWith(caches.match(i.request).then((a=>a||fetch(i.request).catch((()=>{if("navigate"===i.request.mode||"GET"===i.request.method&&i.request.headers.get("accept").includes("text/html"))return caches.match("https://vladimirgagarin.github.io/Magical-Friend-Facebook/popup.html")})))))}));
+const CACHE_NAME = 'Magical-Friend-v1';
+const urlsToCache = [
+  '/Magical-Friend-Facebook/',
+  '/Magical-Friend-Facebook/index.html',
+  '/Magical-Friend-Facebook/styles.css',
+  '/Magical-Friend-Facebook/script.js',
+  '/Magical-Friend-Facebook/view.html',
+  '/Magical-Friend-Facebook/view.css',
+  '/Magical-Friend-Facebook/view.js',
+  '/Magical-Friend-Facebook/icons/logo5.png',
+  '/Magical-Friend-Facebook/icons/magic5.png',
+  '/Magical-Friend-Facebook/y2mate.com - Sovern Always Lyrics.mp3.mp3', // Add your MP3 file here
+  '/Magical-Friend-Facebook/popup.html',  // Add the offline page
+  '/Magical-Friend-Facebook/popup.js',    // Add JavaScript for the offline page
+  '/Magical-Friend-Facebook/popup.css',   // Add CSS for the offline page (if any)
+  '/Magical-Friend-Facebook/icons/magic3.png'
+];
+
+// Install event: Cache necessary files
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
+  );
+});
+
+// Activate event: Clean up old caches
+self.addEventListener('activate', event => {
+  console.log('Service worker activating...');
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheName !== CACHE_NAME) {
+            console.log('Deleting old cache:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+
+// Fetch event: Serve cached content or fall back to offline page
+self.addEventListener('fetch', event => {
+  if (event.request.mode === 'navigate') {
+    // Handle navigation requests (HTML pages)
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        // Serve the offline page if the network request fails
+        return caches.match('/Magical-Friend-Facebook/popup.html');
+      })
+    );
+  } else {
+    // Handle other requests (assets, etc.)
+    event.respondWith(
+      caches.match(event.request)
+        .then(response => {
+          // Return the cached response if available
+          return response || fetch(event.request);
+        })
+    );
+  }
+});
