@@ -2636,3 +2636,87 @@ button:hover {
   border-radius: 4px;
 }
 /*========================================================================================================================*/
+
+/* General Styles */
+.appreciation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.appreciation-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.appreciation-item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.thankyou-text {
+  font-size: 16px;
+  color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.thumbs-up {
+  display: inline-block;
+  color: rgb(229, 19, 114);
+  font-size: 24px; /* Adjust size as needed */
+  vertical-align: middle;
+}
+
+.thumbs-up svg {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+}
+
+
+/* Large Screens */
+@media (min-width: 1024px) {
+  .appreciation-item {
+    justify-content: space-between;
+  }
+
+  .thankyou-text {
+    text-align: center;
+    margin-left: auto;
+  }
+}
+
+/* Small Screens */
+@media (max-width: 800px) {
+  .appreciation-item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+  }
+
+  .appreciation-item img {
+    width: 80px;
+    height: 80px;
+    margin-left: 100px;
+  }
+
+  .thankyou-text {
+    font-size: 14px;
+    padding-left: 50px;
+  }
+
+  .thumbs-up {
+    font-size: 18px;
+  }
+}
+
+/*===========================================================================================================================*/
