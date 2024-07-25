@@ -631,7 +631,7 @@ input::placeholder {
 
 /* Container for Quote */
 .quote-container {
-  margin-top: 20px;
+  margin-top: 50px;
   padding: 20px;
   background: radial-gradient(circle, #0077b6, #00b4d8); /* Radial gradient background */
   border-radius: 8px;
@@ -685,6 +685,153 @@ input::placeholder {
 #new-quote-btn:hover {
   background: linear-gradient(135deg, #0077b6, #00b4d8); /* Adjust gradient hover effect */
   transform: translateY(-2px); /* Move slightly up on hover */
+}
+/*=================================================================================================================*/
+.magic-video-container {
+  max-width: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.magic-video-container video {
+  width: 70%;
+  height: auto;
+  border-radius: 10px;
+}
+.video-interactions {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-bottom: 3px solid transparent;
+  position: relative; /* Ensure positioning for pseudo-element */
+}
+
+
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  background: red; /* Fill color for progress */
+  width: 0; /* Initial width of the progress bar */
+  transition: width 0.2s ease; /* Smooth transition for progress fill */
+}
+
+
+.video-interactions button,
+.video-interactions a {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.waiting-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15%;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
+  
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears on top of other content */
+  display: none; /* Hidden by default, shown via JavaScript */
+  flex-direction: column;
+}
+
+.waiting-loader::before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  border: 5px solid gold;
+  border-top: 5px solid transparent;
+  border-radius: 50%;
+  animation: spin 2s linear infinite, magical 2s ease-in-out infinite;
+}
+
+.waiting-loader h2{
+  animation: magic 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes magical {
+  0% { opacity: 0; }
+  50% { opacity: 0.5; transform: scale(1.1); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+
+.video-interactions button {
+  display: flex;
+  align-items: center;
+}
+
+.video-interactions a {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .video-interactions button,
+  .video-interactions a {
+    padding: 8px;
+    font-size: 14px;
+  }
+  .magic-video-container video {
+    width: 90%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .waiting-loader{
+    height: 10%;
+    flex-direction: column;
+    
+  }
+}
+
+@media (min-width: 801px) {
+  .video-interactions button,
+  .video-interactions a {
+    padding: 12px;
+    font-size: 18px;
+  }
+}
+
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+/* Style for the notification message */
+.notification-user {
+  display: none; /* Hidden by default */
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 5px;
+  font-size: 16px;
+  z-index: 1000;
+}
+
+.notification-user.visible {
+  display: block; /* Show when needed */
 }
 
 /* Tic-Tac-Toe grid setup -----------------------------------------------------------------------------------*/
