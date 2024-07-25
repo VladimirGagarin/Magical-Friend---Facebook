@@ -812,7 +812,25 @@ input::placeholder {
     font-size: 18px;
   }
 }
+/*---------------------------------------------------------------------------------------------------------------------------------*/
 
+#friend-count-notification {
+  position: fixed;
+  bottom: -50px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+  z-index: 3;
+}
+
+#friend-count-notification.show {
+  bottom: 10px;
+  opacity: 1;
+}
 
 /*---------------------------------------------------------------------------------------------------------------------*/
 /* Style for the notification message */
