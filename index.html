@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scale='no'">
-  <title>Magical Friend</title>
+  <title data-translate="Magical Friend">Magical Friend</title>
   <link rel="icon" href="logo.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -15,6 +15,38 @@
 </head>
 <body>
     <!-- HTML -->
+    <div id="languageDiv" class="hidden">
+      <span class="close-btn">X</span>
+      <h2 data-translate="Select a Language:">Select a Language:</h2>
+      <ul>
+        <li data-language="arabic" data-translate="العربية">🇦🇪 العربية</li>
+        <li data-language="bengali" data-translate="বাংলা">🇮🇳 বাংলা</li>
+        <li data-language="chinese" data-translate="中文">🇨🇳 中文</li>
+        <li data-language="dutch" data-translate="Nederlands">🇳🇱 Nederlands</li>
+        <li data-language="english" data-translate="English">🇬🇧 English</li>
+        <li data-language="french" data-translate="Français">🇫🇷 Français</li>
+        <li data-language="german" data-translate="Deutsch">🇩🇪 Deutsch</li>
+        <li data-language="greek" data-translate="Ελληνικά">🇬🇷 Ελληνικά</li>
+        <li data-language="hindi" data-translate="हिन्दी">🇮🇳 हिन्दी</li>
+        <li data-language="italian" data-translate="Italiano">🇮🇹 Italiano</li>
+        <li data-language="japanese" data-translate="日本語">🇯🇵 日本語</li>
+        <li data-language="korean" data-translate="한국어">🇰🇷 한국어</li>
+        <li data-language="marathi" data-translate="मराठी">🇮🇳 मराठी</li>
+        <li data-language="portuguese" data-translate="Português">🇵🇹 Português</li>
+        <li data-language="russian" data-translate="Русский">🇷🇺 Русский</li>
+        <li data-language="spanish" data-translate="Español">🇪🇸 Español</li>
+        <li data-language="swedish" data-translate="Svenska">🇸🇪 Svenska</li>
+        <li data-language="telugu" data-translate="తెలుగు">🇮🇳 తెలుగు</li>
+        <li data-language="turkish" data-translate="Türkçe">🇹🇷 Türkçe</li>
+    </ul>
+    
+    
+    
+    
+    
+  </div>
+<!-- Floating world icon -->
+<div id="worldIcon" class="floating-icon" data-translate="Change Language">🌍</div>
     <header>
         <div class="menu-div">
             <a id="menu"><i class="fas fa-bars"></i></a>
@@ -22,19 +54,19 @@
 
         <div class="logo" id="logo-magical-friend">
           <img src="logo.png" alt="Logo">
-          <h1>Magical Friend</h1>
+          <h1 data-translate="Magical Friend">Magical Friend</h1>
           <img src="magic5.png" alt="Logo Two">
       </div>
       <div class="about-magical-friend" id="about-magical-friend">
         <span class="about-close">X</span>
-        <h2>About Magical Friend</h2>
+        <h2 data-translate="About Magical Friend">About Magical Friend</h2>
         <div class="images-container">
           <img src="magic5.png" alt="Magical Friend Logo">
           <a href="https://www.facebook.com/" target="_blank" class="facebook-icon">
             <img src="logo5.png" alt="Facebook Icon">
           </a>
         </div>
-        <p id="about-text"></p>
+        <div id="about-text" data-translate="aboutText"></div>
     </div>
 
         <nav class="floating-nav">
@@ -49,7 +81,7 @@
 
     <div id="loadingScreen">
         <div class="loader"></div>
-        <p>Loading your music...</p>
+        <p data-translate="Loading your music...">Loading your music...</p>
     </div>
     
   <main>
@@ -63,60 +95,59 @@
           <div class="bubble bubble5"></div>
           <div class="cauldron-liquid"></div>
       </div>
-      <p class="loading-text">Brewing Magic for your Friends...</p>
+      <p class="loading-text" data-translate="Brewing Magic for your Friends...">Brewing Magic for your Friends...</p>
   </div>
   <div id="musicSymbolsContainer"></div>
   <div id="notification"></div>
   <div class="notificationed"></div>
   
   <div id="install-prompt">
-    <button id="install-button" class="hidden">Install App</button>
-    <button id="cancel-button" class="hidden">Install Lite</button>
+    <button id="install-button" class="hidden" data-translate="Install App">Install App</button>
+    <button id="cancel-button" class="hidden" data-translate="Install Lite">Install Lite</button>
   </div>
 
     <section id="Profile" class="section">
-         <h2>No Profile Yet</h2>
+         <h2 data-translate="No Profile Yet">No Profile Yet</h2>>
          <ul id="owner-details" class="owner-details"></ul>
          
     </section>
-    <div id="scroll-notification" class="notified">Create friends to see the magic beyond!</div>
+    <div id="scroll-notification" class="notified" data-translate="Create friends to see the magic beyond!">Create friends to see the magic beyond!</div>
       <section id="home" class="section active">
-        <h2>Welcome to the Magical Friend.</h2>
+        <h2 data-translate="Welcome to the Magical Friend.">Welcome to the Magical Friend.</h2>
         
         <div class="owner-form-container">
-            <h3>Owner/User Information</h3>
+            <h3 data-translate="Owner/User Information">Owner/User Information</h3>
             <form id="owner-form">
                 <div class="form-group">
-                    <label for="facebook-name">Facebook Name</label>
+                    <label for="facebook-name" data-translate="Facebook Name">Facebook Name</label>
                     <input type="text" id="facebook-name" name="facebook-name" required>
                 </div>
                 <div class="form-group">
-                    <label for="image">Profile Picture</label>
+                    <label for="image" data-translate="Profile Picture">Profile Picture</label>
                     <input type="file" id="image" name="image" accept="image/*" required>
                     <div class="image-overview" id="image-preview"></div>
                 </div>
                 <div class="form-group">
-                    <label for="bio">Bio</label>
+                    <label for="bio" data-translate="Bio">Bio</label>
                     <textarea id="bio" name="bio" rows="4" required></textarea>
                 </div>
                 <div class="button-group">
-                    <button type="button" id="cancel">Cancel</button>
-                    <button type="submit" id="save">Save</button>
+                    <button type="submit" id="save" data-translate="Save">Save</button>
                 </div>
             </form>
         </div>
         <div class="border"></div>
         <div class="magic-video-container">
-          <video id="magic-video" src="magic5.mp4">
+          <video id="magic-video" src="magic5.mp4" data-translate=" This video isn't supported by the browser">
             This video isn't supported by the browser
           </video>
           <div class="video-interactions">
-            <button type="button" id="play-intro-button">&#9658; play</button> <!-- &#9658; is the play symbol -->
-            <a id="visit-link" href="https://youtu.be/uh6tOnEmPOc?list=RDuh6tOnEmPOc" target="_blank" rel="noopener noreferrer">&#9635; Next</a> <!-- &#9635; is the window symbol -->
+            <button type="button" id="play-intro-button" data-translate="play">&#9658; play</button> <!-- &#9658; is the play symbol -->
+            <a id="visit-link" href="https://youtu.be/uh6tOnEmPOc?list=RDuh6tOnEmPOc" target="_blank" rel="noopener noreferrer" data-translate="Next">&#9635; Next</a> <!-- &#9635; is the window symbol -->
             <div class="progress-bar"></div>
           </div>
           <div class="waiting-loader">
-            <h2>Just a moment Please!</h2>
+            <h2 data-translate="Just a moment Please!">Just a moment Please!</h2>
           </div>
           <div id="notification-user" class="notification-user"></div>
         </div>
@@ -126,13 +157,14 @@
 
         <div class="border"></div>
         <div class="quote-container">
-            <h3>Daily Inspiration</h3>
-            <p id="quote-text">Loading inspirations...</p>
-            <button id="new-quote-btn">New Quote</button>
-        </div>
+          <h3 data-translate="Daily Inspiration">Daily Inspiration</h3>
+          <p<span data-translate="No FAQs available. Check out our FAQs!" id="quote-text"></span></p>
+      </div> 
+      
+      
         <div class="border"></div>
         <div class="ticmessage">
-          <h2>Tic Tac Friend</h2>
+          <h2 data-translate="Tic Tac Friend">Tic Tac Friend</h2>
         </div>
         <div class="tic-tac-toe">
           <div class="cell"></div>
@@ -147,49 +179,51 @@
         </div>
         <div class="scoreboard">
           <p ><img id="player-img" src="#" alt="player one"></p>
-          <span>VS</span>
+          <span data-translate="VS">VS</span>
           <p><img src="magic5.png" alt="computer player"></p>
 
           <div class="score">
-            <p><span class="result"></span></p>
-            <button>Reset Game</button>
-          </div>
+            <p><span class="result" data-translate="scoreLabel"></span></p>
+            <button data-translate="Reset Game">Reset Game</button>
+        </div>
+        
         </div>  
         <div class="border"></div>
         <div class="potion-brewing-game">
-          <h3>Baby Game</h3>
-          <p style="color: black;">If two of your friends had baby together? </p>
+          <h3 data-translate="Baby Game">Baby Game</h3>
+          <p style="color: black;" data-translate="If two of your friends had baby together?">If two of your friends had a baby together?</p>
           <div class="ingredients" id="friend-listing">
-              <!-- Ingredients (friends) will be dynamically generated here -->
+              <!-- Friends will be dynamically generated here -->
           </div>
-          <div class="potion" id="potion">Your potion will appear here!</div>
-          <div class="message" id="message"></div>
-          <button class="brew-button" onclick="brewPotion()">Brew Potion!</button>
-          <button class="reset-button" onclick="resetGame()">Reset Game</button>
+          <div class="potion">
+            <i class="fas fa-flask"></i> <h3 data-translate="Your potion will appear here!">Your potion will appear here!</h3>
+          <p id="potion"></p>
         </div>
+          <div class="message" id="message"></div>
+          <button class="brew-button" data-translate="Brew Potion!">Brew Potion!</button>
+          <button class="reset-button" data-translate="Reset Game">Reset Game</button>
+      </div>
+      
       <div class="border"></div>
         <div class="fancy-quiz-game">
-          <h3>Fancy Quiz</h3>
-          <p id="quiz-question">Loading question...</p>
-          <div class="ingredients" id="quiz-friend-listing">
-              <!-- Ingredients (friends) will be dynamically generated here -->
-          </div>
-          <div class="quiz-result" id="quiz-result">Your answer will appear here!</div>
-          <div class="message" id="quiz-message"></div>
-          <button class="quiz-button" onclick="nextQuestion()">Questions</button>
-          <button class="quiz-brew-button" onclick="brewQuiz()">Brew It!</button>
-          <button class="quiz-reset-button" onclick="resetQuiz()">Reset Quiz</button>
+          <h3 data-translate="Fancy Quiz">Fancy Quiz</h3>
+          <p id="quiz-question" data-translate="Loading question...">Loading question...</p>
+          <div class="friend-listing"></div>
+          <div class="result-div"></div>
+      </div>
+          
       </div>
       <div class="border"></div>
       <div class="container">
         <div class="wheel" id="wheel">
             <img id="centerImage" class="center-image" alt="User Image">
         </div>
-        <button id="spinButton">Spin the Wheel</button>
+        <button id="spinButton" data-translate="Spin the Wheel">Spin the Wheel</button>
         <div class="result">
           <audio id="spinSound" src="y2mate.com - Spinning Wheel Sound Effect.mp3" preload="auto"></audio>
           <p id="questions"></p>
-            <h2>Result:</h2>
+          <p id="question-answerred"></p>
+            <h2 data-translate="Result:">Result:</h2>
             <img id="resultImage" class="result-image" alt="Result Image" src="magic5.png">
         </div>
     </div>
@@ -198,7 +232,7 @@
       <h3 class="logo-for-user"><img src="#" alt="user" id="userImage" class="user-image"></h3>
       <div class="playlist">
         <input type="file" id="fileUpload" accept="audio/mp3" multiple style="display: none;">
-        <label for="fileUpload" id="fileUploadLabel">Select song</label>
+        <label for="fileUpload" id="fileUploadLabel" data-translate="Select song">Select song</label>
         <ul id="songList"></ul>
     </div>
 
@@ -210,7 +244,7 @@
               <div class="shadow"></div>
           </div>
           <div class="song-info">
-              <h2 id="songTitle">Song Title</h2>
+              <h2 id="songTitle" data-translate="Song Title">Song Title</h2>
           </div>
           <div class="spectrum" id="audioSpectrum"></div>
           <audio id="audioPlayer" controls></audio>
@@ -219,10 +253,7 @@
       </div>
     </div>
     <div class="border"></div>
-      <!-- Full-page overlay for displaying captured words -->
-    <div id="captured-words-overlay">
-      <div id="captured-words">Words will appear here...</div>
-    </div>
+    
 
     <!-- Microphone button -->
     <div id="mic-container">
@@ -233,78 +264,100 @@
 
     <!-- Question container for displaying a list of songs -->
     <div id="song-container">
-      <h2>Are you ready to sing?</h2>
-      <label for="karaoke-song">choose your song</label>
+      <h2 data-translate="Are you ready to sing?">Are you ready to sing?</h2>
+      <label for="karaoke-song" data-translate="choose your song">choose your song</label>
       <input type="file" name="song-input" id="karaoke-song" accept=".mp3" />
       <ul id="song-list">
         <li data-song="y2mate.com - Diviners Riell  Slow Official Lyric Video.mp3">Diviners Riell  Slow</li>
         <li data-song="y2mate.com - ElectroLight  Symbolism  Trap  NCS  Copyright Free Music.mp3"> ElectroLight  Symbolism </li>
         <li data-song="y2mate.com - Jim Yosef  Anna Yvette  Linked  House  NCS  Copyright Free Music.mp3">Jim Yosef  Anna Yvette  Linked  House</li>
-        <li data-song="y2mate.com - Enya  May It Be Instrumental.mp3">Lost Sky  Fearless</li>
+        <li data-song="y2mate.com - Enya  May It Be Instrumental.mp3"> Enya  May It Be</li>
           <!-- Add more songs as needed -->
       </ul>
     </div>
 
-        <!-- Full-page overlay for displaying captured words -->
-    <div id="captured-words-overlay">
-      <div id="captured-words">Words will appear here...</div>
-    </div>
+      <div id="captured-words-overlay">
+        <div id="captured-words" data-translate="Words will appear here...">Words will appear here...</div>
+      </div>
 
-    <!-- Container for recording MP3 -->
-    <div id="recorded-audio">
-      <button id="download-audio" style="display: none;">Download MP3</button>
-    </div>
-    
+
   </section>
     <div id="friend-count-notification" class="slide-in"></div>
       <section id="create" class="section">
-        <h2>Create a New Friend</h2>
-        <p>Create a new friend and add them to your list.</p>
+        <h2 data-translate="Create a New Friend">Create a New Friend</h2>
+        <p data-translate="Create a new friend and add them to your list.">Create a new friend and add them to your list.</p>
         <form id="friend-form">
             <div class="form-group">
-                <label for="friend-name">Your Friend Name:</label>
+                <label for="friend-name" data-translate="Your Friend Name:">Your Friend Name:</label>
                 <input type="text" id="friend-name" name="friend-name" required>
             </div>
             <div class="form-group">
-                <label for="friend-image">Your Friend Image:</label>
+                <label for="friend-image" data-translate="Your Friend Image:">Your Friend Image:</label>
                 <input type="file" id="friend-image" name="friend-image" accept="image/*" required>
                 <div id="image-previews"></div>
             </div>
             <div class="form-group">
-                <label for="friend-emotion">Emotion:</label>
+                <label for="friend-emotion" data-translate="Emotion:">Emotion:</label>
                 <select id="friend-emotion" name="friend-emotion" required>
-                    <option value="none" disabled selected>How do you feel about your friend</option>
-                    <option value="joyful">😊 Joyful</option>
-                    <option value="grateful">🙏 Grateful</option>
-                    <option value="excited">😃 Excited</option>
-                    <option value="inspired">🌟 Inspired</option>
-                    <option value="supported">🤗 Supportive</option>
-                    <option value="amused">😄 Amused</option>
-                    <option value="comforted">💖 Comforted</option>
-                    <option value="appreciative">👏 Appreciative</option>
-                    <option value="lovely">😍 Lovely</option>
-                    <option value="cherished">💝 Cherished</option>
+                    <option value="none" disabled selected data-translate="How do you feel about your friend">How do you feel about your friend</option>
+                    <option value="Joyful" data-translate="Joyful"> Joyful</option>
+                    <option value="Grateful" data-translate="Grateful"> Grateful</option>
+                    <option value="Excited" data-translate="Excited"> Excited</option>
+                    <option value="Inspired" data-translate="Inspired"> Inspired</option>
+                    <option value="Supportive" data-translate="Supportive"> Supportive</option>
+                    <option value="Amused" data-translate="Amused"> Amused</option>
+                    <option value="Comforted" data-translate="Comforted"> Comforted</option>
+                    <option value="Appreciative" data-translate="Appreciative"> Appreciative</option>
+                    <option value="Lovely" data-translate="Lovely"> Lovely</option>
+                    <option value="Cherished" data-translate="Cherished"> Cherished</option>
                 </select>                
                 
             </div>
             <div class="form-group">
-                <label for="friend-description">Description:</label>
+                <label for="friend-description" data-translate="Description:">Description:</label>
                 <textarea id="friend-description" name="friend-description" required></textarea>
             </div>
-            <button type="submit" disabled id="add-friend-button">Add Friend</button>
+            <button type="submit" disabled id="add-friend-button" data-translate="Add Friend">Add Friend</button>
         </form>
         <div class="appreciation-list" id="appreciation-list"></div>
 
     </section>
     
     <section id="view" class="section">
-        <h2>View Your Friends</h2>
-        <p>Here you can view all your friends along with their descriptions and emotions.</p>
-        <h3>My top <span id="count"></span> Friends</h3>
-        <a href="view.html"  id="magic-view">Go to magic view</a>
+        <h2 data-translate="View Your Friends">View Your Friends</h2>
+        <p data-translate="Here you can view all your friends along with their descriptions and emotions.">Here you can view all your friends along with their descriptions and emotions.</p>
+        <h3 ><span data-translate="My top">My top</span> <span id="count"></span ><span data-translate="Friends">Friends</span> </h3>
+        <a href="view.html"  id="magic-view" data-translate="Go to magic view">Go to magic view</a>
         <ul id="friends-list" class="sortable-list">
           <!-- Friend list items will be dynamically added here -->
       </ul>      
+      <div id="emotion-correct-div" class="hidden">
+        <div id="emotion-correct-content">
+            <h2 data-translate="Update Friend Emotions">Update Friend Emotions</h2>
+            <div id="friend-list"></div>
+            <button id="close-button" data-translate="Close">Close</button>
+        </div>
+    </div>
+
+    <template id="friend-template">
+        <div class="friend">
+            <img class="friend-image" src="" alt="Friend Image">
+            <p class="friend-name"></p>
+            <select class="emotion-select">
+                <option value="none" disabled selected data-translate="How do you feel about your friend">How do you feel about your friend</option>
+                <option value="Joyful" data-translate="Joyful">Joyful</option>
+                <option value="Grateful" data-translate="Grateful">Grateful</option>
+                <option value="Excited" data-translate="Excited">Excited</option>
+                <option value="Inspired" data-translate="Inspired">Inspired</option>
+                <option value="Supportive" data-translate="Supportive">Supportive</option>
+                <option value="Amused" data-translate="Amused">Amused</option>
+                <option value="Comforted" data-translate="Comforted">Comforted</option>
+                <option value="Appreciative" data-translate="Appreciative">Appreciative</option>
+                <option value="Lovely" data-translate="Lovely">Lovely</option>
+                <option value="Cherished" data-translate="Cherished">Cherished</option>
+            </select>
+        </div>
+    </template>
     </section>    
   </main>
 
