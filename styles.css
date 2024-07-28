@@ -832,24 +832,117 @@ input::placeholder {
   opacity: 1;
 }
 
-/*---------------------------------------------------------------------------------------------------------------------*/
-/* Style for the notification message */
-.notification-user {
-  display: none; /* Hidden by default */
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  border-radius: 5px;
-  font-size: 16px;
-  z-index: 1000;
+#friend-count-notification .count-span {
+  font-weight: bold;
+  margin-right: 5px; /* Add space between count and message */
 }
 
+#friend-count-notification .message-span {
+  font-style: italic;
+}
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+#emotion-correct-div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#emotion-correct-div.show {
+  display: flex; /* Use flexbox to center the content */
+}
+
+#emotion-correct-content {
+  background: #0056b3;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  height: 400px;
+  overflow-y: auto;
+}
+
+#friend-list {
+  margin: 20px 0;
+}
+
+.friend {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.friend img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.friend .friend-name {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.emotion-select {
+  width: 100%;
+  padding: 8px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #004600;
+  margin-top: 10px;
+}
+
+#close-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#close-button:hover {
+  background-color: #0056b3;
+}
+
+.hidden {
+  display: none;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+.notification-user {
+  position: fixed; /* Fixes the position relative to the viewport */
+  top: 50%; /* Centers vertically */
+  left: 50%; /* Centers horizontally */
+  transform: translate(-50%, -50%); /* Adjusts for the element’s size */
+  padding: 20px;
+  background: red; /* Background color of the notification */
+  color: #fff; /* Text color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for better visibility */
+  text-align: center; /* Center text */
+  z-index: 1000; /* Ensures it appears above other content */
+  display: none; /* Initially hidden */
+}
+
+/* Optional: Show notification with class `visible` */
 .notification-user.visible {
-  display: block; /* Show when needed */
+  display: block; /* Display notification when visible class is added */
 }
 /*------------------------------------------------------------------------------------------------------------*/
 /* Mic container positioning */
@@ -857,6 +950,7 @@ input::placeholder {
   position: fixed;
   bottom: 20px;
   right: 20px;
+  z-index:3;
 }
 
 /* Mic button styles */
@@ -1046,6 +1140,111 @@ input::placeholder {
   }
 }
 
+/*-----------------------------------------------------------------------------------------------------------*/
+
+.friend-listing img {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.friend-listing img.selected {
+  border: 5px solid #0056b3;
+  cursor: pointer;
+}
+.result-div {
+  margin-top: 20px;
+  border-top: 2px solid #000;
+}
+
+.friend-image {
+  border: 5px solid transparent;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+  margin-left: 20px;
+}
+
+.friend-image.selected {
+  border: 5px solid green;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.friend-image.selected.second-selection {
+  border-color: orange;
+}
+
+.friend-image.selected.third-selection {
+  border-color: red; /* Optional: change to any color you prefer */
+}
+
+.friend-image .tick-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: green;
+  display: none;
+}
+
+.friend-image.selected.third-selection .tick-overlay {
+  display: block;
+}
+
+
+.result-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.result-item img {
+  margin-right: 10px;
+}
+
+.tooltip {
+  background-color: #004600;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  white-space: normal; /* Allow text to wrap */
+  display: inline-block;
+  color: #f2f2f2;
+  width: 80%;
+  word-wrap: break-word; /* Ensure words break to fit the width */
+  overflow-wrap: break-word; /* Alternative for word-wrap */
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-left: 10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #fff;
+}
+.tick-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent white background */
+  color: green; /* Green tick color */
+  font-size: 74px; /* Size of the tick */
+  font-weight: bold; /* Bold tick */
+  border-radius: 50%; /* Rounded tick background */
+  padding: 5px; /* Some padding around the tick */
+  display: flex; /* Center the tick */
+  justify-content: center; /* Center the tick */
+  align-items: center; /* Center the tick */
+  width: 30px; /* Width of the tick background */
+  height: 30px; /* Height of the tick background */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add some shadow for better visibility */
+}
 
 /*------------------------------------------------------------------------------------------------------------*/
 
@@ -1292,9 +1491,106 @@ label[for="karaoke-song"]:active {
 }
 
 /*-------------------------------------------------------------------------------------------------*/
+
+.potion-brewing-game {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.ingredients {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.ingredients .friend {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  margin-right: 20px;
+  transition: transform 0.3s;
+}
+
+.ingredients .friend img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ingredients .friend.selected {
+  
+  border: 6px solid #007bff;
+}
+
+.potion {
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.message {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.brew-button,
+.reset-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+@keyframes pulse-ping {
+  0% {
+      opacity: 0.8;
+      transform: scale(0.2);
+  }
+  80% {
+      opacity: 0;
+      transform: scale(1.2);
+  }
+  100% {
+      opacity: 0;
+      transform: scale(2.2);
+  }
+}
+
+.pulse-ping {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse-ping 1s infinite;
+}
+
+.combined-result i {
+  font-size: 30px;
+  font-weight: bold;
+  color: #007bff;
+  animation: pulse-ping 1s infinite;
+}
+
+
+.pulse-ping span {
+  font-size: 50px;
+  color: gold;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
 /*--------------------------------------------------------------------------------------------------*/
 .potion-brewing-game, .fancy-quiz-game {
-  width: 300px;
+  width: 400px;
   margin: 20px auto;
   text-align: center;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
@@ -1305,6 +1601,8 @@ label[for="karaoke-song"]:active {
   margin-bottom: 50px;
   border: 2px solid #0051ff;
   color: #000;
+  height: 300px;
+  overflow-y: auto;
 }
 
 .container .result  h2{
@@ -1571,9 +1869,19 @@ label[for="karaoke-song"]:active {
   border: 2px solid #4CAF50; /* Matching the spin button color */
 }
 
-#questions span {
+#question-answerred  {
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  color: #333;
+  background: #4CAF50;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #f0f0f0;
   font-weight: bold;
-  color: #4CAF50;
 }
 
 .center-image {
@@ -2237,7 +2545,7 @@ button:disabled {
 
 .form-group label {
   font-weight: bold;
-  color: #000;
+  color: #f2f2f2;
 }
 
 .form-group input[type="text"],
@@ -2252,10 +2560,14 @@ select {
   
 }
 
-.edit-form select option{
-  background-color: #007bff;
+.form-group select option{
+  background-color: #0056b3;
+  font-size: 20px;
 }
-
+.form-group select option.disabled,
+.form-group select option.selected{
+  color: gold;
+}
 textarea {
   height: 100px;
 }
@@ -2455,7 +2767,11 @@ button[type="button"]:hover {
       border: 1px solid #5a6ff3;
       border-radius: 5px;
       font-size: 14px;
-      color: #000;
+      color: #f1f1f1;
+    }
+
+    .form-group  select option{
+      background-color: #000;
     }
 
     textarea {
@@ -2566,7 +2882,7 @@ button[type="button"]:hover {
   margin: 5px 0;
   font-size: 14px;
   text-align: center;
-  color: #fff;
+  color: #004600;
   font-weight: bold;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -2902,7 +3218,7 @@ button:hover {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 123, 255, 0.8); /* Blue background with transparency */
+  background-color:#004600; /* Blue background with transparency */
   color: white; /* Text color */
   padding: 10px 20px;
   border-radius: 5px;
@@ -2913,7 +3229,7 @@ button:hover {
 
 .notificationed.show {
   display: block; /* Show when .show class is added */
-  animation: fadeOut 2s forwards; /* Fade out animation */
+  animation: fadeOut 10s forwards; /* Fade out animation */
 }
 
 @keyframes fadeOut {
@@ -2947,6 +3263,7 @@ button:hover {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
+  display: block;
 }
 
 /* FAQ Items */
@@ -3048,18 +3365,56 @@ button:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Basic styles for appreciation-item */
+.appreciation-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* Change cursor to pointer to indicate clickable */
+}
+
+/* Scale effect on hover */
+.appreciation-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Bounce effect on click */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.appreciation-item:active {
+  animation: bounce 0.6s;
+}
+
 .appreciation-item img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
 
-.thankyou-text {
+.friend-name {
   font-size: 16px;
-  color: #f0f0f0;
+  font-weight: bold;
+  color: #333;
+}
+
+.thankyou-container {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.thankyou-text {
+  font-size: 16px;
+  color: #f0f0f0;
 }
 
 .thumbs-up {
@@ -3075,6 +3430,11 @@ button:hover {
   height: 1em;
 }
 
+.appreciation-item .friend-name,
+.appreciation-item{
+  color: #f2f2f2;
+  margin-right: 30PX;
+}
 
 /* Large Screens */
 @media (min-width: 1024px) {
@@ -3092,24 +3452,193 @@ button:hover {
 @media (max-width: 800px) {
   .appreciation-item {
     flex-direction: column;
-    align-items: flex-start;
-    text-align: center;
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text */
+    padding: 10px; /* Optional: add padding for spacing */
   }
 
   .appreciation-item img {
     width: 80px;
     height: 80px;
-    margin-left: 100px;
+    margin-bottom: 10px; /* Add space below the image */
   }
 
   .thankyou-text {
     font-size: 14px;
-    padding-left: 50px;
+    margin-top: 10px; /* Add space above the text */
   }
 
   .thumbs-up {
     font-size: 18px;
   }
+    /* Ping Div Styles */
+  .ping-div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: myAnim 2s ease forwards;
+    z-index: 1000; /* Ensure it's above other content */
+  }
+}
+
+/* Ping Div Styles */
+.ping-div {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: myAnim 2s ease forwards;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+@keyframes myAnim {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.2);
+  }
+  80% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.2);
+  }
 }
 
 /*===========================================================================================================================*/
+
+#languageDiv {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  width: 300px; /* Adjust as needed */
+  text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 300px;
+  overflow-y: auto;
+  animation: fadeInling 0.8s ease-out;
+}
+
+#languageDiv.hidden {
+  display: none;
+}
+
+#languageDiv h2 {
+  margin-top: 0;
+  white-space: nowrap;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+#languageDiv ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+  text-align: left;
+}
+
+.language-div li {
+  padding: 12px;
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  border-radius: 8px;
+  font-size: 24px;
+  color: #555;
+}
+
+#languageDiv li:hover {
+  background-color: #e0e0e0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+}
+
+.close-btn:hover {
+  color: #f00; /* Change color on hover */
+}
+
+/* Animation for the languageDiv */
+@keyframes fadeInling {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -55%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+/*-----------------------------------------------------------------------------------------------------------*/
+
+#worldIcon {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  font-size: 30px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  z-index: 1001; /* Ensure it is above other content */
+}
+
+#worldIcon:hover {
+  background-color: #0056b3;
+}
+
+
+/* Responsive styles for small screens */
+@media (max-width: 800px) {
+  #languageDiv {
+      width: 90%;
+      height: 80%; /* Adjust height for small screens */
+      max-width: 350px; /* Set a max-width to ensure it doesn't get too large */
+      padding: 10px;
+  }
+
+  #languageDiv h2 {
+      font-size: 18px; /* Adjust font size for smaller screens */
+  }
+
+  #languageDiv li {
+      font-size: 14px; /* Adjust font size for list items */
+  }
+
+  #worldIcon {
+      bottom: 30px;
+      right: 90px;
+      font-size: 28px;
+      padding: 8px;
+  }
+}
+/*==============================================================================================================*/
