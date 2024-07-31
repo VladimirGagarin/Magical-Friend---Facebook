@@ -906,6 +906,9 @@ footer a {
     main{
         width: 100%;
     }
+    .all-button-container button{
+        font-size: 12px;
+    }
 }
 
 
@@ -1332,7 +1335,7 @@ button:disabled {
 }
 
 .lyrical-words {
-    font-size: 30px;
+    font-size: 70px;
     margin-bottom: 20px;
     font-family: 'Comic Sans MS', cursive; /* Fancy font example */
     color: #ff8a00; /* Set a visible color for debugging */
@@ -1350,6 +1353,7 @@ button:disabled {
     animation: fadeInOut 3s forwards; /* Animation duration and forwards to keep opacity at 1 */
     display: inline-block; /* Ensure span elements are inline-block */
     margin-right: 10px; /* Add spacing between words */
+    font-size: 30px;
 }
 
 .close-btn {
@@ -1379,7 +1383,7 @@ button:disabled {
     }
     
     .lyrical-words {
-        font-size: 16px; /* Decrease font size for small screens */
+        font-size: 12px; /* Decrease font size for small screens */
         top: 60%; /* Adjust position for small screens */
     }
     
@@ -4210,7 +4214,7 @@ textarea, input[type="text"], input[type="datetime-local"] {
     display: block;
     width: 100%;
     height: 100%;
-    background-color: #000; /* Fallback color */
+    background-color: transparent; /* Fallback color */
 }
 
 .controllers {
@@ -4425,7 +4429,7 @@ textarea, input[type="text"], input[type="datetime-local"] {
     opacity: 0;
     transition: opacity 0.5s;
     margin: 0;
-    font-size: 50px;
+    font-size: 30px;
     text-align: center;
 }
 
@@ -4439,10 +4443,12 @@ textarea, input[type="text"], input[type="datetime-local"] {
     opacity: 0;
     transition: opacity 0.5s;
 }
-
+#lyrical-theme span{
+    color: #1cfe03;
+}
 
 /* Basic styling for mention-user spans */
-.mention-user {
+#lyrical-theme span.mention-user {
     font-weight: bold;
     font-size: 1.2em;
     color: #ffd700; /* Example color: a shade of orange */
@@ -4656,7 +4662,7 @@ textarea, input[type="text"], input[type="datetime-local"] {
     position: fixed;
     bottom: 10px;
     left: 10px;
-    background: rgba(239, 231, 236, 0.8);
+    background: rgba(239, 231, 236, 0.9);
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -4665,11 +4671,13 @@ textarea, input[type="text"], input[type="datetime-local"] {
     margin-bottom: 10px;
     min-width: 30px;
     min-height: 30px;
-    white-space: pre;
-    
+    max-width: 400px;
     max-height: 100px;
     overflow-y: auto;
+    overflow: hidden;
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
 }
+
 
 .search-bar {
     font-family: 'MagicalFont', cursive; /* Add your magical font here */
@@ -5484,5 +5492,219 @@ textarea, input[type="text"], input[type="datetime-local"] {
 .user-pic{
     border-bottom: 2px solid #007bff;
 }
-/*=====================================================================================================================*
-/
+/*=====================================================================================================================*/
+
+
+/* General overlay styles */
+#feedback-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Feedback form container */
+#feedback-form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    height: 50vh;
+    overflow-y: auto;
+}
+
+/* Close button */
+.close-form-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Feedback form elements */
+form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form #stars {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+form .star {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+form button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Success message styling */
+#feedback-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+#feedback-message.animate-success {
+    animation: fadeInOut 8s;
+}
+
+#feedback-message.animate-error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    animation: fadeInOut 8s;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Animated pulse-ping styling */
+#animated-pulse-ping {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    text-align: center;
+    opacity: 0;
+    flex-direction: row;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animated-pulse {
+    animation: pulse 1.5s infinite;
+}
+
+/*============================================================================================================================================*/
+
+#languageDivs {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0056b3;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    width: 300px; /* Adjust as needed */
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 300px;
+    overflow-y: auto;
+    animation: fadeInling 0.8s ease-out;
+    display: none;
+    color: #f2f2f2;
+}
+
+#languageDivs .close-lang-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    background: none;
+    border: none;
+}
+
+#languageDivs h2 {
+    margin-top: 0;
+  white-space: nowrap;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+#languageDivs ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+    text-align: left;
+}
+
+#languageDivs ul li {
+    padding: 12px;
+    margin: 6px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 8px;
+    font-size: 24px;
+    color: #555;
+}
+
+#languageDivs ul li:hover {
+    background: #f0f0f0;
+}
+
+/*=============================================================================================================================*/
