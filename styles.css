@@ -3253,7 +3253,7 @@ button:hover {
 
 /*======================================================================================================*/
 
- /* FAQ Container */
+/* FAQ Container */
 #faq-container {
   margin: 20px auto;
   padding: 20px;
@@ -3268,7 +3268,12 @@ button:hover {
 
 /* FAQ Items */
 .faq-item {
+  position: relative; /* Added for positioning of sound icon */
   margin-bottom: 15px;
+}
+
+.faq-content-container {
+  position: relative; /* Required for absolute positioning of sound icon */
 }
 
 .faq-question {
@@ -3293,6 +3298,17 @@ button:hover {
 .faq-answer.show {
   display: block; /* Show answers when .show class is applied */
 }
+
+.sound-icon {
+  font-size: 1.5em;
+  color: #1E90FF; /* Customize color as needed */
+  cursor: pointer;
+  position: absolute;
+  right: 10px; /* Adjust to ensure it does not overlap content */
+  top: 15%;
+  transform: translateY(-50%); /* Center vertically */
+}
+
 /****************************************************************************************************************/
 
 #install-button {
@@ -3363,6 +3379,7 @@ button:hover {
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-transform: capitalize;
 }
 
 /* Basic styles for appreciation-item */
@@ -3466,6 +3483,8 @@ button:hover {
   .thankyou-text {
     font-size: 14px;
     margin-top: 10px; /* Add space above the text */
+    text-align: center;
+    
   }
 
   .thumbs-up {
@@ -3484,6 +3503,16 @@ button:hover {
     pointer-events: none;
     animation: myAnim 2s ease forwards;
     z-index: 1000; /* Ensure it's above other content */
+  }
+
+  .sound-icon {
+    font-size: 1.2em;
+    color: #1E90FF; /* Customize color as needed */
+    cursor: pointer;
+    position: absolute;
+    right: 10px; /* Adjust to ensure it does not overlap content */
+    top: 20%;
+    transform: translateY(-50%); /* Center vertically */
   }
 }
 
@@ -3529,14 +3558,19 @@ button:hover {
   padding: 20px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   z-index: 1000;
-  width: 300px; /* Adjust as needed */
-  text-align: center;
+  width: 400px; /* Adjust as needed */
+  text-align: left;
   border-radius: 8px;
   overflow: hidden;
-  height: 300px;
+  height: 400px;
   overflow-y: auto;
+  font-size: 30px;
   animation: fadeInling 0.8s ease-out;
+  cursor: pointer;
+  word-break: break-word; /* Ensures long words break and wrap */
+  word-wrap: break-word; /* Allows text to wrap to next line */
 }
+
 
 #languageDiv.hidden {
   display: none;
@@ -3558,14 +3592,16 @@ button:hover {
 
 .language-div li {
   padding: 12px;
-  margin: 6px 0;
+ margin-top: 10px;
+ margin-bottom: 10px;
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
   border-radius: 8px;
-  font-size: 34px;
-  color: #555;
+  font-size: 40px;
+  color: #000;
+  
 }
 
 #languageDiv li:hover {
@@ -3621,9 +3657,11 @@ button:hover {
 @media (max-width: 800px) {
   #languageDiv {
       width: 90%;
-      height: 80%; /* Adjust height for small screens */
+      height: 50%; /* Adjust height for small screens */
       max-width: 350px; /* Set a max-width to ensure it doesn't get too large */
       padding: 10px;
+      overflow-y: auto;
+      font-size: 20px;
   }
 
   #languageDiv h2 {
@@ -3631,7 +3669,9 @@ button:hover {
   }
 
   #languageDiv li {
-      font-size: 14px; /* Adjust font size for list items */
+      font-size: 24px; /* Adjust font size for list items */
+      margin-bottom: 20px;
+      border-bottom: 2px solid #000;
   }
 
   #worldIcon {
