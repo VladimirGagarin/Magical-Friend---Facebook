@@ -32,6 +32,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
+    
     <script src="https://cdn.jsdelivr.net/npm/ccapture.js@1.1.0/build/CCapture.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
     
@@ -40,14 +41,14 @@
     <script src="view.js" defer></script>
     <script src="level1.js"></script>
     
-    <title>Magical Friend View</title>
+    <title data-translate="Magical Friend">Magical Friend</title>
 </head>
 <body>
     <header id="header">
         <div class="header-logo">
             <h1>
                 <img src="logo5.png" alt="logo" class="logo">
-                <span class="title">Magical Friend</span>
+                <span class="title"  data-translate="Magical Friend">Magical Friend</span>
                 <img src="magic5.png" alt="magical-friend" class="magic-logo">
             </h1>
         </div>
@@ -61,26 +62,26 @@
                 <li>
                     <a href="#home" class="active">
                         <i class="fas fa-home"></i> 
-                        <span class="data-link">Home</span>
+                        <span class="data-link" data-translate="Home">Home</span>
                     </a>
                 </li>
                 <li>
                     <a href="#songs">
                         <i class="fas fa-music"></i> 
-                        <span class="data-link">Songs</span>
+                        <span class="data-link" data-translate="Songs">Songs</span>
                     </a>
                 </li>
                  <!-- <li>
                     <a href="#slideshows">
                         <i class="fas fa-images"></i> 
-                        <span class="data-link">Slideshows</span>
+                        <span class="data-link" data-translate="Slideshows">Slideshows</span>
                     </a>
                 </li> -->
  
                 <li>
                     <a href="#diary">
                         <i class="fas fa-book"></i> <!-- You can change this icon to something more fitting -->
-                        <span class="data-link">Diary</span>
+                        <span class="data-link" data-translate="Diary">Diary</span>
                     </a>
                 </li>
             </ul>
@@ -90,7 +91,7 @@
                 <img id="logo" src="magic5.png" alt="Logo" class="swap-image">
                 <img id="userImage" src="" alt="User Image" class="swap-image">
 
-                <h2>Hold on we lost your magic</h2>
+                <h2 data-translate="Hold on we lost your magic">Hold on we lost your magic</h2>
             </div>
         </div>
         <div class="loading-indicator">
@@ -106,7 +107,14 @@
                     <img src="magic5.png" alt="heart-right" class="heart-right">
                 </div>
                 <div class="lyrical-words" id="lyrics">
-                    <!-- Placeholder for lyrics -->
+                    <span data-time="66"  data-translate="Take my hand">&#9835; Take my hand &#9834;</span>
+                    <span data-time="70"  data-translate="Believe me when I say"> &#9834; Believe me when I say &#9834;</span>
+                    <span data-time="74"  data-translate="I'm here for you always (here for you always)"> &#9834; I'm here for you always (here for you always)  &#9834;</span>
+                    <span data-time="79"  data-translate="Take my hand"> &#9834; Take my hand &#9834;</span>
+                    <span data-time="82"  data-translate="And everything could change"> &#9834; And everything could change &#9834;</span>
+                    <span data-time="85"  data-translate="But one thing stays the same"> &#9834; But one thing stays the same &#9834;</span>
+                    <span data-time="88"  data-translate="I'm here for you always"> &#9834; I'm here for you always   &#9834;</span>
+                
                 </div>
                 <audio id="loading-audio" src="y2mate.com - Sovern  Always Lyrics.mp3"></audio>
                 <button class="close-btn" id="close-after-loading">&times;</button>
@@ -116,8 +124,62 @@
         
         
         
+        
     </header>
+
+   
+
+
+    <div id="feedback-overlay">
+        <div id="feedback-form-container">
+            <h2 data-translate="Feedback Form">Feedback Form</h2>
+            <form id="feedback-form">
+                <button id="close-form-btn" class="close-form-btn">✖</button>
+                
+                <label for="name" data-translate="Name:">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email" data-translate="Email:">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message" data-translate="Message (optional):">Message (optional):</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+                
+                <label for="stars" data-translate="Rating:">Rating:</label>
+                <div id="stars">
+                    <input type="radio" id="star10" name="stars" value="10" required>
+                    <label for="star10" class="star">&#9733;</label>
+                    <input type="radio" id="star9" name="stars" value="9">
+                    <label for="star9" class="star">&#9733;</label>
+                    <input type="radio" id="star8" name="stars" value="8">
+                    <label for="star8" class="star">&#9733;</label>
+                    <input type="radio" id="star7" name="stars" value="7">
+                    <label for="star7" class="star">&#9733;</label>
+                    <input type="radio" id="star6" name="stars" value="6">
+                    <label for="star6" class="star">&#9733;</label>
+                    <input type="radio" id="star5" name="stars" value="5">
+                    <label for="star5" class="star">&#9733;</label>
+                    <input type="radio" id="star4" name="stars" value="4">
+                    <label for="star4" class="star">&#9733;</label>
+                    <input type="radio" id="star3" name="stars" value="3">
+                    <label for="star3" class="star">&#9733;</label>
+                    <input type="radio" id="star2" name="stars" value="2">
+                    <label for="star2" class="star">&#9733;</label>
+                    <input type="radio" id="star1" name="stars" value="1">
+                    <label for="star1" class="star">&#9733;</label>
+                </div>
+                
+                <button type="submit" data-translate="Submit Feedback">Submit Feedback</button>
+            </form>
+        </div>
+        <div id="animated-pulse-ping"></div>
+
+    </div>
+    
+
     <main>
+
+        
         <!-- Main content goes here -->
         <section id="home">
             <div id="userdiv">
@@ -133,26 +195,37 @@
                     <p id="userBio">User Bio Here</p>
                 </div>
             </div>
+
             <div class="container-pedia">
                 <div id="question-container">
                     <p id="question-display"></p>
                     <div id="answer-input"></div>
                 </div>
                 <div id="button-container-pedia">
-                    <button id="prev-btn">Previous</button>
-                    <button id="next-btn">Next</button>
-                    <button id="skip-btn">Skip</button>
-                    <button id="ok-btn">OK</button>
-                    <button id="done-pedia-btn">Done</button>
+                    <button id="prev-btn" data-translate="Previous">Previous</button>
+                    <button id="next-btn" data-translate="Next">Next</button>
+                    <button id="skip-btn" data-translate="Skip">Skip</button>
+                    <button id="ok-btn" data-translate="OK">OK</button>
+                    <button id="done-pedia-btn" data-translate="Done">Done</button>
                 </div>
                 <div id="output-pedia" class="output-pedia"></div>
             </div>
             
+           <!-- <div class="trailer-show">
+                <canvas id="trailer"></canvas>
+                <div class="controllers">
+                    <button id="play-trailer">&#9654;</button>
+                    <button id="download-trailer-btn">&#x2193;</button>
+                    <audio src="y2mate.com - Epic Action Cinematic by Infraction No Copyright Music  Heroes.mp3" id="audio-trailer"></audio>
+                </div>
+            </div> -->
+
+
             <div class="magic-pedia" id="magic-pedia-post">
                 <div class="top-section">
                     <img src="logo.png" alt="Top Logo Image 1">
                     <div class="title">
-                        <h2>Wikimagical</h2>
+                        <h2 data-translate="Wikimagical">Wikimagical</h2>
                         <span id="user-name-pedia"></span>
                     </div>
                     <img src="magic5.png" alt="Top Logo Image 2">
@@ -172,7 +245,7 @@
                 <canvas id="magiic-1"></canvas>
             </div>
             <div class="friends">
-                <h2>Friends</h2>
+                <h2 data-translate="Friends">Friends</h2>
             <div id="friendsContainer"></div>
             <!-- 3D View Overlay -->
             <div id="viewOverlay">
@@ -195,51 +268,52 @@
             </div>
             <div class="magic-word">
                 <div class="list-of-pals"></div>
-                <h2 id="friend-heading">Welcome Select one friend</h2><span id="pal-name"></span>
+                <h2 id="friend-heading" data-translate="Welcome Select one friend">Welcome Select one friend</h2><span id="pal-name"></span>
                 <input type="text" id="word-input" placeholder="That word is..." maxlength="25">
-                <label for="add-image" class="file-label">Add Photo instead</label>
+                <label for="add-image" class="file-label" data-translate="Add Photo instead">Add Photo instead</label>
                 <input type="file" id="add-image" class="file-input">
                 <div class="image-preview">
                     <img id="preview-image" src="#" alt="Preview Image">
                 </div>
 
-                <h3>Choose font.</h3>
-                <div class="font-picker">
-                    <button class="font-option" data-font="Arial">Arial</button>
-                    <button class="font-option" data-font="Times New Roman">Times New Roman</button>
-                    <button class="font-option" data-font="Verdana">Verdana</button>
-                    <button class="font-option" data-font="Georgia">Georgia</button>
-                    <button class="font-option" data-font="Courier New">Courier New</button>
-                    <button class="font-option" data-font="Impact">Impact</button>
-                    <button class="font-option" data-font="Comic Sans MS">Comic Sans MS</button>
-                    <button class="font-option" data-font="Tahoma">Tahoma</button>
-                    <button class="font-option" data-font="Lucida Console">Lucida Console</button>
-                    <button class="font-option" data-font="Algerian">Algerian</button>
-                    <button class="font-option" data-font="Brush Script MT">Brush Script MT</button>
-                    <button class="font-option" data-font="Monotype Corsiva">Monotype Corsiva</button>
-                    <button class="font-option" data-font="Segoe Script">Segoe Script</button>
-                    <button class="font-option" data-font="Gabriola">Gabriola</button>
-                    <button class="font-option" data-font="French Script MT">French Script MT</button>
-                    <button class="font-option" data-font="Trebuchet MS">Trebuchet MS</button>
-                    <button class="font-option" data-font="Roboto">Roboto</button>
-                    <button class="font-option" data-font="Open Sans">Open Sans</button>
-                    <button class="font-option" data-font="Lato">Lato</button>
-                    <button class="font-option" data-font="Oswald">Oswald</button>
-                    <button class="font-option" data-font="Raleway">Raleway</button>
-                    <button class="font-option" data-font="Montserrat">Montserrat</button>
-                    <button class="font-option" data-font="Poppins">Poppins</button>
-                    <button class="font-option" data-font="Playfair Display">Playfair Display</button>
-                    <button class="font-option" data-font="Merriweather">Merriweather</button>
-                    <button class="font-option" data-font="Source Serif Pro">Source Serif Pro</button>
-                    <button class="font-option" data-font="Lora">Lora</button>
-                    <button class="font-option" data-font="Crimson Text">Crimson Text</button>
-                    <button class="font-option" data-font="PT Serif">PT Serif</button>
-                    <button class="font-option" data-font="Play">Play</button>
-                    <button class="font-option" data-font="IBM Plex Serif">IBM Plex Serif</button>
-                </div>
-                
-                <span id="error-message"></span>
-                <button id="done-button" disabled>Done</button>
+                <h3 data-translate="Choose font.">Choose font.</h3>
+            <div class="font-picker">
+                <button class="font-option" data-font="Arial" data-translate="Arial">Arial</button>
+                <button class="font-option" data-font="Times New Roman" data-translate="Times New Roman">Times New Roman</button>
+                <button class="font-option" data-font="Verdana" data-translate="Verdana">Verdana</button>
+                <button class="font-option" data-font="Georgia" data-translate="Georgia">Georgia</button>
+                <button class="font-option" data-font="Courier New" data-translate="Courier New">Courier New</button>
+                <button class="font-option" data-font="Impact" data-translate="Impact">Impact</button>
+                <button class="font-option" data-font="Comic Sans MS" data-translate="Comic Sans MS">Comic Sans MS</button>
+                <button class="font-option" data-font="Tahoma" data-translate="Tahoma">Tahoma</button>
+                <button class="font-option" data-font="Lucida Console" data-translate="Lucida Console">Lucida Console</button>
+                <button class="font-option" data-font="Algerian" data-translate="Algerian">Algerian</button>
+                <button class="font-option" data-font="Brush Script MT" data-translate="Brush Script MT">Brush Script MT</button>
+                <button class="font-option" data-font="Monotype Corsiva" data-translate="Monotype Corsiva">Monotype Corsiva</button>
+                <button class="font-option" data-font="Segoe Script" data-translate="Segoe Script">Segoe Script</button>
+                <button class="font-option" data-font="Gabriola" data-translate="Gabriola">Gabriola</button>
+                <button class="font-option" data-font="French Script MT" data-translate="French Script MT">French Script MT</button>
+                <button class="font-option" data-font="Trebuchet MS" data-translate="Trebuchet MS">Trebuchet MS</button>
+                <button class="font-option" data-font="Roboto" data-translate="Roboto">Roboto</button>
+                <button class="font-option" data-font="Open Sans" data-translate="Open Sans">Open Sans</button>
+                <button class="font-option" data-font="Lato" data-translate="Lato">Lato</button>
+                <button class="font-option" data-font="Oswald" data-translate="Oswald">Oswald</button>
+                <button class="font-option" data-font="Raleway" data-translate="Raleway">Raleway</button>
+                <button class="font-option" data-font="Montserrat" data-translate="Montserrat">Montserrat</button>
+                <button class="font-option" data-font="Poppins" data-translate="Poppins">Poppins</button>
+                <button class="font-option" data-font="Playfair Display" data-translate="Playfair Display">Playfair Display</button>
+                <button class="font-option" data-font="Merriweather" data-translate="Merriweather">Merriweather</button>
+                <button class="font-option" data-font="Source Serif Pro" data-translate="Source Serif Pro">Source Serif Pro</button>
+                <button class="font-option" data-font="Lora" data-translate="Lora">Lora</button>
+                <button class="font-option" data-font="Crimson Text" data-translate="Crimson Text">Crimson Text</button>
+                <button class="font-option" data-font="PT Serif" data-translate="PT Serif">PT Serif</button>
+                <button class="font-option" data-font="Play" data-translate="Play">Play</button>
+                <button class="font-option" data-font="IBM Plex Serif" data-translate="IBM Plex Serif">IBM Plex Serif</button>
+            </div>
+
+            <span id="error-message" data-translate="Error message here."></span>
+            <button id="done-button" disabled data-translate="Done">Done</button>
+
                 
                 <div id="output"></div>                
 
@@ -256,24 +330,24 @@
                         <img src="logo.png" class="rounded-image" id="userphoto" alt="User Image">
                     </div>
                     <div class="gratitude">
-                        <h2>We are glad, <span id="userNames"></span>.</h2>
-                        <p>You enjoyed our video made by you</p>
+                        <h2 data-translate="We are glad,">We are glad, <span id="userNames"></span>.</h2>
+                        <p data-translate="You enjoyed our video made by you"> You enjoyed our video made by you</p>
                     </div>
                     <div class="disclaimer">
-                        <h3> &#9888; Disclaimer !!</h3>
-                        <p>By downloading this video, please note that the audio has been removed to comply with copyright regulations.</p>
+                        <h3 data-translate="Disclaimer !!">Disclaimer !! <span>&#9888;</span></h3>
+                        <p data-translate="By downloading this video, please note that the audio has been removed to comply with copyright regulations.">By downloading this video, please note that the audio has been removed to comply with copyright regulations.</p>
                         <label id="agreeLabel">
-                            <input type="checkbox" id="agreeCheckbox"> I agree
+                            <input type="checkbox" id="agreeCheckbox" data-translate="I agree"> I agree
                         </label>
                     </div>
-                    <button id="downloadButtoned" disabled>&#x2193; Download</button>
+                    <button id="downloadButtoned" disabled data-translate="Download">&#x2193; Download</button>
                     <button id="closeButton">&times;</button>
                 </div>
                 
                 <div id="counterProgress" class="overlay-counter">
                     <div class="progressText">
-                        <h2>Hold on! Your video is in progress...</h2>
-                        <p>Don't go away your video will be interrupted</p>
+                        <h2 data-translate="Hold on! Your video is in progress...">Hold on! Your video is in progress...</h2>
+                        <p data-translate="Don't go away your video will be interrupted">Don't go away your video will be interrupted</p>
                     </div>
                     <div class="progressText2"></div>
                     <div class="progressBar">
@@ -291,13 +365,13 @@
         <section id="songs">
             <div class="upload-song song-cards">
                 <div class="logo"></div>
-                <h3>Use your song</h3>
-                <label for="getUserSong"> &#10133; Add here</label>
+                <h3 data-translate="Use your song">Use your song</h3>
+                <label for="getUserSong" data-translate="Add here"> Add here <span>&#10133;</span></label>
                 <input type="file" name="songInput" id="getUserSong" accept=".mp3">
             </div>
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Adiemus Enya.</h3>
+                <h3 data-translate="Adiemus Enya."> Adiemus Enya.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Adiemus  Adiemus Enya.mp3"></audio>
                 </div>
@@ -307,7 +381,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -318,7 +392,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Akon ft Michael Jackson.</h3>
+                <h3 data-translate="Akon ft Michael Jackson.">Akon ft Michael Jackson.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Akon ft Michael Jackson  Hold my Hand Lyrics.mp3"></audio>
                 </div>
@@ -328,7 +402,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -338,7 +412,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Artists Of Then Now  Forever coutry road.</h3>
+                <h3 data-translate="Artists Of Then Now Forever coutry road.">Artists Of Then Now  Forever coutry road.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Artists Of Then Now  Forever  Forever Country (1).mp3"></audio>
                 </div>
@@ -348,7 +422,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -358,7 +432,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Alan Walker  Play</h3>
+                <h3 data-translate="Alan Walker Play"> Alan Walker  Play</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Alan Walker  Play Lyrics ft K391 Tungevaag Mangoo.mp3"></audio>
                 </div>
@@ -368,7 +442,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -378,7 +452,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Christina Perri  A Thousand Years.</h3>
+                <h3 data-translate="Christina Perri A Thousand Years.">Christina Perri  A Thousand Years.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Christina Perri  A Thousand Years Official Music Video.mp3"></audio>
                 </div>
@@ -388,7 +462,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -398,7 +472,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Coldplay  A Sky Full Of Stars Avicii Version.</h3>
+                <h3 data-translate="Coldplay A Sky Full Of Stars Avicii Version.">Coldplay  A Sky Full Of Stars Avicii Version.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Coldplay  A Sky Full Of Stars Avicii Version.mp3"></audio>
                 </div>
@@ -408,7 +482,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -419,7 +493,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Céline Dion  Ashes from Deadpool 2</h3>
+                <h3 data-translate="Céline Dion Ashes from Deadpool 2">Céline Dion  Ashes from Deadpool 2</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Céline Dion  Ashes from Deadpool 2 Motion Picture Soundtrack.mp3"></audio>
                 </div>
@@ -429,7 +503,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -441,7 +515,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Céline Dion  How Does A Moment Last Forever</h3>
+                <h3 data-translate="Céline Dion How Does A Moment Last Forever.">Céline Dion  How Does A Moment Last Forever.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - How Does A Moment Last Forever  Celine Dion Lyrics.mp3"></audio>
                 </div>
@@ -451,7 +525,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -461,7 +535,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Céline Dion  Thats The Way It Is</h3>
+                <h3 data-translate="Céline Dion Thats The Way It Is">Céline Dion  Thats The Way It Is</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Céline Dion  Thats The Way It Is Official Video.mp3"></audio>
                 </div>
@@ -471,7 +545,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -481,7 +555,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Céline Dion  To Love You More</h3>
+                <h3 data-translate="Céline Dion To Love You More"> Céline Dion  To Love You More</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Céline Dion  To Love You More Official Audio.mp3"></audio>
                 </div>
@@ -491,7 +565,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -502,7 +576,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Dhivara  Song  Baahubali Telugu.</h3>
+                <h3 data-translate="Dhivara Song Baahubali Telugu."> Dhivara  Song  Baahubali Telugu.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Dhivara Video Song  Baahubali Telugu  Prabhas Rana Anushka Tamannaah  Bahubali Songs.mp3"></audio>
                 </div>
@@ -512,7 +586,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -523,7 +597,7 @@
             
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Diviners Savannah ft Philly K.</h3>
+                <h3 data-translate="Diviners Savannah ft Philly K."> Diviners Savannah ft Philly K.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Diviners  Savannah feat Philly K  Tropical House  NCS  Copyright Free Music.mp3"></audio>
                 </div>
@@ -533,7 +607,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -543,7 +617,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Don Omar  Danza Kuduro.</h3>
+                <h3 data-translate="Don Omar Danza Kuduro"> Don Omar  Danza Kuduro.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Don Omar  Danza Kuduro Instrumental Original HQ.mp3"></audio>
                 </div>
@@ -553,7 +627,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -562,7 +636,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Elektronomia  Sky High.</h3>
+                <h3 data-translate="Elektronomia Sky High.">Elektronomia  Sky High.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Elektronomia  Sky High  Progressive House  NCS  Copyright Free Music.mp3"></audio>
                 </div>
@@ -572,7 +646,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -581,7 +655,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Enrique Iglesias  Hero.</h3>
+                <h3 data-translate="Enrique Iglesias Hero.">Enrique Iglesias  Hero.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Enrique Iglesias  Hero.mp3"></audio>
                 </div>
@@ -591,7 +665,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -601,7 +675,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Enya  May It Be Instrumental.</h3>
+                <h3 data-translate="Enya May It Be Instrumental.">Enya  May It Be Instrumental.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Enya  May It Be Instrumental.mp3"></audio>
                 </div>
@@ -611,7 +685,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -620,7 +694,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Enya  May It Be.</h3>
+                <h3 data-translate="Enya May It Be.">Enya  May It Be.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Enya  May It Be Official Lyric Video.mp3"></audio>
                 </div>
@@ -630,7 +704,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -639,7 +713,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Enya  Only Time Instrumental</h3>
+                <h3 data-translate="Enya Only Time Instrumental">Enya  Only Time Instrumental</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Enya  Only Time Instrumental.mp3"></audio>
                 </div>
@@ -649,7 +723,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -660,7 +734,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Enya  Only Time</h3>
+                <h3 data-translate="Enya Only Time">Enya  Only Time</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Enya  Only Time Official 4K Music Video.mp3"></audio>
                 </div>
@@ -670,7 +744,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -681,7 +755,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Wild Child Instrumental.</h3>
+                <h3 data-translate="Wild Child Instrumental."> Wild Child Instrumental.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Enya  Wild Child Instrumental.mp3"></audio>
                 </div>
@@ -691,7 +765,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -701,7 +775,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Wild Child.</h3>
+                <h3 data-translate="Wild Child"> Wild Child.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Enya  Wild Child Official Music Video.mp3"></audio>
                 </div>
@@ -711,7 +785,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -721,7 +795,7 @@
             
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Friendships.</h3>
+                <h3 data-translate="Friendships."> Friendships.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Friendships.mp3"></audio>
                 </div>
@@ -731,7 +805,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -741,7 +815,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Tera Yaar Hoon Main.</h3>
+                <h3 data-translate="Tera Yaar Hoon Main."> Tera Yaar Hoon Main.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Full Video Tera Yaar Hoon Main  Sonu Ke Titu Ki Sweety  Arijit Singh Rochak Kohli  Song 2018.mp3"></audio>
                 </div>
@@ -751,7 +825,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -761,7 +835,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Hans Zimmer  Remember.</h3>
+                <h3 data-translate="Hans Zimmer Remember."> Hans Zimmer  Remember.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Hans Zimmer  Remember From The Lion KingAudio Only.mp3"></audio>
                 </div>
@@ -771,7 +845,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -781,7 +855,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Hans Zimmer  Reunion Love Found Us.</h3>
+                <h3 data-translate="Hans Zimmer Reunion Love Found Us.">Hans Zimmer  Reunion Love Found Us.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Hans Zimmer  Reunion Love Found Us.mp3"></audio>
                 </div>
@@ -791,7 +865,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -801,7 +875,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Hans Zimmer  Spirit Stallion of the Cimarron  Swimming.</h3>
+                <h3 data-translate="Hans Zimmer Spirit Stallion of the Cimarron Swimming."> Hans Zimmer  Spirit Stallion of the Cimarron  Swimming.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - 02 Hans Zimmer  Spirit Stallion of the Cimarron  Swimming.mp3"></audio>
                 </div>
@@ -811,7 +885,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -821,7 +895,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Hans Zimmer  Gladiator  Now We Are Free.</h3>
+                <h3 data-translate="Hans Zimmer Gladiator Now We Are Free.">Hans Zimmer  Gladiator  Now We Are Free.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Gladiator  Now We Are Free  Hans Zimmer  Lisa Gerrard.mp3"></audio>
                 </div>
@@ -831,7 +905,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -841,7 +915,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Hans Zimmer  Time.</h3>
+                <h3 data-translate="Hans Zimmer Time."> Hans Zimmer  Time.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Hans Zimmer  Time Official Audio.mp3"></audio>
                 </div>
@@ -851,7 +925,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -861,7 +935,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Heart of Courage.</h3>
+                <h3 data-translate="Heart of Courage.">Heart of Courage.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Heart of Courage.mp3"></audio>
                 </div>
@@ -871,7 +945,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -882,7 +956,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Iggy Azalea  Quavo  Savior Instrumental.</h3>
+                <h3 data-translate="Iggy Azalea Quavo Savior Instrumental">Iggy Azalea Quavo Savior Instrumental.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Iggy Azalea  Quavo  Savior Instrumental.mp3"></audio>
                 </div>
@@ -892,7 +966,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -903,7 +977,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Iggy Azalea  Quavo  Savior.</h3>
+                <h3 data-translate="Iggy Azalea Quavo Savior">Iggy Azalea Quavo Savior.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Iggy Azalea  Savior ft Quavo Lyric Video.mp3"></audio>
                 </div>
@@ -913,7 +987,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -923,7 +997,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Janji  Heroes Tonight.</h3>
+                <h3 data-translate="Janji Heroes Tonight">Janji Heroes Tonight.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Janji  Heroes Tonight feat Johnning  Progressive House  NCS  Copyright Free Music.mp3"></audio>
                 </div>
@@ -933,7 +1007,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -943,7 +1017,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Jim Yosef  Anna Yvette  Linked  House.</h3>
+                <h3 data-translate="Jim Yosef Anna Yvette Linked House">Jim Yosef Anna Yvette Linked House.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Jim Yosef  Anna Yvette  Linked  House  NCS  Copyright Free Music.mp3"></audio>
                 </div>
@@ -953,7 +1027,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -963,7 +1037,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Jim Yosef  Firefly  Progressive House.</h3>
+                <h3 data-translate="Jim Yosef Firefly Progressive House">Jim Yosef Firefly Progressive House.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Jim Yosef  Firefly  Progressive House  NCS  Copyright Free Music.mp3"></audio>
                 </div>
@@ -973,7 +1047,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -983,7 +1057,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Jim Yosef  Let You Go.</h3>
+                <h3 data-translate="Jim Yosef Let You Go">Jim Yosef Let You Go.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Jim Yosef  Let You Go  Synthpop  NCS  Copyright Free Music.mp3"></audio>
                 </div>
@@ -993,7 +1067,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1002,7 +1076,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Jim Yosef  Link  House.</h3>
+                <h3 data-translate="Jim Yosef Link House">Jim Yosef  Link  House.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Jim Yosef  Link  House  NCS  Copyright Free Music (1).mp3"></audio>
                 </div>
@@ -1012,7 +1086,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1022,7 +1096,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Julius Dreisig  Zeus X Crona  Invisible.</h3>
+                <h3 data-translate="Julius Dreisig Zeus X Crona Invisible"> Julius Dreisig Zeus X Crona Invisible.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Julius Dreisig  Zeus X Crona  Invisible  Trap  NCS  Copyright Free Music.mp3"></audio>
                 </div>
@@ -1032,7 +1106,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1041,7 +1115,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Alan Walker Play Instrumental.</h3>
+                <h3 data-translate="Alan Walker Play Instrumental"> Alan Walker Play Instrumental.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - K391 Alan Walker  Tungevaag  Play feat Mangoo Instrumental.mp3"></audio>
                 </div>
@@ -1051,7 +1125,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1060,7 +1134,7 @@
             
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>  Katy Perry  Unconditionally.</h3>
+                <h3 data-translate="Katy Perry Unconditionally">  Katy Perry Unconditionally.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Katy Perry  Unconditionally Lyrics.mp3"></audio>
                 </div>
@@ -1070,7 +1144,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1079,7 +1153,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Kelly Clarkson  Stronger.</h3>
+                <h3 data-translate="Kelly Clarkson Stronger"> Kelly Clarkson Stronger.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Kelly Clarkson  Stronger What Doesnt Kill You Official Video.mp3"></audio>
                 </div>
@@ -1089,7 +1163,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1099,7 +1173,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Lat Lag Gayee.</h3>
+                <h3 data-translate="Lat Lag Gayee">Lat Lag Gayee.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Lat Lag Gayee Lyrical  Race 2  Saif Ali Khan Jacqueline  Benny Dayal Shalmali  Pritam  Party.mp3"></audio>
                 </div>
@@ -1109,7 +1183,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1119,7 +1193,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Leja Re  Dhvani Bhanushali.</h3>
+                <h3 data-translate="Leja Re Dhvani Bhanushali">Leja Re Dhvani Bhanushali.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Leja Re  Dhvani Bhanushali  Tanishk Bagchi  Rashmi Virag Radhika Rao Vinay Sapru  Siddharth [music]_[cut_227sec].mp3"></audio>
                 </div>
@@ -1129,7 +1203,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1139,7 +1213,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Leja Re  Dhvani Bhanushali.</h3>
+                <h3 data-translate="Leja Re Dhvani Bhanushali">Leja Re Dhvani Bhanushali.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Leja Re Lyrics   Dhvani Bhanushali  Tanishk Bagchi.mp3"></audio>
                 </div>
@@ -1149,7 +1223,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1159,7 +1233,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>  Maroon 5  Memories.</h3>
+                <h3 data-translate="Maroon 5 Memories">  Maroon 5 Memories.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Maroon 5  Memories Official Video.mp3"></audio>
                 </div>
@@ -1169,7 +1243,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1179,7 +1253,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Leona Lewis  Better in Time.</h3>
+                <h3 data-translate="Leona Lewis Better in Time"> Leona Lewis Better in Time.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Leona Lewis  Better in Time Official Video (2).mp3"></audio>
                 </div>
@@ -1189,7 +1263,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1199,7 +1273,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Lost Sky  Fearless.</h3>
+                <h3 data-translate="Lost Sky Fearless">Lost Sky Fearless.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Lost Sky  Fearless ptII feat Chris Linton  Trap  NCS  Copyright Free Music.mp3"></audio>
                 </div>
@@ -1209,7 +1283,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1219,7 +1293,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Michael Jackson  Hold My Hand Instrumental.</h3>
+                <h3 data-translate="Michael Jackson Hold My Hand Instrumental">Michael Jackson Hold My Hand Instrumental.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Michael Jackson  Hold My Hand Instrumental.mp3"></audio>
                 </div>
@@ -1229,7 +1303,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1239,7 +1313,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Michael Learns To Rock  Someday.</h3>
+                <h3 data-translate="Michael Learns To Rock Someday">Michael Learns To Rock Someday.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Michael Learns To Rock  Someday instrumental w lyrics.mp3"></audio>
                 </div>
@@ -1249,7 +1323,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1260,7 +1334,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Michael Learns To Rock  Someday.</h3>
+                <h3 data-translate="Michael Learns To Rock Someday">Michael Learns To Rock Someday.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Michael Learns To Rock  Someday Official Video with Lyrics Closed Caption.mp3"></audio>
                 </div>
@@ -1270,7 +1344,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1280,7 +1354,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3> Miles Away  Bring Me Back.</h3>
+                <h3 data-translate="Miles Away Bring Me Back"> Miles Away Bring Me Back.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Miles Away  Bring Me Back Lyrics feat Claire Ridgely (1).mp3"></audio>
                 </div>
@@ -1290,7 +1364,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1300,7 +1374,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Miles Away Bring Me Back Instrumental.</h3>
+                <h3 data-translate="Miles Away Bring Me Back Instrumental">Miles Away Bring Me Back Instrumental.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Miles Away feat Claire Ridgely  Bring Me Back Instrumental JuRA 1313 Remix.mp3"></audio>
                 </div>
@@ -1310,7 +1384,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1320,7 +1394,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Most Epic Music Ever.</h3>
+                <h3 data-translate="Most Epic Music Ever">Most Epic Music Ever.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Most Epic Music Ever The Wolf And The Moon  BrunuhVille (1).mp3"></audio>
                 </div>
@@ -1330,7 +1404,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1341,7 +1415,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>One Direction  Story of My Life.</h3>
+                <h3 data-translate="One Direction Story of My Life">One Direction Story of My Life.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - One Direction  Story of My Life Lyrics.mp3"></audio>
                 </div>
@@ -1351,7 +1425,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1362,7 +1436,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Pachelbel  Canon In D Major.</h3>
+                <h3 data-translate="Pachelbel Canon In D Major">Pachelbel Canon In D Major.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Pachelbel  Canon In D Major Best version.mp3"></audio>
                 </div>
@@ -1372,7 +1446,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1384,7 +1458,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>P!nk Try.</h3>
+                <h3 data-translate="P!nk Try">P!nk Try.</h3>
                 <div class="song-audio">
                     <audio src="pink try.mp3"></audio>
                 </div>
@@ -1394,7 +1468,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1404,7 +1478,7 @@
 
             <div class="song-card">
                 <div class="logo"></div>
-                <h3>Queen  I Want to Break Free.</h3>
+                <h3 data-translate="Queen I Want to Break Free">Queen I Want to Break Free.</h3>
                 <div class="song-audio">
                     <audio src="y2mate.com - Queen  I Want to Break Free Official Lyric Video.mp3"></audio>
                 </div>
@@ -1414,7 +1488,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1434,7 +1508,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1455,7 +1529,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1475,7 +1549,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1494,7 +1568,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1513,7 +1587,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1533,7 +1607,27 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
+                        </div>
+                        <canvas class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="song-card">
+                <div class="logo"></div>
+                <h3>Shah Rukh Khan Dilwale Gerua .</h3>
+                <div class="song-audio">
+                    <audio src="y2mate.com - Dilwale  Gerua Lyric Video  Shah Rukh Khan Kajol  SRK Kajol Official Lyric Video.mp3"></audio>
+                </div>
+                <div class="duration">&#9835; 0:00</div>
+                <div class="details">
+                    <div class="deeper-details">
+                        <div class="all-button-container">
+                            <button>&#9654;</button>
+                            <button>&#9655;</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1553,7 +1647,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1573,7 +1667,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1593,7 +1687,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1613,7 +1707,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1634,7 +1728,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1654,7 +1748,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1674,7 +1768,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1695,7 +1789,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1715,7 +1809,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1735,7 +1829,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1754,7 +1848,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1773,7 +1867,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1792,7 +1886,7 @@
                         <div class="all-button-container">
                             <button>&#9654;</button>
                             <button>&#9655;</button>
-                            <button>Select</button>
+                            <button data-translate="Select">Select</button>
                         </div>
                         <canvas class="visualizer"></canvas>
                     </div>
@@ -1803,50 +1897,43 @@
         </section>   
         <section id="slideshows" class="under-construction">
             <div class="selected-song">
-                <h2>Your songs.</h2>
+                <h2 data-translate="Your songs.">Your songs.</h2>
             </div>
-            <h4>Add song to experience the magic.</h4>
+            <h4 data-translate="Add song to experience the magic.">Add song to experience the magic.</h4>
             <div class="friends-view">
-                <h2>Your friends.</h2>
+                <h2 data-translate="Your friends.">Your friends.</h2>
                 <br>
             </div>
             <div class="slideshow-1">
-                <h2>Select one song and see the magic.</h2>
-                <button type="button" id="slide-friends">Click here first</button>
+                <h2 data-translate="Select one song and see the magic.">Select one song and see the magic.</h2>
+                <button type="button" id="slide-friends" data-translate="Click here first">Click here first</button>
                 <div class="all-friends-slideshow"></div>
             </div>
            
-            <div class="trailer-show">
-                <canvas id="trailer"></canvas>
-                <div class="conntrollers">
-                    <button id="play-trailer">&#9654;</button>
-                    <button id="download-trailer-btn">&#9888;</button>
-                    <audio src="y2mate.com - Epic Action Cinematic by Infraction No Copyright Music  Heroes.mp3" id="audio-trailer"></audio>
-                </div>
-            </div>
+            
         </section>
 
         <section id="diary">
             <div class="diary-container">
-                <h2 class="diary-title"><span id="owner-names"></span> Magical Diary</h2>
+                <h2 class="diary-title" ></span><span id="owner-names"></span> <span data-translate="Magical Diary"></span></h2>
                 <!-- Calendar and Memory Input Section -->
                 <div class="calendar-memory-input">
                     <!-- Calendar for Pointing Memories -->
                     <div class="calendar-memories">
-                        <h3>Memories Calendar</h3>
+                        <h3 data-translate="Memories Calendar">Memories Calendar</h3>
                         <div id="memoriesCalendar"></div>
                     </div>
                     <!-- Writing Memories -->
                     <div class="writing-memories">
-                        <h3>Write a Memory</h3>
+                        <h3 data-translate="Write a Memory">Write a Memory</h3>
                         <h4 class="memory-title"></h4>
                         <textarea id="memoryInput" placeholder="Write your memory here..."></textarea>
-                        <button id="saveMemory" disabled>Save Memory</button>
+                        <button id="saveMemory" disabled data-translate="Save Memory">Save Memory</button>
                     </div>
                 </div>
                 <!-- Memories Display Section -->
                 <div class="memories-display">
-                    <h3>My Memories</h3>
+                    <h3 data-translate="My Memories">My Memories</h3>
                     <div class="sort-memories">
                         <a id="grid-memories"><i class="fas fa-th-large"></i></a>
                         <a id="column-memories"><i class="fas fa-columns"></i></a>
@@ -1855,20 +1942,20 @@
 
                     <div class="memory-slideshow">
                         <div class="show-slideshow">
-                            <button id="show-memory-slideshow">magical memories ▼</button>
+                            <button id="show-memory-slideshow" data-translate="magical memories ▼">magical memories ▼</button>
                         </div>
                         <div class="magical-memories-view">
-                            <h2><span id="poet-name"></span> Memories</h2>
+                            <h2><span id="poet-name"></span><span data-translate="Memories">Memories</span></h2>
                             <div class="canvas-container">
                                 <canvas id="myMemories"></canvas>
                                 <button id="play-memories">&#9654;</button>
                             </div>
                             <audio id="default-song" src="y2mate.com - John Powell  Hans Zimmer  Homeland  Spirit.mp3"></audio>
-                            <button id="showOverlayButton" disabled>Show Song Selection</button>
+                            <button id="showOverlayButton" disabled  data-translate="Show Song Selection">Show Song Selection</button>
 
                         <div class="othersong-overlay">
                             <div class="other-songs">
-                                <label for="chosen-song">Use your song</label>
+                                <label for="chosen-song" data-translate="Use your song">Use your song</label>
                                 <input type="file" id="chosen-song" accept="audio/*">
                                 <ul>
                                     <li data-song="y2mate.com - Cartoon Jéja  On  On feat Daniel Levi  Electronic Pop  NCS  Copyright Free Music.mp3">  Cartoon Jéja  On  On</li>
@@ -1884,13 +1971,13 @@
                                     <li  data-song="y2mate.com - Janji  Heroes Tonight feat Johnning  Progressive House  NCS  Copyright Free Music.mp3">Janji  Heroes Tonight</li>
                                     <li data-song="y2mate.com - Crystal Skies  Release Me Lyrics feat Gallie Fisher.mp3"> Crystal Skies</li>
                                 </ul>
-                                <button type="button" id="closeOtherOverlay">&times; Close</button>
+                                <button type="button" id="closeOtherOverlay">&times;</button>
                             </div>
                         </div>
                         </div>
                         <div class="processing-memories">
                             <img src="logo.png" alt="logo">
-                            <h2>Hold on, we are checking your memories</h2>
+                            <h2 data-translate="Hold on, we are checking your memories">Hold on, we are checking your memories</h2>
                             <span class="processing-message"></span>
                         </div>
                     </div>
@@ -1903,23 +1990,23 @@
                 
                 <!-- Reminder/Notification Section -->
                 <div class="reminder-notification">
-                    <h3>Reminders & Notifications</h3>
+                    <h3 data-translate="Reminders & Notifications">Reminders & Notifications</h3>
                     <!-- Calendar for Historical Events -->
                     <div class="reminder-calendar">
-                        <h4>Upcoming events Calendar</h4>
+                        <h4 data-translate="Upcoming events Calendar">Upcoming events Calendar</h4>
                         <div id="eventsCalendar"></div>
                     </div>
                     <!-- Notification/Reminder Input -->
                     <div class="reminder-input">
-                        <h4>Set a Reminder.</h4>
+                        <h4 data-translate="Set a Reminder.">Set a Reminder.</h4>
                         <input type="text" id="reminderText" placeholder="Enter your event...">
-                        <label for="reminderDate">Select date.</label>
+                        <label for="reminderDate" data-translate="Select date.">Select date.</label>
                         <input type="datetime-local" id="reminderDate">
                         <button id="setReminder">Set Reminder</button>
                     </div>
                     <!-- Notification/Reminder Alerts -->
                     <div class="reminder-alerts">
-                        <h4>Upcoming Reminders.</h4>
+                        <h4 data-translate="Upcoming Reminders.">Upcoming Reminders.</h4>
                         <div id="alertsList"></div>
                     </div>
                 </div>
@@ -1927,10 +2014,10 @@
 
             <div id="customPromptModal" class="custom-prompt-modal">
                 <div class="custom-prompt-content">
-                    <h3>What's on your mind</h3>
+                    <h3 data-translate="What's on your mind">What's on your mind</h3>
                     <input type="text" id="customPromptInput" placeholder="Enter your title..." maxlength="30">
                     <div class="custom-prompt-buttons">
-                        <button id="customPromptConfirm">Confirm</button>
+                        <button id="customPromptConfirm" data-translate="Confirm">Confirm</button>
                         <button id="customPromptCancel">&times;</button>
                     </div>
                 </div>
@@ -1940,8 +2027,8 @@
                 <div id="confirmEditDel" class="confirm-dialog" >
                 
                     <p id="confirmText"></p>
-                    <button id="confirmYes">Ok</button>
-                    <button id="confirmNo">No</button>
+                    <button id="confirmYes" data-translate="Ok">Ok</button>
+                    <button id="confirmNo" data-translate="No">No</button>
                 </div>
             </div>
            
@@ -2001,58 +2088,58 @@
                 <audio src="y2mate.com - Sovern  Always Lyrics.mp3" controls="true" id="theme-song"></audio>
                 <div id="lyrical-theme">
                     <p data-start="0" data-end="9">&#9835; &#9835; &#9835; &#9835;</p>
-                    <p data-start="10" data-end="17">&#9835; &#9835; Magical friend theme &#9835;</p>
-                    <p data-start="18" data-end="22">&#9834; Do you think you could try and (try and) &#9834;</p>
-                    <p data-start="23" data-end="25">&#9834; Tell me what's got you hiding? (What's got you hiding?) &#9834;</p>
-                    <p data-start="26" data-end="29">&#9834; What's all on your mind when you can't sleep &#9834;</p>
-                    <p data-start="30" data-end="33">&#9834; I can see that you're holding (you're holding) &#9834;</p>
-                    <p data-start="34" data-end="36">&#9834; Holding back and not showing (not showing) &#9834;</p>
-                    <p data-start="37" data-end="40">&#9834; What's all on your mind when you're with me &#9834;</p>
+                    <p data-start="9" data-end="16">&#9835; &#9835;<span data-translate="Magical friend theme"> Magical friend theme</span> &#9835; &#9835;</p>
+                    <p data-start="17" data-end="21">&#9835; <span data-translate="Do you think you could try and (try and)"></span> &#9835; <br>&#9834; Do you think you could try and (try and) &#9834;</p>
+                    <p data-start="22" data-end="25">&#9835; <span data-translate="Tell me what's got you hiding? (What's got you hiding?)"></span>&#9835; <br>&#9834; Tell me what's got you hiding? (What's got you hiding?) &#9834;</p>
+                    <p data-start="26" data-end="29">&#9835; <span data-translate="What's all on your mind when you can't sleep"></span> &#9835;<br>&#9834; What's all on your mind when you can't sleep &#9834;</p>
+                    <p data-start="30" data-end="33">&#9835; <span data-translate="I can see that you're holding (you're holding)"></span> &#9835;<br>&#9834; I can see that you're holding (you're holding) &#9834;</p>
+                    <p data-start="34" data-end="36">&#9835; <span data-translate="Holding back and not showing (not showing)"></span> &#9835;<br>&#9834; Holding back and not showing (not showing) &#9834;</p>
+                    <p data-start="37" data-end="40">&#9835; <span data-translate="What's all on your mind when you're with me"></span> &#9835;<br>&#9834; What's all on your mind when you're with me &#9834;</p>
                     <!-- New lyrics -->
-                    <p data-start="41" data-end="43">&#9834; I just wanna tell you now (tell you now) &#9834;</p>
-                    <p data-start="44" data-end="47">&#9834; I would never let you down (let you down) &#9834;</p>
-                    <p data-start="48" data-end="51">&#9834; If you feel like you're falling to the ground (falling to the ground) &#9834;</p>
-                    <p data-start="52" data-end="55">&#9834; You don't wanna take that chance (take that chance) &#9834;</p>
-                    <p data-start="56" data-end="59">&#9834; Thinkin' I won't understand (understand) &#9834;</p>
-                    <p data-start="60" data-end="63">&#9834; But honestly, I promise you I can (promise you I can) &#9834;</p>
+                    <p data-start="41" data-end="43">&#9835; <span data-translate="I just wanna tell you now (tell you now)"></span> &#9835;<br>&#9834; I just wanna tell you now (tell you now) &#9834;</p>
+                    <p data-start="44" data-end="47">&#9835; <span data-translate="I would never let you down (let you down)"></span> &#9835;<br>&#9834; I would never let you down (let you down) &#9834;</p>
+                    <p data-start="48" data-end="51">&#9835; <span data-translate="If you feel like you're falling to the ground (falling to the ground)"></span> &#9835;<br>&#9834; If you feel like you're falling to the ground (falling to the ground) &#9834;</p>
+                    <p data-start="52" data-end="55">&#9835; <span data-translate="You don't wanna take that chance (take that chance)"></span> &#9835;<br>&#9834; You don't wanna take that chance (take that chance) &#9834;</p>
+                    <p data-start="56" data-end="59">&#9835; <span data-translate="Thinkin' I won't understand (understand)"></span> &#9835;<br>&#9834; Thinkin' I won't understand (understand) &#9834;</p>
+                    <p data-start="60" data-end="63">&#9835; <span data-translate="But honestly, I promise you I can (promise you I can)"></span> &#9835;<br>&#9834; But honestly, I promise you I can (promise you I can) &#9834;</p>
                     <!-- Chorus -->
-                    <p data-start="66" data-end="69">&#9834; Take my hand &#9834;</p>
-                    <p data-start="70" data-end="73">&#9834; Believe me when I say &#9834;</p>
-                    <p data-start="74" data-end="77">&#9834; I'm here for you always (here for you always) ( <span class="mention-user"></span> ) &#9834;</p>
-                    <p data-start="79" data-end="81">&#9834; Take my hand &#9834;</p>
-                    <p data-start="82" data-end="84">&#9834; And everything could change &#9834;</p>
-                    <p data-start="85" data-end="87">&#9834; But one thing stays the same &#9834;</p>
-                    <p data-start="88" data-end="92">&#9834; I'm here for you always &#9834;  <br> &#9834; ( <span class="mention-user"></span> )  &#9834;</p>
+                    <p data-start="66" data-end="69">&#9835; <span data-translate="Take my hand"></span> &#9835;<br>&#9834; Take my hand &#9834;</p>
+                    <p data-start="70" data-end="73">&#9835; <span data-translate="Believe me when I say"></span> &#9835;<br>&#9834; Believe me when I say &#9834;</p>
+                    <p data-start="74" data-end="77">&#9835; <span data-translate="I'm here for you always (here for you always)"></span> &#9835;<br>&#9834; I'm here for you always (here for you always) ( <span class="mention-user"></span> ) &#9834;</p>
+                    <p data-start="79" data-end="81">&#9835; <span data-translate="Take my hand"></span> &#9835;<br>&#9834; Take my hand &#9834;</p>
+                    <p data-start="82" data-end="84">&#9835; <span data-translate="And everything could change"></span> &#9835;<br>&#9834; And everything could change &#9834;</p>
+                    <p data-start="85" data-end="87">&#9835; <span data-translate="But one thing stays the same"></span> &#9835;<br>&#9834; But one thing stays the same &#9834;</p>
+                    <p data-start="88" data-end="92">&#9835; <span data-translate="I'm here for you always"></span> &#9835;<br>&#9834; I'm here for you always &#9834;  <br> &#9834; ( <span class="mention-user"></span> )  &#9834;</p>
                 
-                    <p data-start="100" data-end="106">&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
-                    <p data-start="111" data-end="116">&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
+                    <p data-start="100" data-end="106">&#9835; <span data-translate="I'm here for you always"></span> &#9835;<br>&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
+                    <p data-start="111" data-end="116">&#9835; <span data-translate="I'm here for you always"></span> &#9835;<br>&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
                 
-                    <p data-start="120" data-end="123">&#9834; Hear the waves of the ocean &#9834;</p>
-                    <p data-start="124" data-end="127">&#9834; They will never stop flowing &#9834;</p>
-                    <p data-start="128" data-end="130">&#9834; It helps when you feel uncertainty &#9834;</p>
+                    <p data-start="120" data-end="123">&#9835; <span data-translate="Hear the waves of the ocean"></span> &#9835;<br>&#9834; Hear the waves of the ocean &#9834;</p>
+                    <p data-start="124" data-end="127">&#9835; <span data-translate="They will never stop flowing"></span> &#9835;<br>&#9834; They will never stop flowing &#9834;</p>
+                    <p data-start="128" data-end="130">&#9835; <span data-translate="It helps when you feel uncertainty"></span> &#9835;<br>&#9834; >It helps when you feel uncertainty &#9834;</p>
                 
-                    <p data-start="131" data-end="133">&#9834; I just wanna tell you now (tell you now) &#9834;</p>
-                    <p data-start="134" data-end="137">&#9834; I would never let you down (let you down) &#9834;</p>
-                    <p data-start="138" data-end="141">&#9834; If you feel like you're falling to the ground (falling to the ground) &#9834;</p>
+                    <p data-start="131" data-end="133">&#9835; <span data-translate="I just wanna tell you now (tell you now)"></span> &#9835;<br>&#9834; I just wanna tell you now (tell you now) &#9834;</p>
+                    <p data-start="134" data-end="137">&#9835; <span data-translate="I would never let you down (let you down)"></span> &#9835;<br>&#9834; I would never let you down (let you down) &#9834;</p>
+                    <p data-start="138" data-end="141">&#9835; <span data-translate="If you feel like you're falling to the ground (falling to the ground)"></span> &#9835;<br> If you feel like you're falling to the ground (falling to the ground) &#9834;</p>
                 
                     <!-- Chorus -->
-                    <p data-start="145" data-end="148">&#9834; Take my hand &#9834;</p>
-                    <p data-start="149" data-end="151">&#9834; Believe me when I say &#9834;</p>
-                    <p data-start="152" data-end="156">&#9834; I'm here for you always (here for you always) &#9834;</p>
-                    <p data-start="158" data-end="161">&#9834; Take my hand &#9834;</p>
-                    <p data-start="161" data-end="163">&#9834; And everything could change &#9834;</p>
-                    <p data-start="164" data-end="167">&#9834; But one thing stays the same &#9834;</p>
-                    <p data-start="168" data-end="171">&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
+                    <p data-start="145" data-end="148">&#9835; <span data-translate="Take my hand"></span> &#9835;<br>&#9834; Take my hand &#9834;</p>
+                    <p data-start="149" data-end="151">&#9835; <span data-translate="Believe me when I say"></span> &#9835;<br>&#9834; Believe me when I say &#9834;</p>
+                    <p data-start="152" data-end="156">&#9835; <span data-translate="I'm here for you always (here for you always)"></span> &#9835;<br>&#9834; I'm here for you always (here for you always) &#9834;</p>
+                    <p data-start="158" data-end="161">&#9835; <span data-translate="Take my hand"></span> &#9835;<br> Take my hand &#9834;</p>
+                    <p data-start="161" data-end="163">&#9835; <span data-translate="And everything could change"></span> &#9835;<br>&#9834; And everything could change &#9834;</p>
+                    <p data-start="164" data-end="167">&#9835; <span data-translate="But one thing stays the same"></span> &#9835;<br>&#9834; But one thing stays the same &#9834;</p>
+                    <p data-start="168" data-end="171">&#9835; <span data-translate="I'm here for you always"></span> &#9835;<br>&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
                 
-                    <p data-start="178" data-end="181">&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
-                    <p data-start="186" data-end="190">&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
+                    <p data-start="178" data-end="181">&#9835; <span data-translate="I'm here for you always"></span> &#9835;<br>&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
+                    <p data-start="186" data-end="190">&#9835; <span data-translate="I'm here for you always"></span> &#9835;<br>&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
                 
-                    <p data-start="191" data-end="194">&#9834; I just wanna say &#9834;</p>
-                    <p data-start="195" data-end="198">&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
-                    <p data-start="199" data-end="202">&#9834; Take my hand &#9834;</p>
-                    <p data-start="203" data-end="207">&#9834; Believe me when I say &#9834;</p>
-                    <p data-start="208" data-end="213">&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
-                    <p data-start="214" data-end="213">&#9834; Sovern - always &#9834;</p>
+                    <p data-start="191" data-end="194">&#9835; <span data-translate="I just wanna say"></span> &#9835;<br>&#9834; I just wanna say &#9834;</p>
+                    <p data-start="195" data-end="198">&#9835; <span data-translate="I'm here for you always"></span> &#9835;<br>&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
+                    <p data-start="199" data-end="202">&#9835; <span data-translate="Take my hand"></span> &#9835;<br>&#9834; Take my hand &#9834;</p>
+                    <p data-start="203" data-end="207">&#9835; <span data-translate="Believe me when I say"></span> &#9835;<br>&#9834; Believe me when I say &#9834;</p>
+                    <p data-start="208" data-end="213">&#9835; <span data-translate="I'm here for you always"></span> &#9835;<br>&#9834; I'm here for you always &#9834; <br> &#9834; ( <span class="mention-user"></span> ) &#9834;</p>
+                    <p data-start="214" data-end="216">&#9835; <span data-translate="Sovern - always"></span> &#9835;<br> Sovern - always &#9834;</p>
                 </div>
                 
                 
@@ -2067,19 +2154,46 @@
 
         <div id="link-overlay" class="overlay-hidden">
             <div class="link-overlay-content">
-                <p>Check out the full version on YouTube!</p>
-                <a id="visit-link" href="https://www.youtube.com/watch?v=uh6tOnEmPOc&pp=ygUHIHNvdmVybg%3D%3D" target="_blank" rel="noopener">Visit YouTube</a>
-                <button id="close-overlay">Close</button>
+                <p data-translate="Check out the original song on YouTube!">Check out the original song on YouTube!</p>
+                <a id="visit-link" href="https://www.youtube.com/watch?v=uh6tOnEmPOc&pp=ygUHIHNvdmVybg%3D%3D" target="_blank" rel="noopener" data-translate="Visit YouTube">Visit YouTube</a>
+                <button id="close-overlay" data-translate="Close">Close</button>
             </div>
         </div>
         
         
+    
         
     </main>
 
+
+    <div id="languageDivs" class="hidding">
+        <span class="close-lang-btn">X</span>
+        <h2 data-translate="Select a Language:">Select a Language:</h2>
+        <ul>
+          <li data-language="arabic" data-translate="العربية">🇦🇪 العربية</li>
+          <li data-language="bengali" data-translate="বাংলা">🇮🇳 বাংলা</li>
+          <li data-language="chinese" data-translate="中文">🇨🇳 中文</li>
+          <li data-language="dutch" data-translate="Nederlands">🇳🇱 Nederlands</li>
+          <li data-language="english" data-translate="English">🇬🇧 English</li>
+          <li data-language="french" data-translate="Français">🇫🇷 Français</li>
+          <li data-language="german" data-translate="Deutsch">🇩🇪 Deutsch</li>
+          <li data-language="greek" data-translate="Ελληνικά">🇬🇷 Ελληνικά</li>
+          <li data-language="hindi" data-translate="हिन्दी">🇮🇳 हिन्दी</li>
+          <li data-language="italian" data-translate="Italiano">🇮🇹 Italiano</li>
+          <li data-language="japanese" data-translate="日本語">🇯🇵 日本語</li>
+          <li data-language="korean" data-translate="한국어">🇰🇷 한국어</li>
+          <li data-language="marathi" data-translate="मराठी">🇮🇳 मराठी</li>
+          <li data-language="portuguese" data-translate="Português">🇵🇹 Português</li>
+          <li data-language="russian" data-translate="Русский">🇷🇺 Русский</li>
+          <li data-language="spanish" data-translate="Español">🇪🇸 Español</li>
+          <li data-language="swedish" data-translate="Svenska">🇸🇪 Svenska</li>
+          <li data-language="telugu" data-translate="తెలుగు">🇮🇳 తెలుగు</li>
+          <li data-language="turkish" data-translate="Türkçe">🇹🇷 Türkçe</li>
+      </ul>
+      </div>
     <footer>
         <canvas id="magiic-2"></canvas>
-        <a href="index.html">&#10133; Create Friends</a>
+        <a href="index.html">&#10133;<span data-translate="Create Friends">Create Friends</span> </a>
     </footer>
 </body>
 </html>
